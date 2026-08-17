@@ -5,6 +5,10 @@ import { catalogCategories, getCategory, getProductsForCategory } from "@/data/c
 
 type Props = { params: Promise<{ category: string }> };
 
+export function generateStaticParams() {
+  return catalogCategories.map((category) => ({ category: category.slug }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category: categorySlug } = await params;
   const category = getCategory(categorySlug);
