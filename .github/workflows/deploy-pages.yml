@@ -35,7 +35,7 @@ jobs:
         env:
           GITHUB_ACTIONS: 'true'
 
-      - name: Apply GitHub Pages project prefix
+      - name: Prepare GitHub Pages project paths
         run: |
           node <<'NODE'
           const fs = require('fs');
@@ -53,26 +53,42 @@ jobs:
             ['"/favicon', `"${prefix}/favicon`], ["'/favicon", `'${prefix}/favicon`],
             ['href="/"', `href="${prefix}/"`], ["href='/'", `href='${prefix}/'`]
           ];
+
+          const htmlFiles = [];
           function walk(dir) {
             for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
               const full = path.join(dir, entry.name);
-              if (entry.isDirectory()) walk(full);
-              else if (textExts.has(path.extname(entry.name))) {
-                let text;
-                try { text = fs.readFileSync(full, 'utf8'); } catch { continue; }
-                let next = text;
-                for (const [from, to] of replacements) next = next.split(from).join(to);
-                if (next !== text) fs.writeFileSync(full, next);
+              if (entry.isDirectory()) {
+                walk(full);
+                continue;
               }
+              if (entry.name.endsWith('.html')) htmlFiles.push(full);
+              if (!textExts.has(path.extname(entry.name))) continue;
+              let text;
+              try { text = fs.readFileSync(full, 'utf8'); } catch { continue; }
+              let next = text;
+              for (const [from, to] of replacements) next = next.split(from).join(to);
+              if (next !== text) fs.writeFileSync(full, next);
             }
           }
           walk(root);
+
+          // GitHub Pages reliably serves directory/index.html for clean URLs.
+          // Keep Vinext's .html output and mirror it to clean route directories.
+          for (const source of htmlFiles) {
+            const relative = path.relative(root, source);
+            if (relative === 'index.html' || relative === '404.html' || path.basename(relative) === 'index.html') continue;
+            const target = path.join(root, relative.slice(0, -'.html'.length), 'index.html');
+            fs.mkdirSync(path.dirname(target), { recursive: true });
+            fs.copyFileSync(source, target);
+          }
           NODE
 
       - name: Verify static output
         run: |
           test -f dist/client/index.html
-          test -d dist/client/products
+          test -f dist/client/products/index.html
+          test -f dist/client/products/valves/index.html
 
       - name: Disable Jekyll processing
         run: touch dist/client/.nojekyll
