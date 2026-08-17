@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ProductDetail } from "@/components/product-detail";
+import { ProductDetail } from "@/components/catalog-client";
 import { getProduct, getRelatedProducts } from "@/data/catalog";
 
 type Props = {
