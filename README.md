@@ -8,13 +8,9 @@ A premium industrial engineering and procurement platform for product discovery,
 
 <br />
 
-<a href="https://satitech-official.github.io/ikinovac-global-engineering-platform/">
-  <img src="https://img.shields.io/badge/OPEN%20LIVE%20WEBSITE-E7B43A?style=for-the-badge&logo=googlechrome&logoColor=061224" alt="Open the live IKINOVAC Global website" />
-</a>
-&nbsp;
-<a href="https://github.com/satitech-official/ikinovac-global-engineering-platform">
-  <img src="https://img.shields.io/badge/VIEW%20SOURCE-081B33?style=for-the-badge&logo=github&logoColor=white" alt="View source on GitHub" />
-</a>
+[![OPEN LIVE PROJECT](https://img.shields.io/badge/OPEN%20LIVE%20PROJECT-E7B43A?style=for-the-badge&logo=googlechrome&logoColor=061224)](https://satitech-official.github.io/ikinovac-global-engineering-platform/)
+
+[![VIEW SOURCE](https://img.shields.io/badge/VIEW%20SOURCE-081B33?style=for-the-badge&logo=github&logoColor=white)](https://github.com/satitech-official/ikinovac-global-engineering-platform)
 
 <br /><br />
 
@@ -22,7 +18,7 @@ A premium industrial engineering and procurement platform for product discovery,
   <img src="https://raw.githubusercontent.com/satitech-official/ikinovac-global-engineering-platform/main/public/og.png" alt="IKINOVAC Global industrial engineering platform preview" width="100%" />
 </a>
 
-### [Launch the live website ↗](https://satitech-official.github.io/ikinovac-global-engineering-platform/)
+### [▶ Click here to run the live project](https://satitech-official.github.io/ikinovac-global-engineering-platform/)
 
 </div>
 
