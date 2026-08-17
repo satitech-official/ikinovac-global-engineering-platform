@@ -5,7 +5,7 @@ const publicBasePath = isGitHubPagesBuild ? `/${repositoryName}` : '';
 
 const nextConfig = {
   output: isGitHubPagesBuild ? 'export' : undefined,
-  trailingSlash: isGitHubPagesBuild,
+  trailingSlash: false,
   images: { unoptimized: true },
   env: { NEXT_PUBLIC_BASE_PATH: publicBasePath }
 };
