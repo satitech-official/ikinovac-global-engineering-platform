@@ -1,0 +1,1466 @@
+{
+  "buildId": "e0bd6979-08ce-4c8d-9f6e-a5258d16efe5",
+  "trailingSlash": false,
+  "routes": [
+    {
+      "route": "/products/:category/:product",
+      "status": "skipped",
+      "reason": "no-static-params"
+    },
+    {
+      "route": "/",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "headers": {
+        "link": "</brand/ikinovac-logo.jpeg>; rel=preload; as=\"image\""
+      }
+    },
+    {
+      "route": "/admin",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "headers": {
+        "link": "</ikinovac-global-engineering-platform/assets/ikinovac-logo.jpeg>; rel=preload; as=\"image\""
+      }
+    },
+    {
+      "route": "/products",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app"
+    },
+    {
+      "route": "/products/compare",
+      "status": "skipped",
+      "reason": "dynamic"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/valves"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/pipes-tubes"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/pipe-fittings"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/flanges"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/fasteners"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/gaskets-seals"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/instrumentation"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/pumps"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/electrical"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/automation"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/bearings-power-transmission"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/hydraulics"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/pneumatics"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/industrial-safety"
+    },
+    {
+      "route": "/products/:category",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/products/tools-maintenance"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/industrial-ball-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/gate-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/globe-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/butterfly-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/check-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/control-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/needle-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/plug-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/diaphragm-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/pressure-relief-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/safety-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/solenoid-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/cryogenic-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/valves/forged-steel-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/carbon-steel-seamless-pipe"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/stainless-steel-seamless-pipe"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/erw-steel-pipe"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/welded-stainless-steel-pipe"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/alloy-steel-pipe"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/duplex-stainless-steel-pipe"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/super-duplex-pipe"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/copper-tube"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/instrumentation-tube"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/boiler-tube"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/heat-exchanger-tube"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/hydraulic-tube"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipes-tubes/structural-steel-tube"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/butt-weld-elbow"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/butt-weld-tee"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/concentric-reducer"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/eccentric-reducer"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/pipe-coupling"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/pipe-union"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/cross-fitting"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/pipe-cap"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/stub-end"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/pipe-nipple"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/forged-socket-weld-fitting"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pipe-fittings/threaded-forged-fitting"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/weld-neck-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/slip-on-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/blind-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/socket-weld-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/threaded-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/lap-joint-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/orifice-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/spectacle-blind"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/ring-type-joint-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/flanges/plate-flange"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/hex-bolt"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/hex-nut"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/flat-washer"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/stud-bolt"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/anchor-bolt"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/u-bolt"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/eye-bolt"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/threaded-rod"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/high-tensile-fastener"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/fasteners/stainless-steel-screw"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/spiral-wound-gasket"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/ring-joint-gasket"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/rubber-sheet-gasket"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/ptfe-gasket"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/graphite-gasket"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/metal-jacketed-gasket"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/non-metallic-gasket"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/industrial-o-ring"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/mechanical-seal"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/gaskets-seals/industrial-seal-kit"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/pressure-gauge"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/temperature-gauge"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/pressure-transmitter"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/temperature-transmitter"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/electromagnetic-flow-meter"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/ultrasonic-flow-meter"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/level-transmitter"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/level-gauge"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/instrumentation-manifold"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/instrumentation-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/thermowell"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/industrial-sensor"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/instrumentation/process-controller"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/centrifugal-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/chemical-process-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/gear-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/screw-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/diaphragm-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/submersible-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/high-pressure-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/dosing-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pumps/industrial-water-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/industrial-electric-motor"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/motor-control-centre-panel"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/variable-frequency-drive-panel"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/variable-frequency-drive"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/moulded-case-circuit-breaker"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/industrial-contactor"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/industrial-relay"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/industrial-switchgear"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/power-cable"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/cable-gland"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/junction-box"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/electrical/industrial-connector"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/programmable-logic-controller"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/human-machine-interface"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/servo-motor"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/servo-drive"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/industrial-controller"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/automation-sensor"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/remote-i-o-module"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/process-control-system"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/automation/industrial-ethernet-switch"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/deep-groove-ball-bearing"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/spherical-roller-bearing"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/tapered-roller-bearing"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/pillow-block-bearing"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/flexible-coupling"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/industrial-gearbox"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/roller-chain"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/sprocket"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/v-belt"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/timing-belt"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/bearings-power-transmission/industrial-pulley"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-pump"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-directional-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-pressure-control-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-cylinder"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-motor"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-hose"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-fitting"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-power-pack"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/hydraulics/hydraulic-filter"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/pneumatic-cylinder"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/pneumatic-solenoid-valve"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/frl-unit"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/industrial-air-filter"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/air-pressure-regulator"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/pneumatic-lubricator"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/pneumatic-fitting"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/pneumatic-air-hose"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/pneumatics/pneumatic-actuator"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/industrial-safety-helmet"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/industrial-safety-glove"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/safety-goggle"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/industrial-safety-shoe"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/respiratory-protection"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/face-shield"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/safety-harness"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/fire-extinguisher"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/industrial-safety/industrial-ppe-kit"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/tools-maintenance/industrial-hand-tool-set"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/tools-maintenance/industrial-power-tool"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/tools-maintenance/cutting-tool"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/tools-maintenance/industrial-drill"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/tools-maintenance/grinding-tool"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/tools-maintenance/measurement-tool"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/tools-maintenance/workshop-equipment"
+    },
+    {
+      "route": "/catalogues/:category/:product",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app",
+      "path": "/catalogues/tools-maintenance/maintenance-tool-kit"
+    },
+    {
+      "route": "/404",
+      "status": "rendered",
+      "revalidate": false,
+      "router": "app"
+    }
+  ],
+  "pregeneratedConcretePaths": [
+    [
+      "/",
+      [
+        "/"
+      ]
+    ],
+    [
+      "/admin",
+      [
+        "/admin"
+      ]
+    ],
+    [
+      "/products",
+      [
+        "/products"
+      ]
+    ],
+    [
+      "/products/:category",
+      [
+        "/products/valves",
+        "/products/pipes-tubes",
+        "/products/pipe-fittings",
+        "/products/flanges",
+        "/products/fasteners",
+        "/products/gaskets-seals",
+        "/products/instrumentation",
+        "/products/pumps",
+        "/products/electrical",
+        "/products/automation",
+        "/products/bearings-power-transmission",
+        "/products/hydraulics",
+        "/products/pneumatics",
+        "/products/industrial-safety",
+        "/products/tools-maintenance"
+      ]
+    ],
+    [
+      "/catalogues/:category/:product",
+      [
+        "/catalogues/valves/industrial-ball-valve",
+        "/catalogues/valves/gate-valve",
+        "/catalogues/valves/globe-valve",
+        "/catalogues/valves/butterfly-valve",
+        "/catalogues/valves/check-valve",
+        "/catalogues/valves/control-valve",
+        "/catalogues/valves/needle-valve",
+        "/catalogues/valves/plug-valve",
+        "/catalogues/valves/diaphragm-valve",
+        "/catalogues/valves/pressure-relief-valve",
+        "/catalogues/valves/safety-valve",
+        "/catalogues/valves/solenoid-valve",
+        "/catalogues/valves/cryogenic-valve",
+        "/catalogues/valves/forged-steel-valve",
+        "/catalogues/pipes-tubes/carbon-steel-seamless-pipe",
+        "/catalogues/pipes-tubes/stainless-steel-seamless-pipe",
+        "/catalogues/pipes-tubes/erw-steel-pipe",
+        "/catalogues/pipes-tubes/welded-stainless-steel-pipe",
+        "/catalogues/pipes-tubes/alloy-steel-pipe",
+        "/catalogues/pipes-tubes/duplex-stainless-steel-pipe",
+        "/catalogues/pipes-tubes/super-duplex-pipe",
+        "/catalogues/pipes-tubes/copper-tube",
+        "/catalogues/pipes-tubes/instrumentation-tube",
+        "/catalogues/pipes-tubes/boiler-tube",
+        "/catalogues/pipes-tubes/heat-exchanger-tube",
+        "/catalogues/pipes-tubes/hydraulic-tube",
+        "/catalogues/pipes-tubes/structural-steel-tube",
+        "/catalogues/pipe-fittings/butt-weld-elbow",
+        "/catalogues/pipe-fittings/butt-weld-tee",
+        "/catalogues/pipe-fittings/concentric-reducer",
+        "/catalogues/pipe-fittings/eccentric-reducer",
+        "/catalogues/pipe-fittings/pipe-coupling",
+        "/catalogues/pipe-fittings/pipe-union",
+        "/catalogues/pipe-fittings/cross-fitting",
+        "/catalogues/pipe-fittings/pipe-cap",
+        "/catalogues/pipe-fittings/stub-end",
+        "/catalogues/pipe-fittings/pipe-nipple",
+        "/catalogues/pipe-fittings/forged-socket-weld-fitting",
+        "/catalogues/pipe-fittings/threaded-forged-fitting",
+        "/catalogues/flanges/weld-neck-flange",
+        "/catalogues/flanges/slip-on-flange",
+        "/catalogues/flanges/blind-flange",
+        "/catalogues/flanges/socket-weld-flange",
+        "/catalogues/flanges/threaded-flange",
+        "/catalogues/flanges/lap-joint-flange",
+        "/catalogues/flanges/orifice-flange",
+        "/catalogues/flanges/spectacle-blind",
+        "/catalogues/flanges/ring-type-joint-flange",
+        "/catalogues/flanges/plate-flange",
+        "/catalogues/fasteners/hex-bolt",
+        "/catalogues/fasteners/hex-nut",
+        "/catalogues/fasteners/flat-washer",
+        "/catalogues/fasteners/stud-bolt",
+        "/catalogues/fasteners/anchor-bolt",
+        "/catalogues/fasteners/u-bolt",
+        "/catalogues/fasteners/eye-bolt",
+        "/catalogues/fasteners/threaded-rod",
+        "/catalogues/fasteners/high-tensile-fastener",
+        "/catalogues/fasteners/stainless-steel-screw",
+        "/catalogues/gaskets-seals/spiral-wound-gasket",
+        "/catalogues/gaskets-seals/ring-joint-gasket",
+        "/catalogues/gaskets-seals/rubber-sheet-gasket",
+        "/catalogues/gaskets-seals/ptfe-gasket",
+        "/catalogues/gaskets-seals/graphite-gasket",
+        "/catalogues/gaskets-seals/metal-jacketed-gasket",
+        "/catalogues/gaskets-seals/non-metallic-gasket",
+        "/catalogues/gaskets-seals/industrial-o-ring",
+        "/catalogues/gaskets-seals/mechanical-seal",
+        "/catalogues/gaskets-seals/industrial-seal-kit",
+        "/catalogues/instrumentation/pressure-gauge",
+        "/catalogues/instrumentation/temperature-gauge",
+        "/catalogues/instrumentation/pressure-transmitter",
+        "/catalogues/instrumentation/temperature-transmitter",
+        "/catalogues/instrumentation/electromagnetic-flow-meter",
+        "/catalogues/instrumentation/ultrasonic-flow-meter",
+        "/catalogues/instrumentation/level-transmitter",
+        "/catalogues/instrumentation/level-gauge",
+        "/catalogues/instrumentation/instrumentation-manifold",
+        "/catalogues/instrumentation/instrumentation-valve",
+        "/catalogues/instrumentation/thermowell",
+        "/catalogues/instrumentation/industrial-sensor",
+        "/catalogues/instrumentation/process-controller",
+        "/catalogues/pumps/centrifugal-pump",
+        "/catalogues/pumps/chemical-process-pump",
+        "/catalogues/pumps/gear-pump",
+        "/catalogues/pumps/screw-pump",
+        "/catalogues/pumps/diaphragm-pump",
+        "/catalogues/pumps/submersible-pump",
+        "/catalogues/pumps/high-pressure-pump",
+        "/catalogues/pumps/dosing-pump",
+        "/catalogues/pumps/industrial-water-pump",
+        "/catalogues/electrical/industrial-electric-motor",
+        "/catalogues/electrical/motor-control-centre-panel",
+        "/catalogues/electrical/variable-frequency-drive-panel",
+        "/catalogues/electrical/variable-frequency-drive",
+        "/catalogues/electrical/moulded-case-circuit-breaker",
+        "/catalogues/electrical/industrial-contactor",
+        "/catalogues/electrical/industrial-relay",
+        "/catalogues/electrical/industrial-switchgear",
+        "/catalogues/electrical/power-cable",
+        "/catalogues/electrical/cable-gland",
+        "/catalogues/electrical/junction-box",
+        "/catalogues/electrical/industrial-connector",
+        "/catalogues/automation/programmable-logic-controller",
+        "/catalogues/automation/human-machine-interface",
+        "/catalogues/automation/servo-motor",
+        "/catalogues/automation/servo-drive",
+        "/catalogues/automation/industrial-controller",
+        "/catalogues/automation/automation-sensor",
+        "/catalogues/automation/remote-i-o-module",
+        "/catalogues/automation/process-control-system",
+        "/catalogues/automation/industrial-ethernet-switch",
+        "/catalogues/bearings-power-transmission/deep-groove-ball-bearing",
+        "/catalogues/bearings-power-transmission/spherical-roller-bearing",
+        "/catalogues/bearings-power-transmission/tapered-roller-bearing",
+        "/catalogues/bearings-power-transmission/pillow-block-bearing",
+        "/catalogues/bearings-power-transmission/flexible-coupling",
+        "/catalogues/bearings-power-transmission/industrial-gearbox",
+        "/catalogues/bearings-power-transmission/roller-chain",
+        "/catalogues/bearings-power-transmission/sprocket",
+        "/catalogues/bearings-power-transmission/v-belt",
+        "/catalogues/bearings-power-transmission/timing-belt",
+        "/catalogues/bearings-power-transmission/industrial-pulley",
+        "/catalogues/hydraulics/hydraulic-pump",
+        "/catalogues/hydraulics/hydraulic-directional-valve",
+        "/catalogues/hydraulics/hydraulic-pressure-control-valve",
+        "/catalogues/hydraulics/hydraulic-cylinder",
+        "/catalogues/hydraulics/hydraulic-motor",
+        "/catalogues/hydraulics/hydraulic-hose",
+        "/catalogues/hydraulics/hydraulic-fitting",
+        "/catalogues/hydraulics/hydraulic-power-pack",
+        "/catalogues/hydraulics/hydraulic-filter",
+        "/catalogues/pneumatics/pneumatic-cylinder",
+        "/catalogues/pneumatics/pneumatic-solenoid-valve",
+        "/catalogues/pneumatics/frl-unit",
+        "/catalogues/pneumatics/industrial-air-filter",
+        "/catalogues/pneumatics/air-pressure-regulator",
+        "/catalogues/pneumatics/pneumatic-lubricator",
+        "/catalogues/pneumatics/pneumatic-fitting",
+        "/catalogues/pneumatics/pneumatic-air-hose",
+        "/catalogues/pneumatics/pneumatic-actuator",
+        "/catalogues/industrial-safety/industrial-safety-helmet",
+        "/catalogues/industrial-safety/industrial-safety-glove",
+        "/catalogues/industrial-safety/safety-goggle",
+        "/catalogues/industrial-safety/industrial-safety-shoe",
+        "/catalogues/industrial-safety/respiratory-protection",
+        "/catalogues/industrial-safety/face-shield",
+        "/catalogues/industrial-safety/safety-harness",
+        "/catalogues/industrial-safety/fire-extinguisher",
+        "/catalogues/industrial-safety/industrial-ppe-kit",
+        "/catalogues/tools-maintenance/industrial-hand-tool-set",
+        "/catalogues/tools-maintenance/industrial-power-tool",
+        "/catalogues/tools-maintenance/cutting-tool",
+        "/catalogues/tools-maintenance/industrial-drill",
+        "/catalogues/tools-maintenance/grinding-tool",
+        "/catalogues/tools-maintenance/measurement-tool",
+        "/catalogues/tools-maintenance/workshop-equipment",
+        "/catalogues/tools-maintenance/maintenance-tool-kit"
+      ]
+    ],
+    [
+      "/404",
+      [
+        "/404"
+      ]
+    ]
+  ]
+}

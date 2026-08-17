@@ -1,0 +1,89 @@
+{
+  "_catalog-CSi-F8qL.js": {
+    "file": "_next/static/chunks/catalog-CSi-F8qL.js",
+    "name": "catalog"
+  },
+  "_framework-BgSIrAUN.js": {
+    "file": "_next/static/chunks/framework-BgSIrAUN.js",
+    "name": "framework",
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js"
+    ]
+  },
+  "_rolldown-runtime-C60lm6uB.js": {
+    "file": "_next/static/chunks/rolldown-runtime-C60lm6uB.js",
+    "name": "rolldown-runtime"
+  },
+  "app/admin/page.js": {
+    "file": "_next/static/chunks/page-0Fn5r46l.js",
+    "name": "page",
+    "src": "app/admin/page.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
+  "app/page.tsx": {
+    "file": "_next/static/chunks/page-BLyRvg9P.js",
+    "name": "page",
+    "src": "app/page.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_catalog-CSi-F8qL.js",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
+  "components/catalog-client.tsx": {
+    "file": "_next/static/chunks/catalog-client-jauZemaE.js",
+    "name": "catalog-client",
+    "src": "components/catalog-client.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
+  "components/catalog-route-client.tsx": {
+    "file": "_next/static/chunks/catalog-route-client-D0x11Es3.js",
+    "name": "catalog-route-client",
+    "src": "components/catalog-route-client.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "components/catalog-client.tsx",
+      "_catalog-CSi-F8qL.js",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
+  "node_modules/vinext/dist/shims/layout-segment-context.js": {
+    "file": "_next/static/chunks/layout-segment-context-C-CrvE0c.js",
+    "name": "layout-segment-context",
+    "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "virtual:vinext-app-browser-entry",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
+  "virtual:vinext-app-browser-entry": {
+    "file": "_next/static/chunks/index-DCdzWFBm.js",
+    "name": "index",
+    "src": "virtual:vinext-app-browser-entry",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_framework-BgSIrAUN.js"
+    ],
+    "dynamicImports": [
+      "components/catalog-route-client.tsx",
+      "virtual:vinext-app-browser-entry",
+      "node_modules/vinext/dist/shims/layout-segment-context.js",
+      "app/admin/page.js",
+      "app/page.tsx",
+      "components/catalog-client.tsx"
+    ]
+  }
+}
