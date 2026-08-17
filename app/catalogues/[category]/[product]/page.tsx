@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductCatalogue } from "@/components/catalog-client";
-import { getProduct } from "@/data/catalog";
+import { catalogProducts, getProduct } from "@/data/catalog";
 
 type Props = { params: Promise<{ category: string; product: string }> };
+
+export function generateStaticParams() {
+  return catalogProducts.map(({ categorySlug, slug }) => ({
+    category: categorySlug,
+    product: slug,
+  }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, product: productSlug } = await params;
