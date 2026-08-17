@@ -1,100 +1,122 @@
-# vinext-starter
+<div align="center">
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+# IKINOVAC GLOBAL
 
-## Prerequisites
+### Global Engineering & Industrial Procurement Platform
 
-- Node.js `>=22.13.0`
+A premium industrial website for product discovery, engineered procurement, global sourcing, technical solutions, and RFQ-driven enquiries.
 
-## Quick Start
+<br />
+
+<a href="https://satitech-official.github.io/ikinovac-global-engineering-platform/">
+  <img src="https://img.shields.io/badge/OPEN%20LIVE%20WEBSITE-00D084?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Open Live Website" />
+</a>
+&nbsp;
+<a href="https://github.com/satitech-official/ikinovac-global-engineering-platform">
+  <img src="https://img.shields.io/badge/VIEW%20SOURCE-181717?style=for-the-badge&logo=github&logoColor=white" alt="View Source" />
+</a>
+
+<br /><br />
+
+<a href="https://satitech-official.github.io/ikinovac-global-engineering-platform/">
+  <img src="./public/og.png" alt="IKINOVAC Global Website Preview" width="100%" />
+</a>
+
+**Click the preview image or the LIVE WEBSITE button above to open the deployed project.**
+
+</div>
+
+---
+
+## About the Project
+
+IKINOVAC GLOBAL is a modern engineering and industrial procurement platform designed to present industrial capabilities, product categories, sourcing expertise, and enquiry workflows in a premium international format.
+
+The interface is built to remain responsive across desktop, tablet, and mobile layouts while preserving the visual hierarchy and industrial design language of the project.
+
+## Key Experiences
+
+- Premium industrial / engineering visual design
+- Responsive layouts for desktop, tablet, and mobile
+- Industrial product catalog with category and product-detail routes
+- Search, filtering, comparison, and product discovery experiences
+- RFQ / Request a Quote interactions
+- Bulk pricing enquiry flow
+- Global sourcing and procurement positioning
+- Product imagery with graceful fallbacks
+- Motion and interactive UI elements
+- GitHub Pages compatible static deployment
+- Automatic deployment from the `main` branch through GitHub Actions
+
+## Technology
+
+<p>
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/Vinext-1.0%20Beta-111111?style=flat-square" alt="Vinext" />
+  <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Framer%20Motion-13-0055FF?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/GitHub%20Pages-Deployed-222222?style=flat-square&logo=github&logoColor=white" alt="GitHub Pages" />
+</p>
+
+## Live Deployment
+
+**Production URL:**  
+https://satitech-official.github.io/ikinovac-global-engineering-platform/
+
+The repository includes a GitHub Actions workflow that builds the current `main` branch, prepares GitHub Pages-compatible project paths and clean routes, verifies the static output, and publishes the generated artifact.
+
+## Run Locally
+
+### Requirements
+
+- Node.js `>= 22.13.0`
+- npm
+
+### Development
 
 ```bash
+git clone https://github.com/satitech-official/ikinovac-global-engineering-platform.git
+cd ikinovac-global-engineering-platform
 npm install
 npm run dev
+```
+
+### Production Build
+
+```bash
 npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+### Tests
 
-## Included Shape
-
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm test
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## Project Structure
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+```text
+app/                 Application routes and pages
+components/          Reusable UI and catalog components
+data/                Product catalog data
+public/              Images, brand assets, favicon and OG preview
+.github/workflows/   GitHub Pages deployment workflow
+```
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+## Deployment Notes
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+The GitHub Pages workflow handles the repository sub-path automatically so assets, product routes, images, and internal links work correctly at the deployed project URL without breaking the website layout.
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+---
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+<div align="center">
 
-## Useful Commands
+### IKINOVAC GLOBAL
+**Engineering • Procurement • Industrial Solutions • Global Sourcing**
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+<a href="https://satitech-official.github.io/ikinovac-global-engineering-platform/">
+  <img src="https://img.shields.io/badge/VIEW%20LIVE%20PROJECT-00D084?style=for-the-badge&logo=googlechrome&logoColor=white" alt="View Live Project" />
+</a>
 
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+</div>
