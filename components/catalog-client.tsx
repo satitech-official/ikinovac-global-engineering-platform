@@ -1,0 +1,110 @@
+"use client";
+
+/* Vinext serves these remote, CMS-ready product images directly so category assets can fall back safely. */
+/* eslint-disable @next/next/no-img-element, @next/next/no-html-link-for-pages */
+
+import { FormEvent, useEffect, useMemo, useState } from "react";
+import type { CatalogCategory, CatalogProduct } from "@/data/catalog";
+
+type ProductImageProps = { src: string; fallback: string; alt: string; className?: string };
+
+export function ProductImage({ src, fallback, alt, className }: ProductImageProps) {
+  const [imageSrc, setImageSrc] = useState(src);
+  return <img className={className} src={imageSrc} alt={alt} loading="lazy" onError={() => setImageSrc(fallback)} />;
+}
+
+type QuoteDialogProps = { product: CatalogProduct | null; intent?: "quote" | "bulk"; onClose: () => void };
+
+export function QuoteDialog({ product, intent = "quote", onClose }: QuoteDialogProps) {
+  const [submitted, setSubmitted] = useState(false);
+  if (!product) return null;
+
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const message = [
+      `Product: ${product.name} (${product.code})`,
+      `Request: ${intent === "bulk" ? "Bulk pricing" : "Request a quote"}`,
+      `Selected variant: ${String(data.get("variant") || "To be confirmed")}`,
+      `Quantity: ${String(data.get("quantity") || "To be confirmed")}`,
+      `Name: ${String(data.get("name") || "")}`,
+      `Company: ${String(data.get("company") || "")}`,
+      `Email: ${String(data.get("email") || "")}`,
+      `Phone: ${String(data.get("phone") || "")}`,
+      `Country: ${String(data.get("country") || "")}`,
+      `Delivery location: ${String(data.get("deliveryLocation") || "")}`,
+      `Required delivery date: ${String(data.get("deliveryDate") || "")}`,
+      "",
+      `Message: ${String(data.get("message") || "")}`,
+    ].join("\n");
+    const subject = encodeURIComponent(`${intent === "bulk" ? "Bulk pricing" : "RFQ"}: ${product.name} (${product.code})`);
+    window.location.href = `mailto:sales@ikinovac.com?subject=${subject}&body=${encodeURIComponent(message)}`;
+    setSubmitted(true);
+  };
+
+  return <div className="catalog-dialog-backdrop" role="presentation"><section className="catalog-dialog" role="dialog" aria-modal="true" aria-labelledby="catalog-quote-title"><button className="catalog-dialog-close" type="button" onClick={onClose} aria-label="Close quote form">×</button>{submitted ? <div className="catalog-success"><span>REQUEST PREPARED</span><h2>Your email application is ready.</h2><p>Review the pre-filled enquiry, attach any drawings or BOQ, and send it to the IKINOVAC team.</p><button type="button" className="catalog-primary" onClick={onClose}>CLOSE</button></div> : <><div className="catalog-dialog-head"><p className="catalog-kicker">{intent === "bulk" ? "REQUEST BULK PRICING" : "REQUEST A QUOTE"}</p><h2 id="catalog-quote-title">{product.name}</h2><p>{product.code} · {product.priceLabel}</p></div><form className="catalog-rfq-form" onSubmit={submit}><label>PRODUCT<input value={`${product.name} · ${product.code}`} readOnly /></label><label>SELECTED VARIANT<select name="variant" defaultValue=""><option value="">Select size / material</option>{product.variants.sizes.map((size) => <option key={`size-${size}`}>{size}</option>)}{product.variants.materials.map((material) => <option key={`material-${material}`}>{material}</option>)}</select></label><label>QUANTITY<input name="quantity" required placeholder="e.g. 20 Pieces / 500 m" /></label><label>NAME<input name="name" required placeholder="Your name" /></label><label>COMPANY NAME<input name="company" required placeholder="Company name" /></label><label>EMAIL<input name="email" type="email" required placeholder="you@company.com" /></label><label>PHONE<input name="phone" required placeholder="Phone number" /></label><label>COUNTRY<input name="country" required placeholder="Country" /></label><label>DELIVERY LOCATION<input name="deliveryLocation" required placeholder="City / site" /></label><label>REQUIRED DELIVERY DATE<input name="deliveryDate" type="date" /></label><label className="catalog-rfq-wide">MESSAGE<textarea name="message" rows={4} placeholder="Operating conditions, specification, documentation or delivery requirements" /></label><p className="catalog-form-note">Pricing and lead time are confirmed against the final specification, quantity and delivery location.</p><button className="catalog-primary" type="submit">PREPARE ENQUIRY EMAIL <span>↗</span></button></form></>}</section></div>;
+}
+
+type CardProps = { product: CatalogProduct; onQuote: (product: CatalogProduct, intent?: "quote" | "bulk") => void; compareIds?: string[]; onCompare?: (id: string) => void };
+
+export function ProductCard({ product, onQuote, compareIds = [], onCompare }: CardProps) {
+  const isCompared = compareIds.includes(product.id);
+  return <article className="catalog-product-card"><a className="catalog-product-image" href={`/products/${product.categorySlug}/${product.slug}`} aria-label={`View details for ${product.name}`}><ProductImage src={product.image} fallback={product.fallbackImage} alt={product.name} /><span>{product.category}</span></a><div className="catalog-product-body"><p className="catalog-product-code">{product.code}</p><h3><a href={`/products/${product.categorySlug}/${product.slug}`}>{product.name}</a></h3><p className="catalog-product-spec">{product.shortDescription}</p><div className="catalog-product-meta"><span>{product.size}</span><span>{product.rating}</span></div><div className="catalog-price-row"><div><strong>{product.priceLabel}</strong><small>{product.priceUnit}</small></div><span className="catalog-availability">{product.availability}</span></div><div className="catalog-card-actions"><a href={`/products/${product.categorySlug}/${product.slug}`} className="catalog-text-link">VIEW DETAILS <span>↗</span></a><button type="button" className="catalog-outline-button" onClick={() => onQuote(product)}>REQUEST QUOTE</button></div>{onCompare && <button type="button" className={`catalog-compare-toggle ${isCompared ? "is-selected" : ""}`} onClick={() => onCompare(product.id)}>{isCompared ? "REMOVE FROM COMPARE" : "COMPARE PRODUCT"}</button>}</div></article>;
+}
+
+type ExplorerProps = { products: CatalogProduct[]; categories: CatalogCategory[]; title: string; description: string; fixedCategory?: CatalogCategory };
+
+export function CatalogExplorer({ products, categories, title, description, fixedCategory }: ExplorerProps) {
+  const [query, setQuery] = useState("");
+  const [categorySlug, setCategorySlug] = useState(fixedCategory?.slug ?? "all");
+  const [productType, setProductType] = useState("all");
+  const [material, setMaterial] = useState("all");
+  const [availability, setAvailability] = useState("all");
+  const [sort, setSort] = useState("featured");
+  const [compareIds, setCompareIds] = useState<string[]>([]);
+  const [quoteProduct, setQuoteProduct] = useState<CatalogProduct | null>(null);
+  const [quoteIntent, setQuoteIntent] = useState<"quote" | "bulk">("quote");
+
+  const activeProducts = useMemo(() => products.filter((product) => {
+    const term = query.trim().toLowerCase();
+    const haystack = [product.name, product.category, product.code, product.material, product.standards, product.applications.join(" ")].join(" ").toLowerCase();
+    return (!term || haystack.includes(term)) && (categorySlug === "all" || product.categorySlug === categorySlug) && (productType === "all" || product.subcategory === productType) && (material === "all" || product.material.toLowerCase().includes(material.toLowerCase())) && (availability === "all" || product.availability === availability);
+  }).sort((a, b) => {
+    if (sort === "name") return a.name.localeCompare(b.name);
+    if (sort === "newest") return b.code.localeCompare(a.code);
+    if (sort === "popular") return Number(b.featured) - Number(a.featured) || a.name.localeCompare(b.name);
+    return Number(b.featured) - Number(a.featured) || a.name.localeCompare(b.name);
+  }), [availability, categorySlug, material, productType, products, query, sort]);
+
+  const categoryProducts = categorySlug === "all" ? products : products.filter((product) => product.categorySlug === categorySlug);
+  const types = [...new Set(categoryProducts.map((product) => product.subcategory))];
+  const materials = [...new Set(categories.flatMap((category) => category.variants.materials))];
+  const compareProducts = products.filter((product) => compareIds.includes(product.id));
+
+  const showQuote = (product: CatalogProduct, intent: "quote" | "bulk" = "quote") => { setQuoteProduct(product); setQuoteIntent(intent); };
+  const toggleCompare = (id: string) => setCompareIds((items) => items.includes(id) ? items.filter((item) => item !== id) : items.length < 3 ? [...items, id] : items);
+
+  return <section className="catalog-explorer"><div className="catalog-page-heading"><div><p className="catalog-kicker">{fixedCategory ? "PRODUCT CATEGORY" : "INDUSTRIAL PRODUCT CATALOG"}</p><h1>{title}</h1><p>{description}</p></div><a href="/products" className="catalog-all-link">ALL PRODUCTS <span>↗</span></a></div><div className="catalog-search-row"><label className="catalog-search"><span>⌕</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search industrial products, materials, SKUs or applications..." aria-label="Search industrial products" /></label><button type="button" className="catalog-bulk-button" onClick={() => showQuote(products[0], "bulk")}>REQUEST BULK PRICING <span>↗</span></button></div><div className="catalog-layout"><aside className="catalog-filters" aria-label="Catalog filters"><div className="catalog-filter-title"><strong>FILTER PRODUCTS</strong><button type="button" onClick={() => { setQuery(""); setCategorySlug(fixedCategory?.slug ?? "all"); setProductType("all"); setMaterial("all"); setAvailability("all"); }}>RESET</button></div>{!fixedCategory && <label>CATEGORY<select value={categorySlug} onChange={(event) => { setCategorySlug(event.target.value); setProductType("all"); }}><option value="all">All categories</option>{categories.map((category) => <option value={category.slug} key={category.slug}>{category.name}</option>)}</select></label>}<label>PRODUCT TYPE<select value={productType} onChange={(event) => setProductType(event.target.value)}><option value="all">All product types</option>{types.map((type) => <option value={type} key={type}>{type}</option>)}</select></label><label>MATERIAL<select value={material} onChange={(event) => setMaterial(event.target.value)}><option value="all">All materials</option>{materials.map((item) => <option value={item} key={item}>{item}</option>)}</select></label><label>PRESSURE / RATING<select><option>All ratings</option><option>Low pressure</option><option>Class 150 / PN16</option><option>Class 300 / PN40</option><option>High pressure</option></select></label><label>BRAND<select><option>Approved manufacturers</option><option>Client-approved brand</option><option>Equivalent on request</option></select></label><label>PRICE RANGE<select><option>All pricing states</option><option>Price on Request</option><option>Indicative Price</option></select></label><label>AVAILABILITY<select value={availability} onChange={(event) => setAvailability(event.target.value)}><option value="all">All availability</option><option>Quote for current lead time</option></select></label><label>INDUSTRY<select><option>All industries</option>{[...new Set(products.flatMap((product) => product.applications))].map((item) => <option key={item}>{item}</option>)}</select></label><label>STANDARD<select><option>All standards</option><option>API / ASME</option><option>ASTM</option><option>IEC / ISO</option><option>DIN / EN</option></select></label></aside><div className="catalog-results"><div className="catalog-results-head"><p><strong>{activeProducts.length}</strong> PRODUCTS FOUND</p><label>SORT BY<select value={sort} onChange={(event) => setSort(event.target.value)}><option value="featured">Featured</option><option value="name">Name A-Z</option><option value="newest">Newest</option><option value="popular">Popular</option><option value="price-low">Price: Low to High*</option><option value="price-high">Price: High to Low*</option></select></label></div>{sort.startsWith("price") && <p className="catalog-sort-note">Configuration-dependent products are quoted individually; no unverified prices are shown.</p>}<div className="catalog-product-grid">{activeProducts.map((product) => <ProductCard key={product.id} product={product} onQuote={showQuote} compareIds={compareIds} onCompare={toggleCompare} />)}</div>{!activeProducts.length && <div className="catalog-empty"><h2>No matching products yet.</h2><p>Try a broader product term, material, SKU or category—or send our sourcing team your requirement.</p></div>}</div></div>{compareProducts.length > 0 && <aside className="catalog-compare-bar"><div><span>COMPARE LIST / {compareProducts.length} OF 3</span><strong>{compareProducts.map((product) => product.name).join(" · ")}</strong></div><a href={`/products/compare?ids=${compareIds.join(",")}`} className="catalog-primary">COMPARE PRODUCTS <span>↗</span></a></aside>}<QuoteDialog product={quoteProduct} intent={quoteIntent} onClose={() => { setQuoteProduct(null); setQuoteIntent("quote"); }} /></section>;
+}
+
+export function ProductDetail({ product, relatedProducts }: { product: CatalogProduct; relatedProducts: CatalogProduct[] }) {
+  const [selectedImage, setSelectedImage] = useState(product.images[0]);
+  const [quoteProduct, setQuoteProduct] = useState<CatalogProduct | null>(null);
+  const [quoteIntent, setQuoteIntent] = useState<"quote" | "bulk">("quote");
+
+  useEffect(() => {
+    const key = "ikinovac-recent-products";
+    const existing = JSON.parse(window.localStorage.getItem(key) ?? "[]") as string[];
+    const next = [product.id, ...existing.filter((id) => id !== product.id)].slice(0, 6);
+    window.localStorage.setItem(key, JSON.stringify(next));
+  }, [product.id]);
+
+  const showQuote = (intent: "quote" | "bulk" = "quote") => { setQuoteIntent(intent); setQuoteProduct(product); };
+  const rows = [["Product", product.name], ["Product code", product.code], ["Category", product.category], ["Material", product.material], ["Size / range", product.size], ["Pressure / rating", product.rating], ["Connection", product.connection ?? "Based on configuration"], ["Operation", product.operation ?? "Based on configuration"], ["Standard", product.standards], ["Origin", "Based on approved supplier"], ["MOQ", product.moq], ["Availability", product.availability]];
+
+  return <main className="catalog-detail-page"><div className="catalog-breadcrumb"><a href="/products">Products</a><span>/</span><a href={`/products/${product.categorySlug}`}>{product.category}</a><span>/</span><strong>{product.name}</strong></div><section className="catalog-detail-hero"><div className="catalog-gallery"><div className="catalog-main-image"><ProductImage src={selectedImage} fallback={product.fallbackImage} alt={product.name} /></div><div className="catalog-thumbnails">{product.images.map((image, index) => <button type="button" className={selectedImage === image ? "is-active" : ""} key={`${image}-${index}`} onClick={() => setSelectedImage(image)} aria-label={`View ${product.name} image ${index + 1}`}><ProductImage src={image} fallback={product.fallbackImage} alt="" /></button>)}</div></div><div className="catalog-detail-info"><p className="catalog-kicker">{product.category} / {product.code}</p><h1>{product.name}</h1><p className="catalog-detail-description">{product.description}</p><div className="catalog-detail-status"><span>{product.availability}</span><span>MOQ: {product.moq}</span></div><div className="catalog-detail-price"><span>{product.priceState === "indicative" ? "INDICATIVE PRICE" : "PRICING"}</span><strong>{product.priceLabel}</strong><small>{product.priceUnit}</small></div><div className="catalog-variant-selects"><label>SIZE<select><option>Select size</option>{product.variants.sizes.map((item) => <option key={item}>{item}</option>)}</select></label><label>MATERIAL<select><option>Select material</option>{product.variants.materials.map((item) => <option key={item}>{item}</option>)}</select></label><label>RATING<select><option>Select rating</option>{product.variants.ratings.map((item) => <option key={item}>{item}</option>)}</select></label></div><div className="catalog-detail-actions"><button className="catalog-primary" type="button" onClick={() => showQuote()}>REQUEST A QUOTE <span>↗</span></button><button className="catalog-outline-button" type="button" onClick={() => showQuote("bulk")}>REQUEST BULK PRICING</button></div><p className="catalog-datasheet-note">Datasheet is shared only after manufacturer, final configuration and approved technical data are confirmed.</p></div></section><section className="catalog-detail-sections"><div><p className="catalog-kicker">TECHNICAL SPECIFICATIONS</p><h2>Configuration-aware technical details.</h2><div className="catalog-spec-table">{rows.map(([label, value]) => <div key={label}><strong>{label}</strong><span>{value}</span></div>)}</div></div><aside><p className="catalog-kicker">APPLICATIONS</p><h2>Where this product fits.</h2><div className="catalog-app-tags">{product.applications.map((application) => <span key={application}>{application}</span>)}</div><p className="catalog-technical-copy">{product.technicalDetails.join(" ")}</p><button type="button" className="catalog-text-link" onClick={() => showQuote()}>ASK ABOUT THIS PRODUCT <span>↗</span></button></aside></section><section className="catalog-related"><div className="catalog-section-intro"><p className="catalog-kicker">RELATED PRODUCTS</p><h2>Continue exploring {product.category.toLowerCase()}.</h2><a href={`/products/${product.categorySlug}`}>VIEW CATEGORY <span>↗</span></a></div><div className="catalog-product-grid">{relatedProducts.map((item) => <ProductCard key={item.id} product={item} onQuote={(nextProduct, intent) => { setQuoteIntent(intent ?? "quote"); setQuoteProduct(nextProduct); }} />)}</div></section><QuoteDialog product={quoteProduct} intent={quoteIntent} onClose={() => { setQuoteProduct(null); setQuoteIntent("quote"); }} /></main>;
+}
+
+export function CatalogComparison({ products }: { products: CatalogProduct[] }) {
+  return <main className="catalog-detail-page catalog-comparison"><div className="catalog-breadcrumb"><a href="/products">Products</a><span>/</span><strong>Compare products</strong></div><section><p className="catalog-kicker">PRODUCT COMPARISON</p><h1>Compare industrial configurations.</h1><p className="catalog-comparison-copy">Compare product data as an RFQ starting point. Final material, dimensions, standards and lead time are verified against the selected configuration.</p>{products.length ? <div className="catalog-compare-table"><div className="catalog-compare-head"><span>ATTRIBUTE</span>{products.map((product) => <article key={product.id}><ProductImage src={product.image} fallback={product.fallbackImage} alt="" /><strong>{product.name}</strong><small>{product.code}</small><a href={`/products/${product.categorySlug}/${product.slug}`}>VIEW DETAILS ↗</a></article>)}</div>{[["Category", (product: CatalogProduct) => product.category], ["Price", (product: CatalogProduct) => product.priceLabel], ["Availability", (product: CatalogProduct) => product.availability], ["Material", (product: CatalogProduct) => product.material], ["Size", (product: CatalogProduct) => product.size], ["Pressure / rating", (product: CatalogProduct) => product.rating], ["Standards", (product: CatalogProduct) => product.standards], ["Applications", (product: CatalogProduct) => product.applications.join(", ")]].map(([label, getValue]) => <div className="catalog-compare-row" key={label as string}><strong>{label as string}</strong>{products.map((product) => <span key={product.id}>{(getValue as (product: CatalogProduct) => string)(product)}</span>)}</div>)}</div> : <div className="catalog-empty"><h2>Select up to three products first.</h2><a className="catalog-primary" href="/products">EXPLORE CATALOG</a></div>}</section></main>;
+}
