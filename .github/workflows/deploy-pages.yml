@@ -35,8 +35,44 @@ jobs:
         env:
           GITHUB_ACTIONS: 'true'
 
+      - name: Apply GitHub Pages project prefix
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const root = path.join(process.cwd(), 'dist', 'client');
+          const repo = process.env.GITHUB_REPOSITORY.split('/').pop();
+          const prefix = `/${repo}`;
+          const textExts = new Set(['.html', '.js', '.css', '.json', '.txt', '.rsc', '.map', '.xml', '.svg']);
+          const replacements = [
+            ['"/_next/', `"${prefix}/_next/`], ["'/_next/", `'${prefix}/_next/`], ['url(/_next/', `url(${prefix}/_next/`],
+            ['"/products', `"${prefix}/products`], ["'/products", `'${prefix}/products`],
+            ['href="/products', `href="${prefix}/products`], ["href='/products", `href='${prefix}/products`],
+            ['"/images/', `"${prefix}/images/`], ["'/images/", `'${prefix}/images/`],
+            ['"/assets/', `"${prefix}/assets/`], ["'/assets/", `'${prefix}/assets/`],
+            ['"/favicon', `"${prefix}/favicon`], ["'/favicon", `'${prefix}/favicon`],
+            ['href="/"', `href="${prefix}/"`], ["href='/'", `href='${prefix}/'`]
+          ];
+          function walk(dir) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) walk(full);
+              else if (textExts.has(path.extname(entry.name))) {
+                let text;
+                try { text = fs.readFileSync(full, 'utf8'); } catch { continue; }
+                let next = text;
+                for (const [from, to] of replacements) next = next.split(from).join(to);
+                if (next !== text) fs.writeFileSync(full, next);
+              }
+            }
+          }
+          walk(root);
+          NODE
+
       - name: Verify static output
-        run: test -f dist/client/index.html
+        run: |
+          test -f dist/client/index.html
+          test -d dist/client/products
 
       - name: Disable Jekyll processing
         run: touch dist/client/.nojekyll
