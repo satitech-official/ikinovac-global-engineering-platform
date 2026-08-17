@@ -40,21 +40,51 @@ jobs:
           node <<'NODE'
           const fs = require('fs');
           const path = require('path');
+
           const root = path.join(process.cwd(), 'dist', 'client');
           const repo = process.env.GITHUB_REPOSITORY.split('/').pop();
           const prefix = `/${repo}`;
           const textExts = new Set(['.html', '.js', '.css', '.json', '.txt', '.rsc', '.map', '.xml', '.svg']);
-          const replacements = [
-            ['"/_next/', `"${prefix}/_next/`], ["'/_next/", `'${prefix}/_next/`], ['url(/_next/', `url(${prefix}/_next/`],
-            ['"/products', `"${prefix}/products`], ["'/products", `'${prefix}/products`],
-            ['href="/products', `href="${prefix}/products`], ["href='/products", `href='${prefix}/products`],
-            ['"/images/', `"${prefix}/images/`], ["'/images/", `'${prefix}/images/`],
-            ['"/assets/', `"${prefix}/assets/`], ["'/assets/", `'${prefix}/assets/`],
-            ['"/favicon', `"${prefix}/favicon`], ["'/favicon", `'${prefix}/favicon`],
-            ['href="/"', `href="${prefix}/"`], ["href='/'", `href='${prefix}/'`]
+
+          // Vinext renders public files and internal routes as root-relative URLs.
+          // GitHub Pages serves this repository from /<repo>/, so every local
+          // root-relative reference must be rebased after the static build.
+          const localRoots = [
+            '/_next/',
+            '/products',
+            '/admin',
+            '/images/',
+            '/assets/',
+            '/brand/',
+            '/og.png',
+            '/favicon.svg',
+            '/favicon.ico',
           ];
 
+          function rebaseLocalUrls(text) {
+            let next = text;
+            for (const localRoot of localRoots) {
+              const replacements = [
+                [`"${localRoot}`, `"${prefix}${localRoot}`],
+                [`'${localRoot}`, `'${prefix}${localRoot}`],
+                [`(${localRoot}`, `(${prefix}${localRoot}`],
+              ];
+              for (const [from, to] of replacements) {
+                next = next.split(from).join(to);
+              }
+            }
+
+            // Root navigation links need the repository base as well.
+            next = next
+              .split('href="/"').join(`href="${prefix}/"`)
+              .split("href='/'").join(`href='${prefix}/'`);
+
+            return next;
+          }
+
           const htmlFiles = [];
+          let changedFiles = 0;
+
           function walk(dir) {
             for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
               const full = path.join(dir, entry.name);
@@ -62,15 +92,25 @@ jobs:
                 walk(full);
                 continue;
               }
+
               if (entry.name.endsWith('.html')) htmlFiles.push(full);
               if (!textExts.has(path.extname(entry.name))) continue;
+
               let text;
-              try { text = fs.readFileSync(full, 'utf8'); } catch { continue; }
-              let next = text;
-              for (const [from, to] of replacements) next = next.split(from).join(to);
-              if (next !== text) fs.writeFileSync(full, next);
+              try {
+                text = fs.readFileSync(full, 'utf8');
+              } catch {
+                continue;
+              }
+
+              const next = rebaseLocalUrls(text);
+              if (next !== text) {
+                fs.writeFileSync(full, next);
+                changedFiles += 1;
+              }
             }
           }
+
           walk(root);
 
           // GitHub Pages reliably serves directory/index.html for clean URLs.
@@ -82,6 +122,52 @@ jobs:
             fs.mkdirSync(path.dirname(target), { recursive: true });
             fs.copyFileSync(source, target);
           }
+
+          // Fail the deployment if any design-critical local asset is still
+          // pointing at the github.io domain root instead of this repository.
+          const leftovers = [];
+          function verify(dir) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) {
+                verify(full);
+                continue;
+              }
+              if (!textExts.has(path.extname(entry.name))) continue;
+              let text;
+              try {
+                text = fs.readFileSync(full, 'utf8');
+              } catch {
+                continue;
+              }
+              const patterns = [
+                /["']\/(?:brand|images|assets|_next)\//,
+                /["']\/og\.png/,
+                /url\(\/(?:brand|images|assets|_next)\//,
+              ];
+              if (patterns.some((pattern) => pattern.test(text))) {
+                leftovers.push(path.relative(root, full));
+              }
+            }
+          }
+          verify(root);
+
+          const requiredAssets = [
+            'brand/ikinovac-logo.jpeg',
+            'images/ikinovac-global-supply-cover.png',
+            'og.png',
+          ];
+          for (const asset of requiredAssets) {
+            if (!fs.existsSync(path.join(root, asset))) {
+              throw new Error(`Missing required deployed asset: ${asset}`);
+            }
+          }
+
+          if (leftovers.length) {
+            throw new Error(`Unrebased GitHub Pages asset references remain in: ${leftovers.slice(0, 20).join(', ')}`);
+          }
+
+          console.log(`Rebased GitHub Pages URLs in ${changedFiles} generated files using ${prefix}.`);
           NODE
 
       - name: Verify static output
@@ -89,6 +175,9 @@ jobs:
           test -f dist/client/index.html
           test -f dist/client/products/index.html
           test -f dist/client/products/valves/index.html
+          test -f dist/client/brand/ikinovac-logo.jpeg
+          test -f dist/client/images/ikinovac-global-supply-cover.png
+          test -f dist/client/og.png
 
       - name: Disable Jekyll processing
         run: touch dist/client/.nojekyll
