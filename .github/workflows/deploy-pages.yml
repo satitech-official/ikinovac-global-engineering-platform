@@ -182,17 +182,17 @@ jobs:
       - name: Disable Jekyll processing
         run: touch dist/client/.nojekyll
 
-      - name: Publish static site to GitHub Pages branch
+      - name: Publish static site to the active Pages source
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout --orphan gh-pages
-          git rm -rf .
-          rm -rf node_modules
           cp -a dist/client/. .
-          touch .nojekyll
-          git add --all
-          git commit -m "deploy: GitHub Pages"
-          git push --force origin gh-pages
+          find dist/client -mindepth 1 -maxdepth 1 -printf '%f\0' | xargs -0 git add -f --
+          if git diff --cached --quiet; then
+            echo "Static website is already up to date."
+            exit 0
+          fi
+          git commit -m "deploy: static GitHub Pages [skip ci]"
+          git push origin HEAD:main
