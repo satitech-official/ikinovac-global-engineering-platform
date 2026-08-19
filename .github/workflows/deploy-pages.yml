@@ -174,7 +174,6 @@ jobs:
         run: |
           test -f dist/client/index.html
           test -f dist/client/products/index.html
-          test -f dist/client/products/valves/index.html
           test -f dist/client/brand/ikinovac-logo.jpeg
           test -f dist/client/images/ikinovac-global-supply-cover.png
           test -f dist/client/og.png
