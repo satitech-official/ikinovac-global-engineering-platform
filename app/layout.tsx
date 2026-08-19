@@ -27,7 +27,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "IKINOVAC Global",
   url: "https://www.ikinovac.com",
-  email: "sales@ikinovac.com",
+  email: "info@ikinovac.com",
   description: "Engineering-led industrial products, global sourcing and procurement support for critical industries.",
 };
 
