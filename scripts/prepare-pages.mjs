@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 
 const projectRoot = process.cwd();
 const outputRoot = path.join(projectRoot, "dist", "client");
+const publicRoot = path.join(projectRoot, "public");
 const repo = process.env.GITHUB_REPOSITORY?.split("/").pop() || "ikinovac-global-engineering-platform";
 const prefix = `/${repo}`;
 const textExts = new Set([".html", ".js", ".css", ".json", ".txt", ".rsc", ".map", ".xml", ".svg"]);
@@ -15,6 +16,14 @@ function assertDirectory(directory, label) {
 }
 
 assertDirectory(outputRoot, "Vinext client export");
+
+// Make the Pages artifact deterministic. Vinext normally carries public files
+// into dist/client, but explicitly copying them prevents logos, hero artwork,
+// favicons or other public assets from disappearing when the exporter changes.
+if (fs.existsSync(publicRoot)) {
+  fs.cpSync(publicRoot, outputRoot, { recursive: true, force: true });
+  console.log("Copied public assets into the GitHub Pages export.");
+}
 
 const localRoots = [
   "/_next/",
