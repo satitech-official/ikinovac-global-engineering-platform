@@ -264,7 +264,7 @@ export default function Home() {
         <div className="main-nav">
           <a className="brand" href="#home" aria-label="IKINOVAC Global home" onClick={() => goTo("home")}>
             <span className="brand-mark"><img src={publicAsset("brand/ikinovac-logo.jpeg")} alt="IKINOVAC Global logo" /></span>
-            <span className="brand-text">IKINOVAC <b>GLOBAL</b><small>ENGINEERING SOLUTIONS</small></span>
+            <span className="brand-text"><strong>IKINOVAC</strong><b>GLOBAL</b><small>ENGINEERING SOLUTIONS. GLOBAL IMPACT.</small></span>
           </a>
           <nav className="desktop-nav" aria-label="Primary navigation">
             <button onClick={() => goTo("company")}>About</button>
