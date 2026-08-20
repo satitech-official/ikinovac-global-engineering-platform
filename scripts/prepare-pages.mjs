@@ -103,10 +103,69 @@ async function renderRoute(route, destination) {
   console.log(`Recovered skipped static route ${route} -> ${path.relative(outputRoot, destination)}`);
 }
 
+function createHomepageFallback(destination) {
+  // Vinext can classify a client-heavy root route as dynamic and its server
+  // renderer currently returns a 500 for that route. The Pages source always
+  // contains the last known-good RSC document, so retain that shell and switch
+  // it to the current build's hashed client assets. The existing RSC module
+  // identity for app/page.tsx is stable, so hydration then renders the latest
+  // homepage rather than leaving the prior static markup in place.
+  const previousShell = path.join(projectRoot, "index.html");
+  if (!fs.existsSync(previousShell)) {
+    throw new Error("Could not recover /: Vinext did not render it and no previous homepage shell exists.");
+  }
+
+  const chunksRoot = path.join(outputRoot, "_next", "static", "chunks");
+  const cssRoot = path.join(outputRoot, "_next", "static", "css");
+  const pick = (directory, matcher, label) => {
+    const match = fs.readdirSync(directory).find((file) => matcher.test(file));
+    if (!match) throw new Error(`Missing generated ${label} asset for homepage fallback.`);
+    return match;
+  };
+  const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const assets = {
+    css: pick(cssRoot, /^index\.[A-Za-z0-9_-]+\.css$/, "stylesheet"),
+    index: pick(chunksRoot, /^index-[A-Za-z0-9_-]+\.js$/, "bootstrap chunk"),
+    runtime: pick(chunksRoot, /^rolldown-runtime-[A-Za-z0-9_-]+\.js$/, "runtime chunk"),
+    framework: pick(chunksRoot, /^framework-[A-Za-z0-9_-]+\.js$/, "framework chunk"),
+    layout: pick(chunksRoot, /^layout-segment-context-[A-Za-z0-9_-]+\.js$/, "layout chunk"),
+    page: pick(chunksRoot, /^page-[A-Za-z0-9_-]+\.js$/, "homepage chunk"),
+  };
+
+  let html = fs.readFileSync(previousShell, "utf8");
+  const replaceAsset = (directory, stem, filename, extension) => {
+    const pattern = new RegExp(
+      String.raw`(?:\/[^\/"']+)?\/${escapeRegex(directory)}\/${escapeRegex(stem)}[A-Za-z0-9_-]+${escapeRegex(extension)}`,
+      "g",
+    );
+    html = html.replace(pattern, `/${directory}/${filename}`);
+  };
+
+  replaceAsset("_next/static/css", "index.", assets.css, ".css");
+  replaceAsset("_next/static/chunks", "index-", assets.index, ".js");
+  replaceAsset("_next/static/chunks", "rolldown-runtime-", assets.runtime, ".js");
+  replaceAsset("_next/static/chunks", "framework-", assets.framework, ".js");
+  replaceAsset("_next/static/chunks", "layout-segment-context-", assets.layout, ".js");
+  replaceAsset("_next/static/chunks", "page-", assets.page, ".js");
+  html = html
+    .replace(/<link rel="modulepreload"[^>]*\/_next\/static\/chunks\/catalog-[^>]*>\s*/g, "")
+    .replaceAll("sales@ikinovac.com", "info@ikinovac.com");
+
+  fs.mkdirSync(path.dirname(destination), { recursive: true });
+  fs.writeFileSync(destination, html);
+  console.log(`Created homepage fallback -> ${path.relative(outputRoot, destination)}`);
+}
+
 // Vinext may classify a client-heavy route as "unknown" and skip its export.
 // Recover the two entry routes that GitHub Pages must always have.
 if (!hasRoute("/")) {
-  await renderRoute("/", path.join(outputRoot, "index.html"));
+  const destination = path.join(outputRoot, "index.html");
+  try {
+    await renderRoute("/", destination);
+  } catch (error) {
+    console.warn(`Vinext server recovery for / failed: ${error.message}`);
+    createHomepageFallback(destination);
+  }
 }
 if (!hasRoute("/products")) {
   await renderRoute("/products", path.join(outputRoot, "products.html"));
