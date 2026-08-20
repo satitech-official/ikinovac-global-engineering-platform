@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./catalog.css";
+import "./catalog-routes.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.ikinovac.com"),

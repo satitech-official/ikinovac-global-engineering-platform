@@ -1,0 +1,23 @@
+/* Catalogue routes do not render the home page's fixed site header. Keep their
+   top rhythm intentional instead of reserving a blank header-sized band. */
+.catalog-explorer,
+.catalog-detail-page {
+  padding-top: 78px;
+}
+
+.product-catalogue-shortcut {
+  margin-top: 0;
+}
+
+@media (max-width: 800px) {
+  .catalog-explorer,
+  .catalog-detail-page {
+    padding-top: 52px;
+  }
+}
+
+@media (max-width: 560px) {
+  .product-catalogue-shortcut {
+    margin-top: 0;
+  }
+}
