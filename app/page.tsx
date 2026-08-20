@@ -351,7 +351,7 @@ export default function Home() {
         </div>
         <div className="master-catalogue-filters" role="toolbar" aria-label="Filter the product catalogue">
           <button type="button" className={catalogueCategory === "all" ? "is-active" : ""} onClick={() => setCatalogueCategory("all")}>ALL PRODUCTS <span>{catalogProducts.length}</span></button>
-          {catalogCategories.map((category) => <button type="button" key={category.slug} className={catalogueCategory === category.slug ? "is-active" : ""} onClick={() => setCatalogueCategory(category.slug)}>{category.name} <span>{category.products.length}</span></button>)}
+          {catalogCategories.map((category) => <button type="button" key={category.slug} className={catalogueCategory === category.slug ? "is-active" : ""} onClick={() => setCatalogueCategory(category.slug)}>{category.name} <span>{catalogProducts.filter((product) => product.categorySlug === category.slug).length}</span></button>)}
         </div>
         {catalogueProducts.length ? <div className="master-product-grid">{catalogueProducts.map((product) => <article className="master-product-card" key={product.id}>
           <div className="master-product-image"><img src={product.images[0] || product.fallbackImage} alt={`${product.name} — ${product.category}`} loading="lazy" onError={(event) => { event.currentTarget.src = product.fallbackImage; }} /><span>{product.category}</span><small>{product.code}</small></div>
