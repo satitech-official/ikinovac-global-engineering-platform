@@ -171,6 +171,28 @@ if (!hasRoute("/products")) {
   await renderRoute("/products", path.join(outputRoot, "products.html"));
 }
 
+// Vinext records successful generateStaticParams output in the prerender
+// manifest, but does not currently materialise every HTML document in
+// dist/client. Render those concrete catalogue/category/product routes into
+// the Pages artifact so opening or refreshing a direct product URL never
+// falls back to GitHub Pages' 404 document.
+const prerenderManifest = path.join(projectRoot, "dist", "server", "vinext-prerender.json");
+if (fs.existsSync(prerenderManifest)) {
+  const manifest = JSON.parse(fs.readFileSync(prerenderManifest, "utf8"));
+  const staticRoutes = new Set(
+    (manifest.pregeneratedConcretePaths ?? [])
+      .flatMap(([, paths]) => paths)
+      .filter((route) => route !== "/" && route !== "/products" && route !== "/404"),
+  );
+
+  for (const route of staticRoutes) {
+    if (hasRoute(route)) continue;
+    const clean = route.replace(/^\/+|\/+$/g, "");
+    await renderRoute(route, path.join(outputRoot, `${clean}.html`));
+  }
+  console.log(`Recovered ${staticRoutes.size} generated catalogue route(s) for GitHub Pages.`);
+}
+
 const htmlFiles = [];
 let changedFiles = 0;
 

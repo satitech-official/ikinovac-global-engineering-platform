@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ProductDetail } from "@/components/catalog-client";
-import { getProduct, getRelatedProducts } from "@/data/catalog";
+import { catalogProducts, getProduct, getRelatedProducts } from "@/data/catalog";
 
 type Props = {
   params: Promise<{
@@ -17,9 +17,13 @@ export const metadata: Metadata = {
     "View IKINOVAC Global industrial product specifications and request a project-specific quotation.",
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  // If your catalog data exports catalogProducts, use it here.
-  return [];
+  return catalogProducts.map((product) => ({
+    category: product.categorySlug,
+    product: product.slug,
+  }));
 }
 
 export default async function ProductPage({ params }: Props) {
