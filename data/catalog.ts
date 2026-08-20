@@ -1,3 +1,5 @@
+import productImages from "./product-images.json";
+
 export type PriceState = "quote" | "indicative";
 
 export type CatalogCategory = {
@@ -54,6 +56,8 @@ export type CatalogProduct = {
 };
 
 const fallbackImage = "/images/ikinovac-global-supply-cover.png";
+type ProductImageRecord = { src: string; source: string; license: string; author: string };
+const productImageManifest = productImages as Record<string, ProductImageRecord>;
 
 /**
  * Product visuals are generated locally from this catalogue's own product
@@ -61,7 +65,7 @@ const fallbackImage = "/images/ikinovac-global-supply-cover.png";
  * product pages and individual catalogues always address the same asset.
  */
 export function getProductImagePath(categorySlug: string, productSlug: string) {
-  return `/images/products/${categorySlug}/${productSlug}.svg`;
+  return productImageManifest[`${categorySlug}/${productSlug}`]?.src ?? `/images/products/${categorySlug}/${productSlug}.svg`;
 }
 
 export const catalogCategories: CatalogCategory[] = [
@@ -185,6 +189,7 @@ function makeProduct(category: CatalogCategory, [name, shortDescription, brand =
   const slug = slugify(name);
   const productCode = `IKV-${category.code}-${String(index + 1).padStart(3, "0")}`;
   const image = getProductImagePath(category.slug, slug);
+  const fallbackImage = `/images/products/${category.slug}/${slug}.svg`;
   return {
     id: productCode,
     slug,
@@ -196,7 +201,7 @@ function makeProduct(category: CatalogCategory, [name, shortDescription, brand =
     brand,
     image,
     images: [image],
-    fallbackImage: image,
+    fallbackImage,
     shortDescription,
     description: `${shortDescription} Final selection is made against the application, operating conditions, material compatibility, approved specification and required documentation.`,
     priceState: "quote",

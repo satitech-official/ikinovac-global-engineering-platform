@@ -6,9 +6,9 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "predev": "node scripts/generate-product-assets.mjs",
+    "predev": "node scripts/sync-product-photos.mjs && node scripts/generate-product-assets.mjs",
     "dev": "vinext dev",
-    "prebuild": "node scripts/generate-product-assets.mjs",
+    "prebuild": "node scripts/sync-product-photos.mjs && node scripts/generate-product-assets.mjs",
     "build": "vinext build",
     "start": "vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
