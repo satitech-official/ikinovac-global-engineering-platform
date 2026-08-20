@@ -38,3 +38,6 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+
+# Generated from data/catalog.ts before development and production builds.
+/public/images/products/

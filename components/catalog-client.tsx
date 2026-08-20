@@ -10,7 +10,7 @@ type ProductImageProps = { src: string; fallback: string; alt: string; className
 
 export function ProductImage({ src, fallback, alt, className }: ProductImageProps) {
   const [imageSrc, setImageSrc] = useState(src);
-  return <img className={className} src={imageSrc} alt={alt} loading="lazy" onError={() => setImageSrc(fallback)} />;
+  return <img className={className} src={imageSrc} alt={alt} loading="lazy" onError={() => { if (imageSrc !== fallback) setImageSrc(fallback); }} />;
 }
 
 type QuoteDialogProps = { product: CatalogProduct | null; intent?: "quote" | "bulk"; onClose: () => void };

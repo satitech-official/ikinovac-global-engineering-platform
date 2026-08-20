@@ -6,7 +6,8 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
-import { catalogCategories, catalogProducts, type CatalogProduct } from "@/data/catalog";
+import { catalogCategories, catalogProducts, homeCatalogueProducts, type CatalogProduct } from "@/data/catalog";
+import { publicAsset } from "@/lib/assets";
 
 type Product = {
   name: string;
@@ -200,8 +201,6 @@ export default function Home() {
   const [industry, setIndustry] = useState("Oil & Gas");
   const [requirement, setRequirement] = useState("Flow Control");
   const [activeCategory, setActiveCategory] = useState(categories[0].name);
-  const [catalogueCategory, setCatalogueCategory] = useState("all");
-  const [catalogueQuery, setCatalogueQuery] = useState("");
   const shouldReduceMotion = useReducedMotion();
 
   const matches = useMemo(() => {
@@ -211,15 +210,6 @@ export default function Home() {
       .filter((item) => item.toLowerCase().includes(needle))
       .slice(0, 6);
   }, [query]);
-
-  const catalogueProducts = useMemo(() => {
-    const needle = catalogueQuery.trim().toLowerCase();
-    return catalogProducts.filter((product) => {
-      const isCategoryMatch = catalogueCategory === "all" || product.categorySlug === catalogueCategory;
-      const productText = [product.name, product.category, product.subcategory, product.code, product.shortDescription, ...product.applications].join(" ").toLowerCase();
-      return isCategoryMatch && (!needle || productText.includes(needle));
-    });
-  }, [catalogueCategory, catalogueQuery]);
 
   useEffect(() => {
     const updateProgress = () => {
@@ -273,7 +263,7 @@ export default function Home() {
         </div>
         <div className="main-nav">
           <a className="brand" href="#home" aria-label="IKINOVAC Global home" onClick={() => goTo("home")}>
-            <span className="brand-mark"><img src="/brand/ikinovac-logo.jpeg" alt="IKINOVAC Global logo" /></span>
+            <span className="brand-mark"><img src={publicAsset("brand/ikinovac-logo.jpeg")} alt="IKINOVAC Global logo" /></span>
             <span className="brand-text">IKINOVAC <b>GLOBAL</b><small>ENGINEERING SOLUTIONS</small></span>
           </a>
           <nav className="desktop-nav" aria-label="Primary navigation">
@@ -344,23 +334,16 @@ export default function Home() {
       </motion.section>
 
       <section id="products" className="products-section section-shell">
-        <div className="section-heading master-catalogue-heading"><div><p className="eyebrow dark"><span /> PRODUCT DISCOVERY</p><h2>Explore the industrial <em>portfolio.</em></h2></div><div><p>Browse the complete IKINOVAC product range by category, then send the exact requirement to our engineering and procurement team.</p><button className="outline-button master-catalogue-rfq" onClick={() => setRfqOpen(true)}>REQUEST A QUOTE <span>↗</span></button></div></div>
-        <div className="master-catalogue-toolbar">
-          <label className="master-catalogue-search"><span>SEARCH PRODUCT RANGE</span><input value={catalogueQuery} onChange={(event) => setCatalogueQuery(event.target.value)} placeholder="Product name, code, category or application" aria-label="Search product catalogue" /></label>
-          <p><b>{catalogueProducts.length}</b> OF {catalogProducts.length} PRODUCTS SHOWN</p>
-        </div>
-        <div className="master-catalogue-filters" role="toolbar" aria-label="Filter the product catalogue">
-          <button type="button" className={catalogueCategory === "all" ? "is-active" : ""} onClick={() => setCatalogueCategory("all")}>ALL PRODUCTS <span>{catalogProducts.length}</span></button>
-          {catalogCategories.map((category) => <button type="button" key={category.slug} className={catalogueCategory === category.slug ? "is-active" : ""} onClick={() => setCatalogueCategory(category.slug)}>{category.name} <span>{catalogProducts.filter((product) => product.categorySlug === category.slug).length}</span></button>)}
-        </div>
-        {catalogueProducts.length ? <div className="master-product-grid">{catalogueProducts.map((product) => <article className="master-product-card" key={product.id}>
-          <div className="master-product-image"><img src={product.images[0] || product.fallbackImage} alt={`${product.name} — ${product.category}`} loading="lazy" onError={(event) => { event.currentTarget.src = product.fallbackImage; }} /><span>{product.category}</span><small>{product.code}</small></div>
-          <div className="master-product-body"><p>{product.subcategory}</p><h3>{product.name}</h3><p className="master-product-description">{product.shortDescription}</p><dl><div><dt>MATERIAL</dt><dd>{product.material}</dd></div><div><dt>RANGE</dt><dd>{product.size}</dd></div></dl><div className="master-product-actions"><button type="button" onClick={() => { setCatalogueCategory(product.categorySlug); setCatalogueQuery(""); window.setTimeout(() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth", block: "start" }), 0); }}>EXPLORE RANGE <span>→</span></button><button type="button" onClick={() => addCatalogProductToRfq(product)}>REQUEST QUOTE <span>↗</span></button></div></div>
-        </article>)}</div> : <div className="master-catalogue-empty"><span>NO MATCH FOUND</span><h3>We could not find a matching product.</h3><p>Clear the search or send your requirement and our team will review it.</p><button className="primary-button" onClick={() => setRfqOpen(true)}>REQUEST A QUOTE <span>↗</span></button></div>}
+        <div className="section-heading master-catalogue-heading"><div><p className="eyebrow dark"><span /> PRODUCT DISCOVERY</p><h2>Explore our core product <em>catalogues.</em></h2></div><div><p>One representative product from each IKINOVAC catalogue. Visit the complete range for specifications, variants and sourcing enquiries.</p><p className="home-catalogue-stat"><b>{catalogCategories.length} PRODUCT CATALOGUES</b><span>{catalogProducts.length}+ INDUSTRIAL PRODUCTS</span></p></div></div>
+        <div className="home-catalogue-grid">{homeCatalogueProducts.map((product, index) => <article className="home-catalogue-card" key={product.id}>
+          <a className="home-catalogue-image" href={`/products/${product.categorySlug}/${product.slug}`} aria-label={`View ${product.name} details`}><img src={product.image} alt={`${product.name} industrial product`} loading="lazy" /><span>{String(index + 1).padStart(2, "0")}</span><small>{product.category}</small></a>
+          <div className="home-catalogue-body"><p>{product.code}</p><h3><a href={`/products/${product.categorySlug}/${product.slug}`}>{product.name}</a></h3><p className="home-catalogue-description">{product.shortDescription}</p><div className="home-catalogue-meta"><span>{product.material}</span><span>{product.size}</span></div><div className="home-catalogue-actions"><a href={`/catalogues/${product.categorySlug}`}>EXPLORE CATALOGUE <b>→</b></a><button type="button" onClick={() => addCatalogProductToRfq(product)}>REQUEST QUOTE <b>↗</b></button></div></div>
+        </article>)}</div>
+        <div className="home-catalogue-cta"><div><span>FULL PRODUCT DATABASE</span><strong>Need a specific configuration?</strong><p>Search all product families, compare requirements and request a technical quotation.</p></div><div><a className="primary-button" href="/products">VIEW ALL {catalogProducts.length}+ PRODUCTS <span>→</span></a><button className="outline-button" type="button" onClick={() => setRfqOpen(true)}>REQUEST LINE CARD <span>↗</span></button></div></div>
       </section>
 
       <section id="company" className="company-section section-shell dark-section">
-        <div className="company-media"><div className="company-photo"><img className="company-logo-image" src="/brand/ikinovac-logo.jpeg" alt="IKINOVAC Global — Engineering Solutions. Global Impact." /></div><div className="media-annotation"><span>EST.</span><strong>ENGINEERING-LED</strong><p>GLOBAL / RESPONSIVE / RELIABLE</p></div><div className="corner-frame" /></div>
+        <div className="company-media"><div className="company-photo"><img className="company-logo-image" src={publicAsset("brand/ikinovac-logo.jpeg")} alt="IKINOVAC Global — Engineering Solutions. Global Impact." /></div><div className="media-annotation"><span>EST.</span><strong>ENGINEERING-LED</strong><p>GLOBAL / RESPONSIVE / RELIABLE</p></div><div className="corner-frame" /></div>
         <div className="company-copy"><p className="eyebrow"><span /> ABOUT IKINOVAC</p><h2>Engineering expertise.<br /><em>Global capability.</em></h2><p>IKINOVAC Global was founded by engineers who understand that serious industrial supply requires more than availability. It takes technical context, responsive coordination and a global approach to procurement.</p><p>We connect industrial requirements with a focused sourcing and supply process built for critical operations.</p><button className="text-button light" onClick={() => setRfqOpen(true)}>TALK TO AN ENGINEER <span>→</span></button></div>
         <div className="pillars">{[["01","Founded by Engineers","Technical perspective from the start."],["02","Global Reach","International sourcing and project support."],["03","Quality & Reliability","A disciplined approach to documentation and coordination."],["04","Customer Focused","Responsive technical and commercial support."]].map(([number,title,copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
       </section>
@@ -405,7 +388,7 @@ export default function Home() {
       <section id="contact" className="contact-cta"><div className="contact-image" aria-hidden="true" /><div className="section-shell contact-copy"><p className="eyebrow"><span /> START A CONVERSATION</p><h2>Your next industrial project<br />starts with the <em>right partner.</em></h2><p>Bring us your product, project, sourcing or technical procurement requirement.</p><div><button className="primary-button" onClick={() => setRfqOpen(true)}>REQUEST A QUOTE <span>↗</span></button><a className="text-button light" href="mailto:info@ikinovac.com">EMAIL INFO@IKINOVAC.COM <span>→</span></a></div></div>
       </section>
 
-      <footer><div className="footer-top section-shell"><div className="footer-brand"><span className="brand-mark"><img src="/brand/ikinovac-logo.jpeg" alt="IKINOVAC Global logo" /></span><h2>IKINOVAC <em>GLOBAL</em></h2><p>Engineering Solutions.<br />Global Impact.</p><a href="mailto:info@ikinovac.com">info@ikinovac.com</a></div><div className="footer-links"><div><h3>PRODUCTS</h3>{catalogCategories.slice(0, 5).map((item) => <button onClick={() => { setCatalogueCategory(item.slug); setCatalogueQuery(""); goTo("products"); }} key={item.slug}>{item.name}</button>)}</div><div><h3>INDUSTRIES</h3>{industries.slice(0, 5).map((item) => <button onClick={() => { setIndustry(item); goTo("solution-finder"); }} key={item}>{item}</button>)}</div><div><h3>COMPANY</h3>{[["About","company"],["Solutions","services"],["Global Presence","global-network"],["Resources","resources"],["Contact","contact"]].map(([item, id]) => <button onClick={() => goTo(id)} key={item}>{item}</button>)}</div></div></div><div className="footer-bottom section-shell"><span>© {new Date().getFullYear()} IKINOVAC GLOBAL</span><strong>ENGINEERING SOLUTIONS. GLOBAL IMPACT.</strong><span>PRIVACY &nbsp; / &nbsp; TERMS &nbsp; / &nbsp; COOKIES</span></div></footer>
+      <footer><div className="footer-top section-shell"><div className="footer-brand"><span className="brand-mark"><img src={publicAsset("brand/ikinovac-logo.jpeg")} alt="IKINOVAC Global logo" /></span><h2>IKINOVAC <em>GLOBAL</em></h2><p>Engineering Solutions.<br />Global Impact.</p><a href="mailto:info@ikinovac.com">info@ikinovac.com</a></div><div className="footer-links"><div><h3>PRODUCTS</h3>{catalogCategories.slice(0, 5).map((item) => <a href={`/catalogues/${item.slug}`} key={item.slug}>{item.name}</a>)}</div><div><h3>INDUSTRIES</h3>{industries.slice(0, 5).map((item) => <button onClick={() => { setIndustry(item); goTo("solution-finder"); }} key={item}>{item}</button>)}</div><div><h3>COMPANY</h3>{[["About","company"],["Solutions","services"],["Global Presence","global-network"],["Resources","resources"],["Contact","contact"]].map(([item, id]) => <button onClick={() => goTo(id)} key={item}>{item}</button>)}</div></div></div><div className="footer-bottom section-shell"><span>© {new Date().getFullYear()} IKINOVAC GLOBAL</span><strong>ENGINEERING SOLUTIONS. GLOBAL IMPACT.</strong><span>PRIVACY &nbsp; / &nbsp; TERMS &nbsp; / &nbsp; COOKIES</span></div></footer>
 
       {searchOpen && <div className="modal-backdrop" onMouseDown={() => setSearchOpen(false)}><section className="search-modal" role="dialog" aria-modal="true" aria-label="Product search" onMouseDown={(event) => event.stopPropagation()}><div><p className="eyebrow dark"><span /> GLOBAL PRODUCT SEARCH</p><button className="modal-close" onClick={() => setSearchOpen(false)} aria-label="Close search">×</button></div><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products, categories or applications…" aria-label="Search products" /><div className="search-results">{query ? matches.length ? matches.map((item) => <button key={item} onClick={() => { setSearchOpen(false); setActiveCategory(categories.some((category) => category.name === item) ? item : products.find((product) => product.name === item)?.group || activeCategory); goTo("products"); }}><span>CATALOG MATCH</span><strong>{item}</strong><b>↗</b></button>) : <p>No catalogue match yet. <button onClick={() => { setSearchOpen(false); setRfqOpen(true); }}>Ask our team instead.</button></p> : <p>Try: <button onClick={() => setQuery("val")}>val</button>, <button onClick={() => setQuery("pressure")}>pressure</button>, or <button onClick={() => setQuery("pipe")}>pipe</button>.</p>}</div></section></div>}
 

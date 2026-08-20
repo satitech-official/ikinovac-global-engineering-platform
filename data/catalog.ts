@@ -55,6 +55,15 @@ export type CatalogProduct = {
 
 const fallbackImage = "/images/ikinovac-global-supply-cover.png";
 
+/**
+ * Product visuals are generated locally from this catalogue's own product
+ * records. Keeping the URL derivation here means the homepage, category pages,
+ * product pages and individual catalogues always address the same asset.
+ */
+export function getProductImagePath(categorySlug: string, productSlug: string) {
+  return `/images/products/${categorySlug}/${productSlug}.svg`;
+}
+
 export const catalogCategories: CatalogCategory[] = [
   {
     slug: "valves", code: "VLV", name: "Valves", description: "Industrial flow-control solutions for reliable operation across process, energy and utility applications.",
@@ -175,6 +184,7 @@ function slugify(value: string) {
 function makeProduct(category: CatalogCategory, [name, shortDescription, brand = "Approved manufacturer / project specification" as string], index: number): CatalogProduct {
   const slug = slugify(name);
   const productCode = `IKV-${category.code}-${String(index + 1).padStart(3, "0")}`;
+  const image = getProductImagePath(category.slug, slug);
   return {
     id: productCode,
     slug,
@@ -184,9 +194,9 @@ function makeProduct(category: CatalogCategory, [name, shortDescription, brand =
     subcategory: name,
     code: productCode,
     brand,
-    image: category.image,
-    images: [category.image, category.detailImage],
-    fallbackImage: category.fallbackImage,
+    image,
+    images: [image],
+    fallbackImage: image,
     shortDescription,
     description: `${shortDescription} Final selection is made against the application, operating conditions, material compatibility, approved specification and required documentation.`,
     priceState: "quote",
@@ -216,6 +226,13 @@ function makeProduct(category: CatalogCategory, [name, shortDescription, brand =
 export const catalogProducts: CatalogProduct[] = catalogCategories.flatMap((category) =>
   (catalogSeeds[category.slug] ?? []).map((seed, index) => makeProduct(category, seed, index)),
 );
+
+/** One featured product per catalogue for the homepage discovery experience. */
+export const homeCatalogueProducts: CatalogProduct[] = catalogCategories.flatMap((category) => {
+  const categoryProducts = catalogProducts.filter((product) => product.categorySlug === category.slug);
+  const representative = categoryProducts.find((product) => product.featured) ?? categoryProducts[0];
+  return representative ? [representative] : [];
+});
 
 export const featuredProducts = catalogProducts.filter((product) => product.featured).slice(0, 8);
 

@@ -6,11 +6,14 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "predev": "node scripts/generate-product-assets.mjs",
     "dev": "vinext dev",
+    "prebuild": "node scripts/generate-product-assets.mjs",
     "build": "vinext build",
     "start": "vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "validate:catalog-images": "node scripts/validate-catalog-images.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
