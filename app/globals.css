@@ -125,3 +125,8 @@ body{font-weight:500}.site-header .main-nav{height:158px}.site-header .brand{min
 @media(max-width:1180px){.site-header .main-nav{height:146px}.site-header .brand{min-width:128px}.site-header .brand-mark{width:128px;height:128px;flex-basis:128px}.site-header .desktop-nav{gap:13px}}
 @media(max-width:850px){.site-header .main-nav{height:144px}.site-header .brand{min-width:124px}.site-header .brand-mark{width:124px;height:124px;flex-basis:124px}.site-header .quote-button{display:none}}
 @media(max-width:560px){.site-header .main-nav{width:calc(100% - 34px);height:132px}.site-header .brand{min-width:112px}.site-header .brand-mark{width:112px;height:112px;flex-basis:112px}.footer-brand .brand-mark{width:190px;height:190px}}
+
+/* The full-height logo header needs clear hero breathing room; keep every hero line below the fixed navigation. */
+@media(min-width:851px){.hero{height:980px;min-height:980px;padding-top:240px}}
+@media(max-width:850px){.hero{padding-top:214px}}
+@media(max-width:560px){.hero{padding-top:165px}}
