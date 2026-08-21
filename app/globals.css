@@ -130,3 +130,6 @@ body{font-weight:500}.site-header .main-nav{height:136px}.site-header .brand{min
 @media(min-width:851px){.hero{height:960px;min-height:960px;padding-top:220px}}
 @media(max-width:850px){.hero{padding-top:198px}}
 @media(max-width:560px){.hero{padding-top:154px}}
+
+/* Preserve the complete logo while lifting letter contrast after browser downscaling. */
+.site-header .brand-mark img{filter:contrast(1.12) brightness(1.06);image-rendering:-webkit-optimize-contrast}
