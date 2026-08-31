@@ -1,0 +1,167 @@
+/* Final reading scale: catalogue information must be comfortably readable at
+   normal desktop and mobile zoom, without making editorial headlines heavy. */
+:root { font-size:16px; }
+body { font-size:17px; line-height:1.56; }
+main p:not(.eyebrow) { font-size:clamp(15px,1.02vw,17px) !important; line-height:1.7 !important; }
+main small { font-size:12px !important; line-height:1.56 !important; }
+main :is(button,input,select,textarea) { font-size:14px !important; }
+
+/* Navigation, actions and labels */
+.utility-bar,.utility-bar a { font-size:12px !important; }
+.site-nav>a,.products-nav-item>div:first-child>a,.products-nav-item>div:first-child>button { font-size:14px !important; }
+.header-quote,.mobile-nav-actions :is(button,a),.rfq-float { font-size:12px !important; }
+.mobile-product-list a { font-size:12px !important; }
+.eyebrow,.mega-menu-results p,.mega-menu-list b,.mega-menu-feature p { font-size:11px !important; letter-spacing:.12em; }
+.button,.text-arrow,.vertical-link,.finder-help,.product-card-actions button,.product-directory-card>a>b { font-size:12px !important; }
+
+/* Keep the editorial hierarchy, but pull display headings back from their
+   previous oversized scale across hero and primary content sections. */
+.home-hero h1 { font-size:clamp(42px,4.8vw,78px) !important; }
+.catalogue-hero h1,.standard-hero h1,.presence-hero h1,.resource-hero h1,.contact-hero h1 { font-size:clamp(40px,4.9vw,80px) !important; }
+.category-hero h1 { font-size:clamp(42px,5.1vw,84px) !important; }
+.product-summary h1 { font-size:clamp(39px,4.3vw,68px) !important; }
+.compare-page h1,.insights-hero h1 { font-size:clamp(44px,5.4vw,88px) !important; }
+.global-network-section h2,.directory-heading h2,.process-section h2,.industries-section h2,.quality-section h2,.home-contact-cta h2 { font-size:clamp(34px,4vw,62px) !important; }
+.company-intro-copy h2,.section-title h2,.shelf-heading h2 { font-size:clamp(31px,3.5vw,56px) !important; }
+.finder-heading h2,.verticals-heading h2,.system-demo-heading h2,.knowledge-preview h2 { font-size:clamp(36px,4.45vw,70px) !important; }
+
+/* Homepage finder and vertical cards */
+.finder-heading>p,.verticals-heading>p:not(.eyebrow),.system-demo-heading>p:not(.eyebrow) { font-size:15px !important; }
+.finder-search input { font-size:clamp(20px,2.35vw,34px) !important; }
+.finder-search small,.finder-category-grid small,.finder-all-categories span { font-size:11px !important; }
+.finder-switch button,.finder-requirements>div button,.finder-requirements section a { font-size:12px !important; }
+.finder-results span { font-size:20px !important; }
+.finder-results small { font-size:11px !important; }
+.verticals-grid article>p { font-size:11px !important; }
+.verticals-grid>article>span { font-size:14px !important; line-height:1.62 !important; }
+.verticals-grid article>div>a { font-size:11px !important; padding:7px 9px !important; }
+
+/* Catalogue, product detail, RFQ, resources and footer */
+.catalogue-hero>p:not(.eyebrow),.category-hero>p:not(.eyebrow),.standard-hero>p:not(.eyebrow),.presence-hero>p:not(.eyebrow),.resource-hero>p:not(.eyebrow),.contact-hero>p:not(.eyebrow) { font-size:16px !important; }
+.directory-toolbelt,.category-rail button,.catalogue-filter label,.filter-unavailable b,.result-head p,.product-directory-card>a>b { font-size:12px !important; }
+.filter-unavailable span,.result-head>span,.product-directory-card>a>p,.product-directory-card a>div p,.product-directory-card a>div span { font-size:13px !important; }
+.category-families .family-list p,.related-systems p,.product-summary>p,.config-empty p,.detail-info-section p,.related-products-rail p { font-size:14px !important; }
+.product-applications,.product-code,.product-summary small,.product-gallery>p { font-size:12px !important; }
+.rfq-drawer-v2,.rfq-drawer-items small,.rfq-drawer-items label,.rfq-drawer-items article>button,.form-note,.form-status { font-size:12px !important; }
+.form-grid label { font-size:11px !important; }
+.resource-list p:not(.eyebrow),.industry-page-grid p,.solution-service-list p,.presence-statements p,.company-principles p { font-size:14px !important; }
+.resource-list a,.industry-page-grid span,.company-principles b,.solution-service-list b { font-size:12px !important; }
+.site-footer-v2 a,.site-footer-v2 p,.footer-bottom { font-size:12px !important; }
+
+/* Desktop mega-menu stays dense but readable. */
+.mega-menu-list span,.mega-menu-results a { font-size:12px !important; }
+.mega-menu-list i,.mega-menu-results small,.mega-menu-intro>a { font-size:11px !important; }
+.mega-menu-feature span { font-size:13px !important; }
+
+/* Product cards: request fields and commercial information need the same
+   clarity as the product name, especially on wide catalogue grids. */
+.shelf-card-copy { padding:21px !important; }
+.shelf-image span,.shelf-image b { font-size:12px !important; }
+.shelf-card-copy>p { font-size:12px !important; letter-spacing:.11em !important; }
+.shelf-card h3 { min-height:60px; font-size:33px !important; line-height:.94 !important; }
+.shelf-card-copy>small { min-height:66px; margin-top:12px !important; font-size:14px !important; line-height:1.62 !important; }
+.shelf-card label,.shelf-meta span { font-size:12px !important; letter-spacing:.09em !important; }
+.shelf-card label input { min-height:44px !important; padding:9px 10px !important; font-size:14px !important; }
+.shelf-meta { grid-template-columns:1fr 82px !important; gap:14px !important; margin-top:16px !important; padding-top:15px !important; }
+.shelf-meta b { font-size:15px !important; }
+.shelf-meta label input { min-height:38px !important; padding:7px 9px !important; }
+.shelf-actions { margin-top:20px !important; }
+.shelf-actions button,.shelf-actions a { font-size:12px !important; }
+.shelf-related { gap:10px !important; margin-top:17px !important; padding-top:14px !important; }
+.shelf-related span,.shelf-related a { font-size:11px !important; }
+
+@media (hover:hover) and (pointer:fine) {
+  .home-product-shelf .shelf-card { position:relative; overflow:hidden; box-shadow:0 12px 22px rgba(14,43,35,.07); transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease,background .35s ease,border-color .35s ease !important; }
+  .home-product-shelf .shelf-card:before { content:''; position:absolute; z-index:1; top:0; right:0; left:0; height:3px; background:linear-gradient(90deg,#c3a46b,transparent 72%); transform:scaleX(.22); transform-origin:left; transition:transform .35s cubic-bezier(.16,1,.3,1); }
+  .home-product-shelf .shelf-card:hover { z-index:3; transform:translateY(-13px) !important; background:#f7f3ec; box-shadow:0 28px 52px rgba(9,28,23,.25) !important; }
+  .home-product-shelf .shelf-card:hover:before { transform:scaleX(1); }
+  .home-product-shelf .shelf-image { transition:transform .5s cubic-bezier(.16,1,.3,1),filter .5s ease; }
+  .home-product-shelf .shelf-card:hover .shelf-image { transform:scale(1.025); filter:brightness(1.09) saturate(1.07); }
+  .home-product-shelf .shelf-card:hover .shelf-actions button,.home-product-shelf .shelf-card:hover .shelf-actions a { color:#9a7335; }
+}
+
+/* Other directory cards retain hierarchy but no longer use microcopy. */
+.directory-card p,.directory-card span,.directory-card b,.product-directory-card a>div p,.product-directory-card a>div span { font-size:12px !important; }
+.directory-card h3 { font-size:clamp(26px,2.15vw,34px) !important; }
+.product-directory-card h2 { font-size:30px !important; }
+.product-directory-card>a>p { font-size:13px !important; }
+.related-systems>div>a p,.industry-page-grid p,.company-principles p,.compare-product>p { font-size:14px !important; }
+.related-systems>div>a span,.industry-page-grid span,.compare-product>a { font-size:12px !important; }
+
+/* Category-directory layout: category-menu destinations now show a clear,
+   responsive product-card grid instead of an oversized text-only list. */
+.category-families { display:block !important; padding-block:clamp(72px,8vw,118px) !important; }
+.category-families>.section-title { display:grid !important; grid-template-columns:minmax(0,.85fr) minmax(340px,1.15fr) !important; align-items:end !important; gap:clamp(35px,7vw,110px) !important; margin:0 0 42px !important; }
+.category-families>.section-title h2 { max-width:600px; margin:14px 0 0 !important; }
+.category-families>.section-title>p { max-width:420px; margin:0 0 5px !important; color:#60594e; }
+.family-card-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.family-product-card { min-width:0; overflow:hidden; background:#f4eee4; border-top:2px solid var(--forest); box-shadow:0 9px 22px rgba(14,43,35,.07); transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease; }
+.family-product-card>a { height:100%; display:flex; flex-direction:column; color:var(--forest); }
+.family-product-image { min-height:218px; padding:14px; background-repeat:no-repeat; display:flex; justify-content:space-between; align-items:flex-start; color:var(--ivory); }
+.family-product-image p,.family-product-image span { margin:0; color:var(--gold); font:500 10px/1.25 var(--mono); letter-spacing:.1em; }
+.family-product-image span { align-self:flex-end; max-width:60%; text-align:right; color:var(--champagne); }
+.family-product-copy { flex:1; display:flex; flex-direction:column; align-items:flex-start; padding:20px; }
+.family-product-copy>p { margin:0; color:#8a6b38; font:500 10px/1.3 var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+.family-product-copy h3 { min-height:58px; margin:14px 0 10px; font:600 31px/.92 var(--serif); letter-spacing:-.05em; }
+.family-product-copy>span { flex:1; color:#625c53; font-size:13px; line-height:1.62; }
+.family-product-copy>b { margin-top:20px; padding-bottom:6px; border-bottom:1px solid currentColor; color:#6f5228; font-size:11px; letter-spacing:.07em; text-transform:uppercase; }
+.family-product-copy>b i { margin-left:8px; color:var(--gold-dark); font-size:16px; font-style:normal; }
+
+/* Related-family cards no longer become a clipped horizontal rail on desktop. */
+.related-products-rail { grid-template-columns:minmax(250px,.58fr) minmax(0,1.42fr) !important; gap:clamp(40px,6vw,95px) !important; align-items:start; }
+.related-products-rail>div:first-child { display:block !important; overflow:visible !important; }
+.related-products-rail h2 { max-width:420px; font-size:clamp(34px,3.8vw,58px) !important; }
+.related-product-grid { display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; overflow:visible !important; }
+.related-products-rail .related-product-grid>a { min-width:0; min-height:270px; padding:20px; background-color:var(--soft); background-repeat:no-repeat; background-position:center; background-size:cover; box-shadow:inset 0 -100px 100px rgba(6,22,17,.12); }
+.related-products-rail .related-product-grid>a:hover { transform:translateY(-6px); box-shadow:0 18px 30px rgba(0,0,0,.2),inset 0 -100px 100px rgba(6,22,17,.18); }
+.related-products-rail .related-product-grid h3 { margin-top:auto; }
+
+/* The supplied portrait logo is deliberately shown whole; the header gives it
+   enough room for its wordmark and tagline to remain legible. */
+.site-header { height:122px !important; min-height:122px !important; }
+.brand-mark { min-width:142px !important; }
+.brand-mark-image { width:118px !important; height:118px !important; padding:3px; background:#07110e !important; border:1px solid rgba(231,217,189,.52) !important; box-shadow:0 8px 24px rgba(0,0,0,.24); }
+.brand-mark-image img { width:100% !important; height:100% !important; object-fit:contain !important; transform:none !important; }
+.mega-menu { top:121px !important; }
+
+@media (max-width:1120px) and (min-width:851px) {
+  .site-header,body:has(.home-hero) .site-header { height:108px !important; min-height:108px !important; padding-inline:25px !important; gap:14px; }
+  .brand-mark-image,body:has(.home-hero) .brand-mark-image { width:104px !important; height:104px !important; }
+  .site-nav { gap:13px !important; }
+  .site-nav>a,.products-nav-item>div:first-child>a,.products-nav-item>div:first-child>button { font-size:12px !important; }
+  .header-quote { padding:13px 15px !important; font-size:11px !important; }
+  .mega-menu { top:107px !important; }
+}
+
+@media (max-width:850px) {
+  body { font-size:16px; }
+  main p:not(.eyebrow) { font-size:15px !important; line-height:1.67 !important; }
+  main small { font-size:12px !important; }
+  .site-nav>a,.products-nav-item>div:first-child>a,.products-nav-item>div:first-child>button { font-size:15px !important; }
+  .mobile-product-list a,.verticals-grid article>div>a,.finder-category-grid small { font-size:11px !important; }
+  .eyebrow,.verticals-grid article>p,.finder-search small { font-size:10px !important; }
+  .verticals-grid>article>span,.product-directory-card>a>p,.resource-list p:not(.eyebrow),.industry-page-grid p { font-size:14px !important; }
+  .finder-results span { font-size:20px !important; }
+  .header-quote,.search-button { font-size:14px !important; }
+  .shelf-card-copy { padding:16px !important; }
+  .shelf-card h3 { min-height:51px; font-size:29px !important; }
+  .shelf-card-copy>small { min-height:72px; font-size:13px !important; }
+  .shelf-card label,.shelf-meta span,.shelf-actions button,.shelf-actions a,.shelf-related span,.shelf-related a { font-size:12px !important; }
+  .site-header,body:has(.home-hero) .site-header { height:96px !important; min-height:96px !important; }
+  .brand-mark-image,body:has(.home-hero) .brand-mark-image { width:92px !important; height:92px !important; }
+  .site-nav,body:has(.home-hero) .site-nav { top:95px !important; min-height:calc(100vh - 95px) !important; }
+  .mega-menu,body:has(.home-hero) .mega-menu { top:95px !important; min-height:calc(100vh - 95px) !important; }
+  .category-families>.section-title { display:block !important; margin-bottom:30px !important; }
+  .category-families>.section-title>p { margin-top:17px !important; }
+  .family-card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .family-product-image { min-height:185px; }
+  .family-product-copy { padding:16px; }
+  .family-product-copy h3 { min-height:0; font-size:28px; }
+  .related-products-rail { grid-template-columns:1fr !important; }
+  .related-product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width:520px) {
+  .family-card-grid,.related-product-grid { grid-template-columns:1fr; }
+  .family-product-image { min-height:210px; }
+}

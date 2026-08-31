@@ -8,7 +8,7 @@ const stages = ['New', 'Reviewing', 'Technical review', 'Quotation preparing', '
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 function OpsBrand() {
-  return <a className="brand brand-light" href={`${basePath}/`} aria-label="Back to IKINOVAC GLOBAL"><span className="brand-icon"><img src={`${basePath}/assets/ikinovac-logo.jpeg`} alt="IKINOVAC GLOBAL" /></span><span className="brand-name"><b>IKINOVAC</b><small>OPERATIONS</small></span></a>;
+  return <a className="brand-mark" href={`${basePath}/`} aria-label="Back to IKINOVAC GLOBAL"><span className="brand-mark-image"><img src={`${basePath}/assets/ikinovac-logo-enhanced-v2.png`} alt="" /></span><span><b>IKINOVAC</b><small>OPERATIONS</small></span></a>;
 }
 
 export default function AdminPage() {

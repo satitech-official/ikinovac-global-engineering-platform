@@ -1,0 +1,38 @@
+/* Preserve the supplied 3D logo while making the name and descriptor readable. */
+.brand-mark,.brand-mark.inverse { min-width:96px !important; gap:0 !important; color:var(--text-primary) !important; }
+.brand-mark-image,
+.brand-mark-image,
+body:has(.home-hero) .brand-mark-image {
+  display:grid !important;
+  flex:none;
+  width:88px !important;
+  height:88px !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  border:1px solid rgba(2,2,2,.16) !important;
+  border-radius:11px !important;
+  background:#020202 !important;
+  box-shadow:none !important;
+}
+.brand-mark-image img {
+  display:block;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  transform:none !important;
+}
+.site-footer-v2 .brand-mark-image { width:96px !important; height:96px !important; }
+
+@media (max-width:850px) {
+  .brand-mark,.brand-mark.inverse { min-width:64px !important; gap:0 !important; }
+  .brand-mark-image,
+  .brand-mark-image,
+  body:has(.home-hero) .brand-mark-image { width:64px !important; height:64px !important; }
+}
+
+@media (max-width:420px) {
+  .brand-mark-image,
+  .brand-mark-image,
+  body:has(.home-hero) .brand-mark-image { width:56px !important; height:56px !important; }
+}
