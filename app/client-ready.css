@@ -1,0 +1,50 @@
+/* Final responsive readability pass for client-facing navigation. */
+html,body { overflow-x:clip; }
+
+/* Desktop hover menus always use a dedicated dark canvas and high-contrast copy. */
+.site-header .mega-menu {
+  background:#061510 !important;
+  color:#f7f3ec !important;
+}
+.site-header .mega-menu a,
+.site-header .mega-menu h2,
+.site-header .mega-menu h3,
+.site-header .mega-menu span,
+.site-header .mega-menu strong { color:#f7f3ec !important; }
+.site-header .mega-menu p:not(.eyebrow),
+.site-header .mega-menu small { color:#ded5c8 !important; opacity:1 !important; }
+.site-header .mega-menu .eyebrow,
+.site-header .mega-menu b,
+.site-header .mega-menu strong { color:#e0b65e !important; }
+.site-header .mega-menu-list>a,
+.site-header .nav-mega-menu-list>a { border-color:rgba(247,243,236,.18) !important; }
+.site-header .mega-menu-list>a:hover,
+.site-header .nav-mega-menu-list>a:hover { background:#17352c !important; }
+
+@media (max-width:850px) {
+  .site-nav.open { overflow-y:auto; overscroll-behavior:contain; padding-bottom:28px !important; }
+  .mobile-product-list.open {
+    grid-template-columns:1fr !important;
+    margin:0 0 12px;
+    padding:10px 15px 14px !important;
+    background:#092119;
+    border:1px solid rgba(197,163,99,.38);
+    border-radius:12px;
+  }
+  .mobile-product-list.open a {
+    min-height:44px;
+    align-items:center;
+    color:#f7f3ec !important;
+    font-size:14px !important;
+    font-weight:700;
+    line-height:1.25;
+  }
+  .mobile-product-list.open b { color:#e0b65e !important; font-size:10px !important; }
+  .mobile-nav-actions button,.mobile-nav-actions a { min-height:48px; font-size:12px !important; }
+}
+
+@media (min-width:851px) and (max-width:1180px) {
+  .site-header .mega-menu { max-height:calc(100vh - 95px); overflow-y:auto; }
+  .site-header .mega-menu-list>a,.site-header .nav-mega-menu-list>a { min-height:78px; }
+  .site-header .mega-menu-list span,.site-header .nav-mega-menu-list span { font-size:13px !important; }
+}

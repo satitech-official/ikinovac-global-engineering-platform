@@ -5,6 +5,7 @@ import './logo-clarity.css';
 import './section-layout-fixes.css';
 import './reference-video-refresh.css';
 import './rfq-workflow.css';
+import './client-ready.css';
 
 export const metadata = {
   metadataBase: new URL('https://ikinovac.com'),
