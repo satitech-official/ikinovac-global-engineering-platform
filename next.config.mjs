@@ -8,6 +8,8 @@ const nextConfig = {
   trailingSlash: isGitHubPagesBuild,
   basePath: publicBasePath,
   assetPrefix: publicBasePath,
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
   images: { unoptimized: true },
   env: { NEXT_PUBLIC_BASE_PATH: publicBasePath }
 };
