@@ -37,9 +37,8 @@ A premium industrial engineering and procurement platform for product discovery,
 
 <p>
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=061224" alt="React 19" />
-  <img src="https://img.shields.io/badge/Vinext-1.0%20Beta-081B33?style=flat-square" alt="Vinext" />
-  <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/Framer%20Motion-13-0055FF?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Next.js-15-081B33?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js 15" />
+  <img src="https://img.shields.io/badge/RFQ%20PDF-pdf--lib-E7B43A?style=flat-square" alt="RFQ PDF generation" />
   <img src="https://img.shields.io/badge/GitHub%20Pages-Live-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub Pages" />
 </p>
 
