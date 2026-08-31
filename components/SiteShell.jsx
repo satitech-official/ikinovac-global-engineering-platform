@@ -3,12 +3,11 @@
 import Link from 'next/link';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { catalogueCategories, catalogueProducts, productHref } from '@/lib/catalogue';
+import { assetUrl } from '@/lib/assets';
 import { cleanConfiguration, configurationFingerprint, createRFQReference, emptyCustomer, makeItemKey, normaliseQuantity } from '@/lib/rfq/reference';
 import RFQWorkspace from './rfq/RFQWorkspace';
 
 const RFQContext = createContext(null);
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-const assetUrl = path => `${basePath}${path}`;
 const navigationMenus = {
   company: {
     label: 'Company', eyebrow: '01 / IKINOVAC GLOBAL', title: 'The people behind the project.',
@@ -281,7 +280,7 @@ export default function SiteShell({ children }) {
         setItems(current => current.map(item => item.key === matching.key ? { ...item, quantity: item.quantity + normaliseQuantity(quantity) } : item));
         return { success: true, item: matching };
       }
-      const newItem = { key: makeItemKey(), id: product.id, name: product.name, category: product.category, family: product.family || product.name, image: product.images?.[0] || product.image || null, imageAlt: product.imageAlt || product.name, description: product.description || 'Approved catalogue description is available on request.', quantity: normaliseQuantity(quantity), configuration: normalized, createdAt: new Date().toISOString() };
+      const newItem = { key: makeItemKey(), id: product.id, name: product.name, category: product.category, family: product.family || product.name, image: assetUrl(product.images?.[0] || product.image || null), imageAlt: product.imageAlt || product.name, description: product.description || 'Approved catalogue description is available on request.', quantity: normaliseQuantity(quantity), configuration: normalized, createdAt: new Date().toISOString() };
       setItems(current => [...current, newItem]);
       return { success: true, item: newItem };
     },
@@ -295,3 +294,4 @@ export default function SiteShell({ children }) {
   }), [items, customer, rfqOpen, rfqStage, configurationTarget, pdf, rfqReference, rfqCreatedAt]);
   return <RFQContext.Provider value={value}><Preloader /><Header /><main>{children}</main><Footer /><RFQWorkspace /></RFQContext.Provider>;
 }
+

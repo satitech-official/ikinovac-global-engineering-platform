@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createRFQPdf } from '@/lib/rfq/pdf';
 import { mailtoUrl, whatsAppUrl } from '@/lib/rfq/handoff';
 import { configurationStatus, displayValue } from '@/lib/rfq/reference';
+import { assetUrl } from '@/lib/assets';
 import { useRFQ } from '../SiteShell';
 import ConfigureProduct from './ConfigureProduct';
 
@@ -13,7 +14,7 @@ const configurationRows = item => [['Size', item.configuration?.size], ['Materia
 function Basket() {
   const { items, remove, duplicateItem, openConfigurator, setRFQStage, closeRFQ } = useRFQ();
   if (!items.length) return <div className="rfq-empty"><p className="eyebrow">YOUR REQUEST FOR QUOTATION</p><h2>YOUR RFQ<br />IS <em>EMPTY.</em></h2><p>Browse the catalogue and add products to prepare your requirement.</p><Link className="button button-dark" href="/products" onClick={closeRFQ}>EXPLORE PRODUCTS <span>→</span></Link></div>;
-  return <><div className="rfq-workspace-heading"><p className="eyebrow">YOUR REQUEST</p><h2>FOR <em>QUOTATION.</em></h2><p>Review your selected products and technical requirements.</p></div><div className="rfq-line-list">{items.map((item, index) => <article key={item.key}><div className="rfq-line-number">{String(index + 1).padStart(2, '0')}</div><div className="rfq-line-image" role="img" aria-label={item.imageAlt || item.name} style={{ backgroundImage: item.image ? `url(${item.image})` : undefined }} /><div className="rfq-line-main"><p>{item.category}</p><h3>{item.name}</h3><span>Qty {item.quantity} · {configurationStatus(item)}</span><div className="rfq-line-configuration">{configurationRows(item).length ? configurationRows(item).map(([label, value]) => <small key={label}>{label}: {value}</small>) : <small>Configuration to be confirmed by IKINOVAC</small>}</div></div><div className="rfq-line-actions"><button onClick={() => openConfigurator(item, item)}>EDIT CONFIGURATION</button><button onClick={() => duplicateItem(item.key)}>DUPLICATE</button><button className="danger" onClick={() => remove(item.key)}>REMOVE</button></div></article>)}</div><div className="rfq-drawer-actions"><Link href="/products" onClick={closeRFQ} className="text-arrow">+ ADD MORE PRODUCTS <span>→</span></Link><button className="button button-gold" onClick={() => setRFQStage('details')}>REVIEW RFQ <span>→</span></button></div></>;
+  return <><div className="rfq-workspace-heading"><p className="eyebrow">YOUR REQUEST</p><h2>FOR <em>QUOTATION.</em></h2><p>Review your selected products and technical requirements.</p></div><div className="rfq-line-list">{items.map((item, index) => <article key={item.key}><div className="rfq-line-number">{String(index + 1).padStart(2, '0')}</div><div className="rfq-line-image" role="img" aria-label={item.imageAlt || item.name} style={{ backgroundImage: item.image ? `url(${assetUrl(item.image)})` : undefined }} /><div className="rfq-line-main"><p>{item.category}</p><h3>{item.name}</h3><span>Qty {item.quantity} · {configurationStatus(item)}</span><div className="rfq-line-configuration">{configurationRows(item).length ? configurationRows(item).map(([label, value]) => <small key={label}>{label}: {value}</small>) : <small>Configuration to be confirmed by IKINOVAC</small>}</div></div><div className="rfq-line-actions"><button onClick={() => openConfigurator(item, item)}>EDIT CONFIGURATION</button><button onClick={() => duplicateItem(item.key)}>DUPLICATE</button><button className="danger" onClick={() => remove(item.key)}>REMOVE</button></div></article>)}</div><div className="rfq-drawer-actions"><Link href="/products" onClick={closeRFQ} className="text-arrow">+ ADD MORE PRODUCTS <span>→</span></Link><button className="button button-gold" onClick={() => setRFQStage('details')}>REVIEW RFQ <span>→</span></button></div></>;
 }
 
 function Details() {
@@ -52,3 +53,4 @@ export default function RFQWorkspace() {
   const { rfqOpen, configurationTarget } = useRFQ();
   return <>{rfqOpen && <Drawer />}{configurationTarget && <ConfigureProduct target={configurationTarget} />}</>;
 }
+
