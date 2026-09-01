@@ -1,6 +1,16 @@
 /* Final responsive readability pass for client-facing navigation. */
 html,body { overflow-x:clip; }
 
+/* Keep the floating sticky header visually separate from scrolling content. */
+.site-header,.site-header.is-scrolled,body:has(.home-hero) .site-header {
+  background:rgba(244,244,244,.97) !important;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  isolation:isolate;
+  box-shadow:0 12px 30px rgba(2,2,2,.13);
+}
+.site-header .header-main-cluster,.site-header .header-actions { position:relative; z-index:1; }
+
 /* Desktop hover menus always use a dedicated dark canvas and high-contrast copy. */
 .site-header .mega-menu {
   background:#061510 !important;
