@@ -77,9 +77,14 @@ const navigationMenus = {
   }
 };
 
-function Brand({ onNavigate, inverse = false }) {
+function Brand({ onNavigate, inverse = false, header = false }) {
   return <Link className={`brand-mark ${inverse ? 'inverse' : ''}`} href="/" onClick={onNavigate} aria-label="IKINOVAC Global home">
-    <span className="brand-mark-image"><img src={assetUrl('/assets/ikinovac-logo-enhanced-v2.png')} alt="" /></span>
+    <span className={`brand-mark-image ${header ? 'brand-mark-image-header' : ''}`}>
+      {header ? <>
+        <img className="brand-logo-desktop" src={assetUrl('/assets/ikinovac-header-lockup-v1.png')} alt="IKINOVAC Global — Engineering Solutions. Global Impact." />
+        <img className="brand-logo-mobile" src={assetUrl('/assets/ikinovac-logo-enhanced-v2.png')} alt="IKINOVAC Global" />
+      </> : <img src={assetUrl('/assets/ikinovac-logo-enhanced-v2.png')} alt="" />}
+    </span>
   </Link>;
 }
 
@@ -200,7 +205,7 @@ function Header() {
     <div className="utility-bar"><span>info@ikinovac.com</span><div><Link href="/contact">GLOBAL ENQUIRY</Link><Link href="/resources">LINE CARD</Link><span>GLOBAL / EN</span></div></div>
     <div className="header-signal"><span>Precision engineering for global industrial projects.</span><Link href="/contact">Start a project <b>↗</b></Link></div>
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
-      <div className="header-main-cluster"><Brand onNavigate={closeNav} />
+      <div className="header-main-cluster"><Brand onNavigate={closeNav} header />
         <nav className={navOpen ? 'site-nav open' : 'site-nav'} aria-label="Main navigation">
           <Link href="/" onClick={closeNav}>Home</Link>
           <Link href="/company" onPointerEnter={event => event.pointerType === 'mouse' && openNavigationMenu('company')} onPointerLeave={event => event.pointerType === 'mouse' && scheduleMenuClose()} onFocus={() => openNavigationMenu('company')} onClick={closeNav}>Company</Link>

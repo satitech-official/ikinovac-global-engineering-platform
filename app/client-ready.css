@@ -58,3 +58,68 @@ html,body { overflow-x:clip; }
   .site-header .mega-menu-list>a,.site-header .nav-mega-menu-list>a { min-height:78px; }
   .site-header .mega-menu-list span,.site-header .nav-mega-menu-list span { font-size:13px !important; }
 }
+
+/* The supplied portrait mark is ideal for mobile, while this horizontal,
+   high-contrast version keeps the full three-line brand lockup readable in a
+   normal desktop header.  No replacement wording is added in the interface. */
+.site-header .brand-mark-image-header .brand-logo-mobile { display:none !important; }
+
+@media (min-width:1181px) {
+  .site-header,.site-header.is-scrolled,body:has(.home-hero) .site-header {
+    height:104px !important;
+    min-height:104px !important;
+    margin-bottom:-118px !important;
+  }
+  .site-header .mega-menu { top:116px !important; }
+  .site-header .brand-mark { min-width:260px !important; padding-block:5px; }
+  .site-header .brand-mark-image.brand-mark-image-header {
+    width:246px !important;
+    height:92px !important;
+    flex:0 0 246px;
+    padding:0 !important;
+    overflow:hidden;
+    border:0 !important;
+    border-radius:11px;
+    background:#040a10 !important;
+  }
+  .site-header .brand-mark-image-header .brand-logo-desktop {
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    object-position:center !important;
+    transform:none !important;
+  }
+}
+
+@media (min-width:851px) and (max-width:1180px) {
+  .site-header .brand-mark { min-width:192px !important; }
+  .site-header .brand-mark-image.brand-mark-image-header {
+    width:182px !important;
+    height:70px !important;
+    flex:0 0 182px;
+    padding:0 !important;
+    overflow:hidden;
+    border:0 !important;
+    border-radius:9px;
+    background:#040a10 !important;
+  }
+  .site-header .brand-mark-image-header .brand-logo-desktop {
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    transform:none !important;
+  }
+}
+
+@media (max-width:850px) {
+  .site-header .brand-mark-image-header .brand-logo-desktop { display:none !important; }
+  .site-header .brand-mark-image-header .brand-logo-mobile {
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    transform:none !important;
+  }
+}
