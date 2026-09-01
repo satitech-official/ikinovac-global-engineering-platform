@@ -261,8 +261,26 @@ export default function SiteShell({ children }) {
   useEffect(() => { if (hydrated) localStorage.setItem('ikinovac-rfq-workflow', JSON.stringify({ items, customer, reference: rfqReference, createdAt: rfqCreatedAt, status: 'DRAFT' })); }, [items, customer, rfqReference, rfqCreatedAt, hydrated]);
   useEffect(() => {
     const sections = [...document.querySelectorAll('main section')].filter(section => !section.classList.contains('home-hero'));
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('is-in-view')), { threshold: .08 });
-    sections.forEach(section => { section.classList.add('motion-section'); observer.observe(section); });
+    const reveal = section => section.classList.add('is-in-view');
+    // A percentage threshold can never be reached by a very tall directory
+    // section (only a viewport-height slice is visible at once). Reveal on the
+    // first visible pixel instead, so catalogue pages never remain transparent.
+    if (!('IntersectionObserver' in window)) {
+      sections.forEach(section => { section.classList.add('motion-section'); reveal(section); });
+      return undefined;
+    }
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        reveal(entry.target);
+        observer.unobserve(entry.target);
+      }
+    }), { threshold: 0, rootMargin: '0px' });
+    sections.forEach(section => {
+      section.classList.add('motion-section');
+      const bounds = section.getBoundingClientRect();
+      if (bounds.top < window.innerHeight * 1.04 && bounds.bottom > 0) reveal(section);
+      else observer.observe(section);
+    });
     return () => observer.disconnect();
   }, [children]);
   const value = useMemo(() => ({
