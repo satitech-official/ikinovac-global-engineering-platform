@@ -44,7 +44,30 @@ function Ready() {
 function Drawer() {
   const { closeRFQ, rfqStage, setRFQStage } = useRFQ();
   const ref = useRef(null);
-  useEffect(() => { const previous = document.activeElement; const focus = () => ref.current?.querySelector('button, [href], input, select, textarea')?.focus(); const timer = window.setTimeout(focus, 0); const onKey = event => { if (event.key === 'Escape') closeRFQ(); if (event.key === 'Tab') { const nodes = [...ref.current?.querySelectorAll('button:not([disabled]), [href], input, select, textarea') || []]; if (!nodes.length) return; const first = nodes[0]; const last = nodes[nodes.length - 1]; if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } } }; window.addEventListener('keydown', onKey); return () => { clearTimeout(timer); window.removeEventListener('keydown', onKey); previous?.focus?.(); }; }, [closeRFQ]);
+  const closeRFQRef = useRef(closeRFQ);
+  useEffect(() => { closeRFQRef.current = closeRFQ; }, [closeRFQ]);
+  useEffect(() => {
+    const previous = document.activeElement;
+    const focus = () => ref.current?.querySelector('button, [href], input, select, textarea')?.focus();
+    const timer = window.setTimeout(focus, 0);
+    const onKey = event => {
+      if (event.key === 'Escape') closeRFQRef.current();
+      if (event.key === 'Tab') {
+        const nodes = [...ref.current?.querySelectorAll('button:not([disabled]), [href], input, select, textarea') || []];
+        if (!nodes.length) return;
+        const first = nodes[0];
+        const last = nodes[nodes.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('keydown', onKey);
+      previous?.focus?.();
+    };
+  }, []);
   const view = { basket: <Basket />, details: <Details />, review: <Review />, ready: <Ready /> }[rfqStage] || <Basket />;
   return <div className="rfq-workspace-backdrop" onMouseDown={event => event.target === event.currentTarget && closeRFQ()}><aside ref={ref} className="rfq-workspace" role="dialog" aria-modal="true" aria-label="Request for quotation"><header><button className="rfq-back" onClick={() => rfqStage !== 'basket' ? setRFQStage('basket') : closeRFQ()} aria-label={rfqStage !== 'basket' ? 'Back to RFQ basket' : 'Close RFQ'}>{rfqStage !== 'basket' ? '← BACK' : 'CLOSE'}</button><button className="rfq-close" onClick={closeRFQ} aria-label="Close RFQ">×</button></header>{view}</aside></div>;
 }
