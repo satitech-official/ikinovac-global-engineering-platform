@@ -123,3 +123,38 @@ html,body { overflow-x:clip; }
     transform:none !important;
   }
 }
+
+/* Give the product directory a more considered card rhythm: an inset image,
+   breathing room around copy, and a separated RFQ action row. */
+.product-directory-card {
+  padding:10px 10px 12px !important;
+  border:1px solid rgba(19,33,29,.22) !important;
+  border-top:2px solid #13211d !important;
+  border-radius:16px !important;
+  background:#faf7f1 !important;
+  box-shadow:0 10px 24px rgba(16,25,21,.06);
+}
+.product-directory-card>a {
+  display:flex;
+  min-width:0;
+  flex:1;
+  flex-direction:column;
+}
+.product-directory-card>a>div {
+  border-radius:10px !important;
+}
+.product-directory-card h2 { margin:18px 4px 8px !important; }
+.product-directory-card>a>p { margin:0 4px !important; }
+.product-directory-card>a>b { margin:18px 4px !important; }
+.product-directory-card .product-card-actions {
+  margin:0 4px;
+  padding-top:12px;
+}
+.product-directory-card:hover { box-shadow:0 18px 34px rgba(16,25,21,.13); }
+
+@media (max-width:850px) {
+  .product-directory-card { padding:8px 8px 10px !important; border-radius:13px !important; }
+  .product-directory-card h2 { margin:15px 3px 7px !important; }
+  .product-directory-card>a>b { margin:15px 3px !important; }
+  .product-directory-card .product-card-actions { margin:0 3px; }
+}
