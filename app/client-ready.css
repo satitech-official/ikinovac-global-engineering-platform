@@ -203,11 +203,12 @@ html,body { overflow-x:clip; }
   text-shadow:0 1px 0 rgba(255,255,255,.7);
 }
 .site-header .brand-wordmark strong {
-  align-self:end;
-  padding-bottom:1px;
+  align-self:center;
+  padding:0;
   color:#005de8 !important;
-  font:900 14px/1 var(--mono) !important;
-  letter-spacing:.28em !important;
+  font:900 25px/1 var(--sans) !important;
+  letter-spacing:-.065em !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.7);
 }
 .site-header .brand-wordmark small {
   grid-column:1 / -1;
@@ -222,7 +223,7 @@ html,body { overflow-x:clip; }
   .site-header .brand-mark { min-width:245px !important; gap:8px !important; }
   .site-header .brand-mark-image.brand-mark-image-header { width:84px !important; height:60px !important; flex-basis:84px; }
   .site-header .brand-wordmark b { font-size:22px !important; }
-  .site-header .brand-wordmark strong { font-size:10px !important; }
+  .site-header .brand-wordmark strong { font-size:18px !important; }
   .site-header .brand-wordmark small { font-size:7px !important; }
 }
 
@@ -231,7 +232,7 @@ html,body { overflow-x:clip; }
   .site-header .brand-mark-image.brand-mark-image-header { width:70px !important; height:51px !important; flex-basis:70px; border-radius:10px !important; }
   .site-header .brand-wordmark { display:grid !important; }
   .site-header .brand-wordmark b { font-size:19px !important; }
-  .site-header .brand-wordmark strong { font-size:8px !important; }
+  .site-header .brand-wordmark strong { font-size:16px !important; }
   .site-header .brand-wordmark small { margin-top:4px; font-size:5.25px !important; }
 }
 
@@ -239,7 +240,7 @@ html,body { overflow-x:clip; }
   .site-header .brand-mark { min-width:184px !important; gap:7px !important; }
   .site-header .brand-mark-image.brand-mark-image-header { width:64px !important; height:46px !important; flex-basis:64px; }
   .site-header .brand-wordmark b { font-size:16px !important; }
-  .site-header .brand-wordmark strong { font-size:6px !important; letter-spacing:.22em !important; }
+  .site-header .brand-wordmark strong { font-size:13px !important; letter-spacing:-.06em !important; }
   .site-header .brand-wordmark small { display:none !important; }
 }
 
