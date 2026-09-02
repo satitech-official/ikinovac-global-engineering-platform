@@ -167,6 +167,7 @@ html,body { overflow-x:clip; }
   padding-block:5px;
 }
 .site-header .brand-mark-image.brand-mark-image-header {
+  position:relative;
   width:72px !important;
   height:72px !important;
   flex:0 0 72px;
@@ -178,12 +179,14 @@ html,body { overflow-x:clip; }
 }
 .site-header .brand-mark-image-header .brand-logo-cropped {
   display:block !important;
-  width:100% !important;
-  height:100% !important;
+  position:absolute;
+  left:-42% !important;
+  top:-5.5% !important;
+  width:184% !important;
+  height:auto !important;
   max-width:none !important;
-  object-fit:cover !important;
-  transform:scale(1.72) translateY(14%) !important;
-  transform-origin:center center !important;
+  object-fit:initial !important;
+  transform:none !important;
 }
 .site-header .brand-wordmark {
   display:grid !important;
