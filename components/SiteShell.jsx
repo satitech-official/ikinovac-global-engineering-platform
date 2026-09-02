@@ -80,7 +80,7 @@ const navigationMenus = {
 function Brand({ onNavigate, inverse = false, header = false }) {
   return <Link className={`brand-mark ${inverse ? 'inverse' : ''}`} href="/" onClick={onNavigate} aria-label="IKINOVAC Global home">
     <span className={`brand-mark-image ${header ? 'brand-mark-image-header' : ''}`}>
-      {header ? <img className="brand-logo-cropped" src={assetUrl('/assets/ikinovac-logo-enhanced-v2.png')} alt="" /> : <img src={assetUrl('/assets/ikinovac-logo-enhanced-v2.png')} alt="" />}
+      {header ? <img className="brand-logo-cropped" src={assetUrl('/assets/ikinovac-ig-emblem-header-v3.png')} alt="" /> : <img src={assetUrl('/assets/ikinovac-logo-enhanced-v2.png')} alt="" />}
     </span>
     {header && <span className="brand-wordmark"><b>IKINOVAC</b><strong>GLOBAL</strong><small>ENGINEERING SOLUTIONS. GLOBAL IMPACT.</small></span>}
   </Link>;

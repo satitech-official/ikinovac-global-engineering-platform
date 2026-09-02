@@ -162,8 +162,8 @@ html,body { overflow-x:clip; }
 /* Header identity: the supplied 3D artwork is cropped to its IG emblem while
    the brand name and descriptor remain crisp, selectable interface text. */
 .site-header .brand-mark {
-  min-width:302px !important;
-  gap:11px !important;
+  min-width:335px !important;
+  gap:13px !important;
   padding-block:5px;
 }
 .site-header .brand-mark-image.brand-mark-image-header {
@@ -179,15 +179,12 @@ html,body { overflow-x:clip; }
 }
 .site-header .brand-mark-image-header .brand-logo-cropped {
   display:block !important;
-  position:absolute;
-  /* The supplied mark is naturally wider than tall. This crop preserves the
-     complete IG monogram and orbital ring without showing its lower wordmark. */
-  left:-31.25% !important;
-  top:-24.3% !important;
-  width:156.75% !important;
-  height:auto !important;
-  max-width:none !important;
-  object-fit:initial !important;
+  position:static;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
   transform:none !important;
 }
 .site-header .brand-wordmark {
@@ -201,7 +198,7 @@ html,body { overflow-x:clip; }
 }
 .site-header .brand-wordmark b {
   color:#020202 !important;
-  font:900 28px/1 var(--sans) !important;
+  font:900 30px/1 var(--sans) !important;
   letter-spacing:-.075em !important;
   text-shadow:0 1px 0 rgba(255,255,255,.7);
 }
@@ -209,24 +206,24 @@ html,body { overflow-x:clip; }
   align-self:end;
   padding-bottom:1px;
   color:#005de8 !important;
-  font:900 13px/1 var(--mono) !important;
+  font:900 14px/1 var(--mono) !important;
   letter-spacing:.28em !important;
 }
 .site-header .brand-wordmark small {
   grid-column:1 / -1;
   margin-top:5px;
   color:#191919 !important;
-  font:800 8px/1.25 var(--sans) !important;
-  letter-spacing:.07em !important;
+  font:800 10px/1.25 var(--sans) !important;
+  letter-spacing:.045em !important;
   white-space:nowrap;
 }
 
-@media (min-width:851px) and (max-width:1180px) {
+@media (min-width:851px) and (max-width:1290px) {
   .site-header .brand-mark { min-width:245px !important; gap:8px !important; }
   .site-header .brand-mark-image.brand-mark-image-header { width:84px !important; height:60px !important; flex-basis:84px; }
   .site-header .brand-wordmark b { font-size:22px !important; }
   .site-header .brand-wordmark strong { font-size:10px !important; }
-  .site-header .brand-wordmark small { font-size:6px !important; }
+  .site-header .brand-wordmark small { font-size:7px !important; }
 }
 
 @media (max-width:850px) {
@@ -244,4 +241,29 @@ html,body { overflow-x:clip; }
   .site-header .brand-wordmark b { font-size:16px !important; }
   .site-header .brand-wordmark strong { font-size:6px !important; letter-spacing:.22em !important; }
   .site-header .brand-wordmark small { display:none !important; }
+}
+
+/* Clear, client-facing navigation labels.  The tighter gap retains a clean
+   single-line desktop header while increasing actual reading size. */
+@media (min-width:1291px) {
+  .site-header .site-nav { gap:clamp(16px,1.45vw,24px) !important; }
+  .site-header .site-nav>a,
+  .site-header .products-nav-item>div:first-child>a,
+  .site-header .products-nav-item>div:first-child>button { font-size:14px !important; line-height:1.25; }
+  .site-header .header-quote { font-size:12px !important; }
+}
+
+@media (min-width:851px) and (max-width:1290px) {
+  .site-header .site-nav { gap:13px !important; }
+  .site-header .site-nav>a,
+  .site-header .products-nav-item>div:first-child>a,
+  .site-header .products-nav-item>div:first-child>button { font-size:12px !important; }
+  .site-header .header-quote { font-size:11px !important; }
+}
+
+@media (max-width:850px) {
+  .site-header .site-nav>a,
+  .site-header .products-nav-item>div:first-child>a,
+  .site-header .products-nav-item>div:first-child>button { font-size:19px !important; }
+  .site-header .mobile-product-list.open a { font-size:16px !important; }
 }
