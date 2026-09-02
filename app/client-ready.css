@@ -162,7 +162,7 @@ html,body { overflow-x:clip; }
 /* Header identity: the supplied 3D artwork is cropped to its IG emblem while
    the brand name and descriptor remain crisp, selectable interface text. */
 .site-header .brand-mark {
-  min-width:244px !important;
+  min-width:273px !important;
   gap:11px !important;
   padding-block:5px;
 }
@@ -198,41 +198,42 @@ html,body { overflow-x:clip; }
   line-height:1;
 }
 .site-header .brand-wordmark b {
-  color:#101010 !important;
-  font:800 19px/1 var(--sans) !important;
+  color:#020202 !important;
+  font:900 23px/1 var(--sans) !important;
   letter-spacing:-.075em !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.7);
 }
 .site-header .brand-wordmark strong {
   align-self:end;
   padding-bottom:1px;
-  color:#1569eb !important;
-  font:800 10px/1 var(--mono) !important;
+  color:#005de8 !important;
+  font:900 12px/1 var(--mono) !important;
   letter-spacing:.28em !important;
 }
 .site-header .brand-wordmark small {
   grid-column:1 / -1;
   margin-top:5px;
-  color:#454545 !important;
-  font:700 6px/1.25 var(--sans) !important;
-  letter-spacing:.065em !important;
+  color:#191919 !important;
+  font:800 7px/1.25 var(--sans) !important;
+  letter-spacing:.07em !important;
   white-space:nowrap;
 }
 
 @media (min-width:851px) and (max-width:1180px) {
-  .site-header .brand-mark { min-width:201px !important; gap:8px !important; }
+  .site-header .brand-mark { min-width:214px !important; gap:8px !important; }
   .site-header .brand-mark-image.brand-mark-image-header { width:60px !important; height:60px !important; flex-basis:60px; }
-  .site-header .brand-wordmark b { font-size:16px !important; }
-  .site-header .brand-wordmark strong { font-size:8px !important; }
-  .site-header .brand-wordmark small { font-size:5px !important; }
+  .site-header .brand-wordmark b { font-size:18px !important; }
+  .site-header .brand-wordmark strong { font-size:9px !important; }
+  .site-header .brand-wordmark small { font-size:5.5px !important; }
 }
 
 @media (max-width:850px) {
-  .site-header .brand-mark { min-width:177px !important; gap:8px !important; }
+  .site-header .brand-mark { min-width:190px !important; gap:8px !important; }
   .site-header .brand-mark-image.brand-mark-image-header { width:54px !important; height:54px !important; flex-basis:54px; border-radius:10px !important; }
   .site-header .brand-wordmark { display:grid !important; }
-  .site-header .brand-wordmark b { font-size:15px !important; }
-  .site-header .brand-wordmark strong { font-size:7px !important; }
-  .site-header .brand-wordmark small { margin-top:4px; font-size:4.5px !important; }
+  .site-header .brand-wordmark b { font-size:17px !important; }
+  .site-header .brand-wordmark strong { font-size:8px !important; }
+  .site-header .brand-wordmark small { margin-top:4px; font-size:5px !important; }
 }
 
 @media (max-width:420px) {
