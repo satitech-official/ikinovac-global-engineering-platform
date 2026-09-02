@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { catalogueCategories, catalogueProducts } from '@/lib/catalogue';
 import { industries, processSteps } from '@/lib/content';
 import HomeProductShelf from './HomeProductShelf';
-import EngineeringProductFinder from './EngineeringProductFinder';
 import BusinessVerticals from './BusinessVerticals';
 import CompleteSystem from './CompleteSystem';
 import KnowledgePreview from './KnowledgePreview';
@@ -54,8 +53,6 @@ export default function HomePage() {
     </section>
 
     <section className="capability-marquee" aria-label="Core capabilities"><p className="sr-only">Core capabilities: {capability.join(', ')}.</p><div className="capability-marquee-track" aria-hidden="true">{[...capability, ...capability, ...capability].map((item, index) => <span key={`${item}-${index}`}>{item} <i>✦</i></span>)}</div></section>
-
-    <EngineeringProductFinder />
 
     <BusinessVerticals />
 
