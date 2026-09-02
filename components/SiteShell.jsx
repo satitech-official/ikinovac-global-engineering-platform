@@ -183,7 +183,6 @@ function NavigationMegaMenu({ menu, close, onPointerEnter, onPointerLeave }) {
 function Header() {
   const [navOpen, setNavOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { items, openRFQ, closeRFQ } = useRFQ();
@@ -191,15 +190,14 @@ function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
-    const onKey = event => { if (event.key === 'Escape') { setNavOpen(false); setProductsOpen(false); setActiveMenu(null); setSearchOpen(false); closeRFQ(); } };
+    const onKey = event => { if (event.key === 'Escape') { setNavOpen(false); setProductsOpen(false); setSearchOpen(false); closeRFQ(); } };
     window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('keydown', onKey);
     return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('keydown', onKey); if (menuCloseTimer.current) window.clearTimeout(menuCloseTimer.current); };
   }, []);
   const clearMenuClose = () => { if (menuCloseTimer.current) window.clearTimeout(menuCloseTimer.current); };
-  const openProducts = () => { clearMenuClose(); setActiveMenu(null); setProductsOpen(true); };
-  const openNavigationMenu = key => { clearMenuClose(); setProductsOpen(false); setActiveMenu(key); };
-  const scheduleMenuClose = () => { clearMenuClose(); menuCloseTimer.current = window.setTimeout(() => { setProductsOpen(false); setActiveMenu(null); }, 180); };
-  const closeNav = () => { clearMenuClose(); setNavOpen(false); setProductsOpen(false); setActiveMenu(null); };
+  const openProducts = () => { clearMenuClose(); setProductsOpen(true); };
+  const scheduleMenuClose = () => { clearMenuClose(); menuCloseTimer.current = window.setTimeout(() => setProductsOpen(false), 180); };
+  const closeNav = () => { clearMenuClose(); setNavOpen(false); setProductsOpen(false); };
 
   return <>
     <div className="utility-bar"><span>info@ikinovac.com</span><div><Link href="/contact">GLOBAL ENQUIRY</Link><Link href="/resources">LINE CARD</Link><span>GLOBAL / EN</span></div></div>
@@ -208,22 +206,21 @@ function Header() {
       <div className="header-main-cluster"><Brand onNavigate={closeNav} header />
         <nav className={navOpen ? 'site-nav open' : 'site-nav'} aria-label="Main navigation">
           <Link href="/" onClick={closeNav}>Home</Link>
-          <Link href="/company" onPointerEnter={event => event.pointerType === 'mouse' && openNavigationMenu('company')} onPointerLeave={event => event.pointerType === 'mouse' && scheduleMenuClose()} onFocus={() => openNavigationMenu('company')} onClick={closeNav}>Company</Link>
+          <Link href="/company" onClick={closeNav}>Company</Link>
           <div className="products-nav-item" onPointerEnter={event => event.pointerType === 'mouse' && openProducts()} onPointerLeave={event => event.pointerType === 'mouse' && scheduleMenuClose()}>
             <div><Link href="/products" onFocus={openProducts} onClick={closeNav}>Products</Link><button type="button" onFocus={openProducts} onClick={() => setProductsOpen(current => !current)} aria-expanded={productsOpen} aria-label="Open product directory">+</button></div>
             <div className={productsOpen ? 'mobile-product-list open' : 'mobile-product-list'}>{catalogueCategories.map(category => <Link href={`/products/${category.slug}`} onClick={closeNav} key={category.slug}><b>{category.number}</b>{category.name}</Link>)}</div>
           </div>
-          <Link href="/industries" onPointerEnter={event => event.pointerType === 'mouse' && openNavigationMenu('industries')} onPointerLeave={event => event.pointerType === 'mouse' && scheduleMenuClose()} onFocus={() => openNavigationMenu('industries')} onClick={closeNav}>Industries</Link>
-          <Link href="/solutions" onPointerEnter={event => event.pointerType === 'mouse' && openNavigationMenu('solutions')} onPointerLeave={event => event.pointerType === 'mouse' && scheduleMenuClose()} onFocus={() => openNavigationMenu('solutions')} onClick={closeNav}>Solutions</Link>
-          <Link href="/global-presence" onPointerEnter={event => event.pointerType === 'mouse' && openNavigationMenu('presence')} onPointerLeave={event => event.pointerType === 'mouse' && scheduleMenuClose()} onFocus={() => openNavigationMenu('presence')} onClick={closeNav}>Global Presence</Link>
-          <Link href="/resources" onPointerEnter={event => event.pointerType === 'mouse' && openNavigationMenu('resources')} onPointerLeave={event => event.pointerType === 'mouse' && scheduleMenuClose()} onFocus={() => openNavigationMenu('resources')} onClick={closeNav}>Resources</Link>
+          <Link href="/industries" onClick={closeNav}>Industries</Link>
+          <Link href="/solutions" onClick={closeNav}>Solutions</Link>
+          <Link href="/global-presence" onClick={closeNav}>Global Presence</Link>
+          <Link href="/resources" onClick={closeNav}>Resources</Link>
           <Link href="/contact" onClick={closeNav}>Contact</Link>
           <div className="mobile-nav-actions"><button onClick={() => { setSearchOpen(true); setNavOpen(false); }}>Search products</button><Link href="/contact" onClick={closeNav}>Request a quote →</Link></div>
         </nav>
       </div>
       <div className="header-actions"><button className="search-button" onClick={() => setSearchOpen(true)} aria-label="Search products">⌕</button><Link className="header-quote" href="/contact">Request a quote <span>→</span></Link><button className="menu-button" onClick={() => setNavOpen(!navOpen)} aria-label="Toggle navigation" aria-expanded={navOpen}><i /><i /></button></div>
       {productsOpen && !navOpen && <MegaMenu close={closeNav} onPointerEnter={openProducts} onPointerLeave={scheduleMenuClose} />}
-      {activeMenu && !navOpen && <NavigationMegaMenu menu={navigationMenus[activeMenu]} close={closeNav} onPointerEnter={() => openNavigationMenu(activeMenu)} onPointerLeave={scheduleMenuClose} />}
     </header>
     <button className="rfq-float" onClick={() => openRFQ('basket')} aria-label={`Open RFQ with ${items.length} selected product requirements`}>RFQ <b>{String(items.length).padStart(2, '0')}</b><span>→</span></button>
     {searchOpen && <ProductSearch close={() => setSearchOpen(false)} />}
