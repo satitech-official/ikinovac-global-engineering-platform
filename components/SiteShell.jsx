@@ -224,9 +224,8 @@ function Header() {
 }
 
 function Footer() {
-  const { openQuote } = useRFQ();
   return <footer className="site-footer-v2">
-    <div className="footer-word">IKINOVAC</div><div className="footer-top"><Brand inverse /><p>Engineering solutions.<br /><em>Global impact.</em></p><button className="button button-gold" onClick={() => openQuote()}>Request a quote <span>→</span></button></div>
+    <div className="footer-word">IKINOVAC</div><div className="footer-top"><Brand inverse /><div className="footer-socials" aria-label="Social media"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><b>in</b></a><a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><b>◎</b></a><a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><b>f</b></a></div></div>
     <div className="footer-grid"><section><p className="eyebrow light">PRODUCTS</p><Link href="/products">Product directory</Link><Link href="/products/valves">Valves</Link><Link href="/products/automation">Automation</Link><Link href="/products/pipe-fittings-flanges">Pipe &amp; fittings</Link></section><section><p className="eyebrow light">EXPLORE</p><Link href="/industries">Industries</Link><Link href="/solutions">Solutions</Link><Link href="/global-presence">Global presence</Link><Link href="/resources">Resources</Link><Link href="/insights">Knowledge hub</Link></section><section><p className="eyebrow light">CONTACT</p><a href="mailto:info@ikinovac.com">info@ikinovac.com</a><Link href="/contact">Start an enquiry</Link><Link href="/admin">Operations workspace</Link></section></div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} IKINOVAC GLOBAL</span><span>ENGINEERING SOLUTIONS. GLOBAL IMPACT.</span><Link href="/">Back to top ↑</Link></div>
   </footer>;
