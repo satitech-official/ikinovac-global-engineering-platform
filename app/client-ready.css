@@ -485,9 +485,10 @@ html,body { overflow-x:clip; }
 
 /* Footer brand lockup: give the approved logo room to read at normal desktop size. */
 .site-footer-v2 .footer-top { grid-template-columns:1fr auto; align-items:center; }
-.site-footer-v2 .brand-mark-image { width:190px !important; height:120px !important; }
+.site-footer-v2 .brand-mark { min-width:260px !important; }
+.site-footer-v2 .brand-mark-image { width:260px !important; height:164px !important; }
 .site-footer-v2 .footer-socials { display:flex; align-items:center; gap:10px; }
 .site-footer-v2 .footer-socials a { display:grid; width:46px; height:46px; place-items:center; border:1px solid rgba(231,217,189,.55); border-radius:50%; color:#e7d9bd; font:700 18px/1 var(--sans); transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease; }
 .site-footer-v2 .footer-socials a:hover { transform:translateY(-4px); border-color:#c3a46b; background:#c3a46b; color:#0e2b23; }
 .site-footer-v2 .footer-socials b { font:inherit; }
-@media (max-width:620px) { .site-footer-v2 .footer-top { grid-template-columns:1fr; gap:22px; } .site-footer-v2 .brand-mark-image { width:175px !important; height:112px !important; } .site-footer-v2 .footer-socials { justify-content:flex-start; } }
+@media (max-width:620px) { .site-footer-v2 .footer-top { grid-template-columns:1fr; gap:22px; } .site-footer-v2 .brand-mark { min-width:210px !important; } .site-footer-v2 .brand-mark-image { width:210px !important; height:133px !important; } .site-footer-v2 .footer-socials { justify-content:flex-start; } }
