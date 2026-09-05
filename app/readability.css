@@ -9,7 +9,7 @@ main :is(button,input,select,textarea) { font-size:14px !important; }
 /* Navigation, actions and labels */
 .utility-bar,.utility-bar a { font-size:12px !important; }
 .site-nav>a,.products-nav-item>div:first-child>a,.products-nav-item>div:first-child>button { font-size:14px !important; }
-.header-quote,.mobile-nav-actions :is(button,a),.rfq-float { font-size:12px !important; }
+.header-quote,.mobile-nav-actions :is(button,a) { font-size:12px !important; }
 .mobile-product-list a { font-size:12px !important; }
 .eyebrow,.mega-menu-results p,.mega-menu-list b,.mega-menu-feature p { font-size:11px !important; letter-spacing:.12em; }
 .button,.text-arrow,.vertical-link,.finder-help,.product-card-actions button,.product-directory-card>a>b { font-size:12px !important; }

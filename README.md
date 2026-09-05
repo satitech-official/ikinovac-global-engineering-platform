@@ -27,10 +27,10 @@ A premium industrial engineering and procurement platform for product discovery,
 ## Platform highlights
 
 - Responsive premium industrial design for desktop, tablet, and mobile
-- Product catalogue with category, individual product, comparison, and RFQ flows
+- Product catalogue with category and individual product discovery, plus direct B2B RFQ enquiries
 - Individual product catalogues with print / Save as PDF support
 - Global supply network, business verticals, quality, services, and resource experiences
-- Product search, filters, availability guidance, and quote-first pricing
+- Product search, filters, availability guidance, and technical enquiry support
 - Motion-led UI with accessibility-aware interaction patterns
 
 ## Technology
@@ -48,6 +48,10 @@ The project is published from the `main` branch through GitHub Actions.
 
 **Live URL:** [satitech-official.github.io/ikinovac-global-engineering-platform](https://satitech-official.github.io/ikinovac-global-engineering-platform/)
 
+## Secure RFQ email delivery
+
+The website creates a branded PDF only after its secure RFQ email endpoint confirms receipt. GitHub Pages is static, so the endpoint is deliberately deployed separately and keeps all mail credentials server-side. See [rfq-service/README.md](rfq-service/README.md) for the Cloudflare Worker and Resend configuration. Set only the public endpoint URL as `NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT` in the GitHub Pages build environment; never commit a mail key.
+
 ## Run locally
 
 ```bash
@@ -64,6 +68,7 @@ app/                 Site pages and catalogue routes
 components/          Reusable UI and catalogue components
 data/                Product catalogue content
 public/              Brand, industrial, and social-preview assets
+rfq-service/         Secure serverless RFQ email endpoint
 .github/workflows/   GitHub Pages deployment workflow
 ```
 

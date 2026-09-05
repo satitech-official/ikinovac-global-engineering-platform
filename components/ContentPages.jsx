@@ -1,7 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { industries, processSteps, resources, solutionServices } from '@/lib/content';
 import { catalogueCategories } from '@/lib/catalogue';
-import RFQForm from './RFQForm';
+import { useRFQ } from './SiteShell';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const assetUrl = path => `${basePath}${path}`;
@@ -28,5 +30,6 @@ export function ResourcesPage() {
 }
 
 export function ContactPage() {
-  return <><section className="contact-hero" style={{ backgroundImage: `linear-gradient(105deg,rgba(13,23,20,.96),rgba(13,23,20,.5)),url(${assetUrl('/assets/industry/procurement.jpg')})` }}><p className="eyebrow light">PROJECT DESK / REQUEST FOR QUOTE</p><h1>LET&apos;S MAKE<br />THE <em>COMPLEX</em><br />MOVE.</h1><p>Share the product, application or project requirement you have. The RFQ is designed to carry the full context.</p></section><section className="contact-page-grid"><div><p className="eyebrow">START HERE</p><h2>A premium procurement <em>workflow.</em></h2><p>Product selections, quantities, technical requirements and delivery context stay in one request. Where a backend is not configured, this preview stores the request locally in your browser and says so clearly.</p><a href="mailto:info@ikinovac.com" className="text-arrow">info@ikinovac.com <span>↗</span></a><div className="contact-steps"><span><b>01</b> Add product families</span><span><b>02</b> Include project context</span><span><b>03</b> Send an enquiry</span></div></div><RFQForm /></section></>;
+  const { openQuote } = useRFQ();
+  return <><section className="contact-hero" style={{ backgroundImage: `linear-gradient(105deg,rgba(13,23,20,.96),rgba(13,23,20,.5)),url(${assetUrl('/assets/industry/procurement.jpg')})` }}><p className="eyebrow light">PROJECT DESK / REQUEST FOR QUOTE</p><h1>LET&apos;S MAKE<br />THE <em>COMPLEX</em><br />MOVE.</h1><p>Share the essentials of your product, sourcing or project requirement. IKINOVAC will review the correct next step with you.</p></section><section className="contact-page-grid"><div><p className="eyebrow">START HERE</p><h2>A direct engineering <em>enquiry.</em></h2><p>One simple RFQ captures your contact details and requirement. No basket, checkout or technical form is needed before you can speak with the project desk.</p><button className="button button-dark" onClick={() => openQuote()}>Request a quote <span>→</span></button><a href="mailto:info@ikinovac.com" className="text-arrow">info@ikinovac.com <span>↗</span></a><div className="contact-steps"><span><b>01</b> Tell us the requirement</span><span><b>02</b> Submit your RFQ</span><span><b>03</b> Receive IKINOVAC review</span></div></div></section></>;
 }

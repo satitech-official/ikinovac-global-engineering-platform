@@ -1,0 +1,11 @@
+name = "ikinovac-rfq-service"
+main = "src/worker.js"
+compatibility_date = "2026-09-05"
+
+# Set these with `wrangler secret put`, never in this file or in GitHub.
+# RESEND_API_KEY
+# IKINOVAC_RFQ_TO
+# RFQ_FROM
+
+[vars]
+ALLOWED_ORIGIN = "https://satitech-official.github.io"

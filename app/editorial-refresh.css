@@ -35,7 +35,7 @@ body::selection { background:var(--accent-blue); color:var(--text-white); }
 .eyebrow.light { color:#bababa; }
 
 /* Shared action, tag, input and card language. */
-.button,.header-quote,.rfq-float,.finder-switch button,.finder-requirements section a,
+.button,.header-quote,.finder-switch button,.finder-requirements section a,
 .product-applications :is(b,span),.shelf-related a,.verticals-grid article>div>a {
   border-radius:999px !important;
 }
@@ -221,8 +221,6 @@ body::selection { background:var(--accent-blue); color:var(--text-white); }
 /* Search, RFQ and loading states use the same contrast system. */
 .search-overlay { background:rgba(2,2,2,.98); }
 .search-groups section>a:hover { color:var(--accent-green); }
-.rfq-float { right:22px; bottom:22px; background:var(--accent-blue); color:var(--text-white); box-shadow:0 12px 26px rgba(2,2,2,.18); }
-.rfq-float b { background:var(--background-dark); color:var(--text-white); border-radius:6px; }
 .rfq-drawer-v2 { border-top-color:var(--accent-blue); border-radius:16px; background:var(--background-secondary); }
 .site-loader { background:var(--background-dark); }
 .loader-topline b,.site-loader .loader-content p em { color:var(--accent-green); }
@@ -269,7 +267,6 @@ main .motion-section.is-in-view :is(.directory-card,.verticals-grid article,.fam
   .finder-category-grid>a { min-height:128px; }
   .verticals-grid article { min-height:260px; }
   .product-finder,.business-verticals,.complete-system,.global-network-section,.company-intro-section,.directory-section,.process-section,.industries-section,.quality-section,.home-contact-cta { padding-block:76px !important; }
-  .rfq-float { min-height:48px; right:14px; bottom:14px; }
 }
 
 @media (prefers-reduced-motion:reduce) {

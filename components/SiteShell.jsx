@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { catalogueCategories, catalogueProducts, productHref } from '@/lib/catalogue';
 import { assetUrl } from '@/lib/assets';
-import { cleanConfiguration, configurationFingerprint, createRFQReference, emptyCustomer, makeItemKey, normaliseQuantity } from '@/lib/rfq/reference';
-import RFQWorkspace from './rfq/RFQWorkspace';
+import SimpleRFQModal from './rfq/SimpleRFQModal';
 
 const RFQContext = createContext(null);
 const navigationMenus = {
@@ -183,12 +182,12 @@ function Header() {
   const [productsOpen, setProductsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { items, openRFQ, closeRFQ } = useRFQ();
+  const { openQuote, closeQuote } = useRFQ();
   const menuCloseTimer = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
-    const onKey = event => { if (event.key === 'Escape') { setNavOpen(false); setProductsOpen(false); setSearchOpen(false); closeRFQ(); } };
+    const onKey = event => { if (event.key === 'Escape') { setNavOpen(false); setProductsOpen(false); setSearchOpen(false); closeQuote(); } };
     window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('keydown', onKey);
     return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('keydown', onKey); if (menuCloseTimer.current) window.clearTimeout(menuCloseTimer.current); };
   }, []);
@@ -214,46 +213,28 @@ function Header() {
           <Link href="/global-presence" onClick={closeNav}>Global Presence</Link>
           <Link href="/resources" onClick={closeNav}>Resources</Link>
           <Link href="/contact" onClick={closeNav}>Contact</Link>
-          <div className="mobile-nav-actions"><button onClick={() => { setSearchOpen(true); setNavOpen(false); }}>Search products</button><Link href="/contact" onClick={closeNav}>Request a quote →</Link></div>
+          <div className="mobile-nav-actions"><button onClick={() => { setSearchOpen(true); setNavOpen(false); }}>Search products</button><button onClick={() => { openQuote(); closeNav(); }}>Request a quote →</button></div>
         </nav>
       </div>
-      <div className="header-actions"><button className="search-button" onClick={() => setSearchOpen(true)} aria-label="Search products">⌕</button><Link className="header-quote" href="/contact">Request a quote <span>→</span></Link><button className="menu-button" onClick={() => setNavOpen(!navOpen)} aria-label="Toggle navigation" aria-expanded={navOpen}><i /><i /></button></div>
+      <div className="header-actions"><button className="search-button" onClick={() => setSearchOpen(true)} aria-label="Search products">⌕</button><button className="header-quote" onClick={() => openQuote()}>Request a quote <span>→</span></button><button className="menu-button" onClick={() => setNavOpen(!navOpen)} aria-label="Toggle navigation" aria-expanded={navOpen}><i /><i /></button></div>
       {productsOpen && !navOpen && <MegaMenu close={closeNav} onPointerEnter={openProducts} onPointerLeave={scheduleMenuClose} />}
     </header>
-    <button className="rfq-float" onClick={() => openRFQ('basket')} aria-label={`Open RFQ with ${items.length} selected product requirements`}>RFQ <b>{String(items.length).padStart(2, '0')}</b><span>→</span></button>
     {searchOpen && <ProductSearch close={() => setSearchOpen(false)} />}
   </>;
 }
 
 function Footer() {
+  const { openQuote } = useRFQ();
   return <footer className="site-footer-v2">
-    <div className="footer-word">IKINOVAC</div><div className="footer-top"><Brand inverse /><p>Engineering solutions.<br /><em>Global impact.</em></p><Link className="button button-gold" href="/contact">Request a quote <span>→</span></Link></div>
+    <div className="footer-word">IKINOVAC</div><div className="footer-top"><Brand inverse /><p>Engineering solutions.<br /><em>Global impact.</em></p><button className="button button-gold" onClick={() => openQuote()}>Request a quote <span>→</span></button></div>
     <div className="footer-grid"><section><p className="eyebrow light">PRODUCTS</p><Link href="/products">Product directory</Link><Link href="/products/valves">Valves</Link><Link href="/products/automation">Automation</Link><Link href="/products/pipe-fittings-flanges">Pipe &amp; fittings</Link></section><section><p className="eyebrow light">EXPLORE</p><Link href="/industries">Industries</Link><Link href="/solutions">Solutions</Link><Link href="/global-presence">Global presence</Link><Link href="/resources">Resources</Link><Link href="/insights">Knowledge hub</Link></section><section><p className="eyebrow light">CONTACT</p><a href="mailto:info@ikinovac.com">info@ikinovac.com</a><Link href="/contact">Start an enquiry</Link><Link href="/admin">Operations workspace</Link></section></div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} IKINOVAC GLOBAL</span><span>ENGINEERING SOLUTIONS. GLOBAL IMPACT.</span><Link href="/">Back to top ↑</Link></div>
   </footer>;
 }
 
 export default function SiteShell({ children }) {
-  const [items, setItems] = useState([]);
-  const [customer, setCustomer] = useState(emptyCustomer);
-  const [rfqReference, setRFQReference] = useState('');
-  const [rfqCreatedAt, setRFQCreatedAt] = useState('');
-  const [rfqOpen, setRFQOpen] = useState(false);
-  const [rfqStage, setRFQStage] = useState('basket');
-  const [configurationTarget, setConfigurationTarget] = useState(null);
-  const [pdf, setPDFState] = useState(null);
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem('ikinovac-rfq-workflow') || '{}');
-      setItems(Array.isArray(saved.items) ? saved.items : []);
-      setCustomer({ ...emptyCustomer, ...(saved.customer || {}) });
-      setRFQReference(saved.reference || createRFQReference());
-      setRFQCreatedAt(saved.createdAt || new Date().toISOString());
-    } catch { setRFQReference(createRFQReference()); setRFQCreatedAt(new Date().toISOString()); }
-    setHydrated(true);
-  }, []);
-  useEffect(() => { if (hydrated) localStorage.setItem('ikinovac-rfq-workflow', JSON.stringify({ items, customer, reference: rfqReference, createdAt: rfqCreatedAt, status: 'DRAFT' })); }, [items, customer, rfqReference, rfqCreatedAt, hydrated]);
+  const [quoteOpen, setQuoteOpen] = useState(false);
+  const [quoteProduct, setQuoteProduct] = useState(null);
   useEffect(() => {
     const sections = [...document.querySelectorAll('main section')].filter(section => !section.classList.contains('home-hero'));
     const reveal = section => section.classList.add('is-in-view');
@@ -279,37 +260,11 @@ export default function SiteShell({ children }) {
     return () => observer.disconnect();
   }, [children]);
   const value = useMemo(() => ({
-    items, customer, rfqOpen, rfqStage, configurationTarget, pdfUrl: pdf?.url || null,
-    rfq: { reference: rfqReference || createRFQReference(), createdAt: rfqCreatedAt || new Date().toISOString(), items, status: 'DRAFT' },
-    openRFQ(stage = 'basket') { setRFQStage(stage); setRFQOpen(true); },
-    closeRFQ() { setRFQOpen(false); },
-    setRFQStage,
-    openConfigurator(productOrItem, item = null) {
-      const product = item ? productOrItem : productOrItem;
-      const targetItem = item || null;
-      setConfigurationTarget({ product: targetItem ? { ...targetItem, images: [targetItem.image], imageAlt: targetItem.imageAlt || targetItem.name } : product, item: targetItem });
-    },
-    closeConfigurator() { setConfigurationTarget(null); },
-    add(product, configuration = {}, quantity = 1, strategy = 'prompt') {
-      const normalized = cleanConfiguration(configuration);
-      const matching = items.find(item => configurationFingerprint(item.id, item.configuration) === configurationFingerprint(product.id, normalized));
-      if (matching && strategy === 'prompt') return { duplicate: true, item: matching };
-      if (matching && strategy === 'merge') {
-        setItems(current => current.map(item => item.key === matching.key ? { ...item, quantity: item.quantity + normaliseQuantity(quantity) } : item));
-        return { success: true, item: matching };
-      }
-      const newItem = { key: makeItemKey(), id: product.id, name: product.name, category: product.category, family: product.family || product.name, image: assetUrl(product.images?.[0] || product.image || null), imageAlt: product.imageAlt || product.name, description: product.description || 'Approved catalogue description is available on request.', quantity: normaliseQuantity(quantity), configuration: normalized, createdAt: new Date().toISOString() };
-      setItems(current => [...current, newItem]);
-      return { success: true, item: newItem };
-    },
-    remove(key) { setItems(current => current.filter(item => item.key !== key)); },
-    updateItem(key, patch) { setItems(current => current.map(item => item.key === key ? { ...item, ...patch, configuration: patch.configuration ? cleanConfiguration(patch.configuration) : item.configuration } : item)); },
-    updateQuantity(key, quantity) { setItems(current => current.map(item => item.key === key ? { ...item, quantity: normaliseQuantity(quantity) } : item)); },
-    duplicateItem(key) { setItems(current => { const item = current.find(candidate => candidate.key === key); return item ? [...current, { ...item, key: makeItemKey(), createdAt: new Date().toISOString() }] : current; }); },
-    updateCustomer(patch) { setCustomer(current => ({ ...current, ...patch })); },
-    setPDF(next) { if (pdf?.url) URL.revokeObjectURL(pdf.url); setPDFState(next); },
-    clear() { setItems([]); setCustomer(emptyCustomer); setPDFState(null); setRFQReference(createRFQReference()); setRFQCreatedAt(new Date().toISOString()); }
-  }), [items, customer, rfqOpen, rfqStage, configurationTarget, pdf, rfqReference, rfqCreatedAt]);
-  return <RFQContext.Provider value={value}><Preloader /><Header /><main>{children}</main><Footer /><RFQWorkspace /></RFQContext.Provider>;
+    quoteOpen,
+    quoteProduct,
+    openQuote(product = null) { setQuoteProduct(product || null); setQuoteOpen(true); },
+    closeQuote() { setQuoteOpen(false); }
+  }), [quoteOpen, quoteProduct]);
+  return <RFQContext.Provider value={value}><Preloader /><Header /><main>{children}</main><Footer /><SimpleRFQModal /></RFQContext.Provider>;
 }
 
