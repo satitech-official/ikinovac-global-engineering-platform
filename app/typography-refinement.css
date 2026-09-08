@@ -1,0 +1,67 @@
+/* Readability refinement: these selectors intentionally target editorial labels
+   within public content sections only, leaving menus, overlays, forms and cards alone. */
+main :is(
+  .business-verticals .verticals-heading,
+  .global-network-section .network-copy,
+  .company-intro-copy,
+  .directory-heading > div,
+  .process-section > div,
+  .industries-section .section-title,
+  .quality-section,
+  .home-contact-cta,
+  .home-product-shelf .shelf-heading,
+  .product-finder .finder-heading,
+  .complete-system .system-demo-heading,
+  .knowledge-resources,
+  .knowledge-insights
+) > .eyebrow {
+  font-size:14px !important;
+  letter-spacing:.15em;
+}
+
+/* Preserve the exact existing business-vertical accent while improving hierarchy. */
+.business-verticals { --vertical-card-accent:#c3a46b; }
+.business-verticals .verticals-grid article > p {
+  color:var(--ivory);
+  font-size:13px !important;
+  letter-spacing:.11em;
+}
+.business-verticals .verticals-grid article > h3 { color:var(--vertical-card-accent); }
+
+@media (max-width:850px) {
+  main :is(
+    .business-verticals .verticals-heading,
+    .global-network-section .network-copy,
+    .company-intro-copy,
+    .directory-heading > div,
+    .process-section > div,
+    .industries-section .section-title,
+    .quality-section,
+    .home-contact-cta,
+    .home-product-shelf .shelf-heading,
+    .product-finder .finder-heading,
+    .complete-system .system-demo-heading,
+    .knowledge-resources,
+    .knowledge-insights
+  ) > .eyebrow { font-size:12.5px !important; }
+  .business-verticals .verticals-grid article > p { font-size:12.5px !important; }
+}
+
+@media (max-width:560px) {
+  main :is(
+    .business-verticals .verticals-heading,
+    .global-network-section .network-copy,
+    .company-intro-copy,
+    .directory-heading > div,
+    .process-section > div,
+    .industries-section .section-title,
+    .quality-section,
+    .home-contact-cta,
+    .home-product-shelf .shelf-heading,
+    .product-finder .finder-heading,
+    .complete-system .system-demo-heading,
+    .knowledge-resources,
+    .knowledge-insights
+  ) > .eyebrow { font-size:12px !important; letter-spacing:.13em; }
+  .business-verticals .verticals-grid article > p { font-size:12px !important; }
+}
