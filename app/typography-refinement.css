@@ -66,15 +66,19 @@ main :is(
   .business-verticals .verticals-grid article > p { font-size:12px !important; }
 }
 
-/* Footer logo: preserve the full supplied lock-up at a compact, readable size. */
+/* Footer logo: use one uncropped lock-up size on every public page. */
+.site-footer-v2 {
+  --footer-logo-size:190px;
+}
+
 .site-footer-v2 .brand-mark {
-  min-width:190px !important;
+  min-width:var(--footer-logo-size) !important;
 }
 
 .site-footer-v2 .brand-mark-image {
-  width:190px !important;
-  height:190px !important;
-  flex:0 0 190px;
+  width:var(--footer-logo-size) !important;
+  height:var(--footer-logo-size) !important;
+  flex:0 0 var(--footer-logo-size);
   overflow:hidden !important;
 }
 
@@ -88,13 +92,17 @@ main :is(
 }
 
 @media (max-width:620px) {
+  .site-footer-v2 {
+    --footer-logo-size:154px;
+  }
+
   .site-footer-v2 .brand-mark {
-    min-width:154px !important;
+    min-width:var(--footer-logo-size) !important;
   }
 
   .site-footer-v2 .brand-mark-image {
-    width:154px !important;
-    height:154px !important;
-    flex-basis:154px;
+    width:var(--footer-logo-size) !important;
+    height:var(--footer-logo-size) !important;
+    flex-basis:var(--footer-logo-size);
   }
 }
