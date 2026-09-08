@@ -65,3 +65,36 @@ main :is(
   ) > .eyebrow { font-size:12px !important; letter-spacing:.13em; }
   .business-verticals .verticals-grid article > p { font-size:12px !important; }
 }
+
+/* Footer logo: preserve the full supplied lock-up at a compact, readable size. */
+.site-footer-v2 .brand-mark {
+  min-width:190px !important;
+}
+
+.site-footer-v2 .brand-mark-image {
+  width:190px !important;
+  height:190px !important;
+  flex:0 0 190px;
+  overflow:hidden !important;
+}
+
+.site-footer-v2 .brand-mark-image img {
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  transform:none !important;
+}
+
+@media (max-width:620px) {
+  .site-footer-v2 .brand-mark {
+    min-width:154px !important;
+  }
+
+  .site-footer-v2 .brand-mark-image {
+    width:154px !important;
+    height:154px !important;
+    flex-basis:154px;
+  }
+}
