@@ -1,8 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { industries, processSteps, resources, solutionServices } from '@/lib/content';
-import { catalogueCategories } from '@/lib/catalogue';
+import { industries, processSteps, solutionServices } from '@/lib/content';
 import { useRFQ } from './SiteShell';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -23,10 +22,6 @@ export function SolutionsPage() {
 
 export function GlobalPresencePage() {
   return <><section className="presence-hero"><p className="eyebrow light">GLOBAL PRESENCE / CAPABILITY</p><h1>CONNECTED<br />ACROSS <em>GLOBAL</em><br />PROJECTS.</h1><p>IKINOVAC supports global sourcing and international project requirements. The map shows supply-network regions, not unverified office locations.</p><div className="presence-map" aria-label="Illustrative global supply-network map"><svg className="world-map" viewBox="0 0 1000 470" role="img" aria-label="World map showing supply network regions"><g className="world-land"><path d="M77 107l39-34 82-11 68 22 23 32-18 29-42 6-27 24-46-4-20 25-38-20-8-34z" /><path d="M236 205l34 13 18 46-14 39 9 63-24 72-23-39 2-65-19-48 9-42z" /><path d="M432 101l38-22 41 9 13 20-26 17-34 0-32 21-24-15z" /><path d="M467 151l46 8 29 42-5 71-27 59-33-17-15-63-25-39 8-42z" /><path d="M532 109l60-32 107 12 77 37 72 5 26 35-35 22-61-10-42 30-58-8-40 27-82-26-34-37z" /><path d="M742 256l39 7 33 27-11 31-45-1-23-29z" /><path d="M775 351l28-12 34 18-4 25-42 6-25-16z" /><path d="M103 75l26-26 25 8-13 22-25 8z" /></g><g className="world-routes"><path d="M182 130C305 83 425 119 492 157S669 123 765 164" /><path d="M257 285C341 245 413 235 490 226S662 279 776 274" /><path d="M493 157C516 204 505 231 492 267" /></g></svg><i className="map-point point-na" aria-label="North America network region" /><i className="map-point point-sa" aria-label="South America network region" /><i className="map-point point-eu" aria-label="Europe network region" /><i className="map-point point-af" aria-label="Africa network region" /><i className="map-point point-as" aria-label="Asia network region" /><i className="map-point point-oc" aria-label="Oceania network region" /></div></section><section className="presence-statements">{['Global sourcing network', 'International project support', 'Multi-region supply'].map((item, index) => <article key={item}><b>0{index + 1}</b><h2>{item}</h2><p>Discuss the sourcing, delivery and project context with the IKINOVAC project desk.</p></article>)}</section></>;
-}
-
-export function ResourcesPage() {
-  return <><section className="resource-hero" style={{ backgroundImage: `linear-gradient(105deg,rgba(13,23,20,.96),rgba(13,23,20,.55)),url(${assetUrl('/assets/industry/instrumentation.jpg')})` }}><p className="eyebrow light">RESOURCES / DOCUMENT LIBRARY</p><h1>THE<br /><em>RESOURCE</em><br />DESK.</h1><p>Request the information that supports a more informed industrial product or project conversation.</p></section><section className="resource-list">{resources.map(resource => <article key={resource.number}><b>{resource.number}</b><div><p className="eyebrow">IKINOVAC RESOURCE</p><h2>{resource.title}</h2><p>{resource.description}</p></div><Link href={`/contact?resource=${encodeURIComponent(resource.title)}`}>{resource.action} <span>→</span></Link></article>)}</section><section className="resource-linecard"><div><p className="eyebrow light">INDUSTRIAL PRODUCT DIRECTORY</p><h2>All {catalogueCategories.length} categories,<br /><em>one clear starting point.</em></h2><Link href="/products" className="button button-gold">Explore the catalogue <span>→</span></Link></div><ul>{catalogueCategories.slice(0, 8).map(category => <li key={category.slug}>{category.number} / {category.name}</li>)}</ul></section></>;
 }
 
 export function ContactPage() {

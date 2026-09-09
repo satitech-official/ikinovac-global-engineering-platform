@@ -59,20 +59,6 @@ const navigationMenus = {
       { number: '03', label: 'Multi-region supply', description: 'Consider sourcing and destination together.', href: '/global-presence#presence-statements' },
       { number: '04', label: 'Start a global RFQ', description: 'Bring the requirement to the project desk.', href: '/contact' }
     ]
-  },
-  resources: {
-    label: 'Resources', eyebrow: '05 / RESOURCE DESK', title: 'The context behind the request.',
-    summary: 'Request the documents, catalogue information and technical context that help a project team ask better questions.',
-    href: '/resources', action: 'Visit resource desk', image: '/assets/industry/instrumentation.jpg',
-    feature: { title: 'Document library.', copy: 'Line cards, catalogues and technical information in one clear starting place.', href: '/resources' },
-    items: [
-      { number: '01', label: 'Company Profile', description: 'Introduction to IKINOVAC Global.', href: '/resources#resource-01' },
-      { number: '02', label: 'IKINOVAC Line Card', description: 'Industrial product categories and scope.', href: '/resources#resource-02' },
-      { number: '03', label: 'Product Catalogues', description: 'Request information for product families.', href: '/resources#resource-03' },
-      { number: '04', label: 'Technical Datasheets', description: 'Available technical documentation.', href: '/resources#resource-04' },
-      { number: '05', label: 'Quality Documents', description: 'Quality context where it is available.', href: '/resources#resource-06' },
-      { number: '06', label: 'Knowledge Hub', description: 'CMS-ready engineering insights.', href: '/insights' }
-    ]
   }
 };
 
@@ -197,7 +183,7 @@ function Header() {
   const closeNav = () => { clearMenuClose(); setNavOpen(false); setProductsOpen(false); };
 
   return <>
-    <div className="utility-bar"><span>info@ikinovac.com</span><div><Link href="/contact">GLOBAL ENQUIRY</Link><Link href="/resources">LINE CARD</Link><span>GLOBAL / EN</span></div></div>
+    <div className="utility-bar"><span>info@ikinovac.com</span><div><Link href="/contact">GLOBAL ENQUIRY</Link><span>GLOBAL / EN</span></div></div>
     <div className="header-signal"><span>Precision engineering for global industrial projects.</span><Link href="/contact">Start a project <b>↗</b></Link></div>
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="header-main-cluster"><Brand onNavigate={closeNav} header />
@@ -211,7 +197,6 @@ function Header() {
           <Link href="/industries" onClick={closeNav}>Industries</Link>
           <Link href="/solutions" onClick={closeNav}>Solutions</Link>
           <Link href="/global-presence" onClick={closeNav}>Global Presence</Link>
-          <Link href="/resources" onClick={closeNav}>Resources</Link>
           <Link href="/contact" onClick={closeNav}>Contact</Link>
           <div className="mobile-nav-actions"><button onClick={() => { setSearchOpen(true); setNavOpen(false); }}>Search products</button><button onClick={() => { openQuote(); closeNav(); }}>Request a quote →</button></div>
         </nav>
@@ -226,7 +211,7 @@ function Header() {
 function Footer() {
   return <footer className="site-footer-v2">
     <div className="footer-word">IKINOVAC</div><div className="footer-top"><Brand inverse /><div className="footer-socials" aria-label="Social media"><a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><b>in</b></a><a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><b>◎</b></a><a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><b>f</b></a></div></div>
-    <div className="footer-grid"><section><p className="eyebrow light">PRODUCTS</p><Link href="/products">Product directory</Link><Link href="/products/valves">Valves</Link><Link href="/products/automation">Automation</Link><Link href="/products/pipe-fittings-flanges">Pipe &amp; fittings</Link></section><section><p className="eyebrow light">EXPLORE</p><Link href="/industries">Industries</Link><Link href="/solutions">Solutions</Link><Link href="/global-presence">Global presence</Link><Link href="/resources">Resources</Link><Link href="/insights">Knowledge hub</Link></section><section><p className="eyebrow light">CONTACT</p><a href="mailto:info@ikinovac.com">info@ikinovac.com</a><Link href="/contact">Start an enquiry</Link><Link href="/admin">Operations workspace</Link></section></div>
+    <div className="footer-grid"><section><p className="eyebrow light">PRODUCTS</p><Link href="/products">Product directory</Link><Link href="/products/valves">Valves</Link><Link href="/products/automation">Automation</Link><Link href="/products/pipe-fittings-flanges">Pipe &amp; fittings</Link></section><section><p className="eyebrow light">EXPLORE</p><Link href="/industries">Industries</Link><Link href="/solutions">Solutions</Link><Link href="/global-presence">Global presence</Link><Link href="/insights">Knowledge hub</Link></section><section><p className="eyebrow light">CONTACT</p><a href="mailto:info@ikinovac.com">info@ikinovac.com</a><Link href="/contact">Start an enquiry</Link><Link href="/admin">Operations workspace</Link></section></div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} IKINOVAC GLOBAL</span><span>ENGINEERING SOLUTIONS. GLOBAL IMPACT.</span><Link href="/">Back to top ↑</Link></div>
   </footer>;
 }

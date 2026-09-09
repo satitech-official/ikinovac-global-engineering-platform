@@ -79,7 +79,7 @@ export default function HomePage() {
 
     <section className="industries-section"><div className="section-title"><p className="eyebrow">06 / INDUSTRIES</p><h2>BUILT TO OPERATE<br /><em>WHERE IT COUNTS.</em></h2><Link href="/industries" className="text-arrow">View all industries <span>→</span></Link></div><div className="industry-rows">{industries.slice(0, 6).map(industry => <Link key={industry.name} href="/industries"><b>{industry.number}</b><h3>{industry.name}</h3><p>{industry.description}</p><i>↗</i></Link>)}</div></section>
 
-    <section className="quality-section"><div className="quality-line" /><p className="eyebrow">07 / RESPONSIBLE SUPPLY</p><h2>DETAILS THAT<br /><em>TRAVEL WITH IT.</em></h2><div><p>Technical requirements, documentation and inspection context can be considered from the first project conversation.</p><Link className="button button-dark" href="/resources">Access the resource desk <span>→</span></Link></div></section>
+    <section className="quality-section"><div className="quality-line" /><p className="eyebrow">07 / RESPONSIBLE SUPPLY</p><h2>DETAILS THAT<br /><em>TRAVEL WITH IT.</em></h2><div><p>Technical requirements, documentation and inspection context can be considered from the first project conversation.</p><Link className="button button-dark" href="/contact">Speak to the project desk <span>→</span></Link></div></section>
 
     <KnowledgePreview />
 
