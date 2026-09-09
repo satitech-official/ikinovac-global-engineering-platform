@@ -68,8 +68,8 @@ main :is(
 
 /* Footer logo: use one uncropped lock-up size on every public page. */
 .site-footer-v2 {
-  /* Keep the complete logo prominent enough to read at normal desktop size. */
-  --footer-logo-size:260px;
+  /* Keep one readable, consistent logo size across every public footer. */
+  --footer-logo-size:180px;
 }
 
 .site-footer-v2 .brand-mark {
@@ -94,7 +94,7 @@ main :is(
 
 @media (max-width:620px) {
   .site-footer-v2 {
-    --footer-logo-size:210px;
+    --footer-logo-size:140px;
   }
 
   .site-footer-v2 .brand-mark {
