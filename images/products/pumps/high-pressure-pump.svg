@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">High Pressure Pump</title><desc id="desc">IKINOVAC Global technical product visual for High Pressure Pump</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#020B18"/><stop offset=".58" stop-color="#09284A"/><stop offset="1" stop-color="#06182F"/></linearGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="62%"><stop stop-color="#FFD875" stop-opacity=".22"/><stop offset="1" stop-color="#FFD875" stop-opacity="0"/></radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset=".36" stop-color="#D9E3EA"/><stop offset=".7" stop-color="#6f879d"/><stop offset="1" stop-color="#e3edf4"/></linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="translate(89 44.5)"><path d="M48 0H0V48" fill="none" stroke="#b9cfdf" stroke-opacity=".09" stroke-width="1"/></pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/><rect width="1200" height="900" fill="url(#grid)"/><ellipse cx="600" cy="390" rx="420" ry="330" fill="url(#halo)"/>
+  <path d="M88 736H1112" stroke="#E7B43A" stroke-opacity=".56" stroke-width="2"/><path d="M88 730V790H148" fill="none" stroke="#E7B43A" stroke-opacity=".7" stroke-width="3"/>
+  <g transform="translate(8 0) rotate(6 600 360)" fill="none" stroke-linejoin="round"><path d="M390 462h406l-38 75H428z" fill="#163250" stroke="url(#metal)" stroke-width="18"/><circle cx="522" cy="348" r="128" fill="#193957" stroke="url(#metal)" stroke-width="22"/><circle cx="522" cy="348" r="51" stroke="#FFD875" stroke-width="18"/><path d="M630 330h116v-116h80v183H692" stroke="url(#metal)" stroke-width="30"/><path d="M540 458v-122" stroke="#FFD875" stroke-width="13"/></g>
+  <g fill="#F4F8FA"><text x="88" y="797" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="5">IKINOVAC GLOBAL</text><text x="88" y="834" font-family="Arial, sans-serif" font-size="20" fill="#FFD875" letter-spacing="3">IKV-PUM-089 · PRODUCT VISUAL</text></g>
+  <circle cx="1088" cy="120" r="10" fill="#FFD875" filter="url(#glow)"/><path d="M1008 120h56" stroke="#FFD875" stroke-width="3"/>
+</svg>
