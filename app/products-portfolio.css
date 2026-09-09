@@ -41,6 +41,7 @@
   display:grid;
   /* Retain the approved editorial two-column card composition. */
   grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:222px;
   gap:clamp(18px,2vw,28px);
   max-width:1440px;
   margin:0 auto;
@@ -50,7 +51,8 @@
   display:grid;
   grid-template-columns:minmax(0,1.22fr) minmax(220px,.78fr);
   min-width:0;
-  min-height:222px;
+  height:100%;
+  min-height:0;
   overflow:hidden;
   background:#f7f3ec;
   border:1px solid rgba(19,33,29,.19);
@@ -148,10 +150,11 @@
 .portfolio-requirement-cta .button { border:0; cursor:pointer; }
 
 @media (max-width:1120px) {
-  .portfolio-category-card { grid-template-columns:1fr; min-height:0; }
+  .portfolio-category-grid { grid-auto-rows:405px; }
+  .portfolio-category-card { grid-template-columns:1fr; height:100%; min-height:0; }
   .portfolio-category-image img { min-height:180px; height:180px; }
   .portfolio-category-copy { min-height:0; }
-  .portfolio-category-copy h3 { margin-top:28px; }
+  .portfolio-category-copy h3 { margin-top:18px; }
 }
 
 @media (max-width:800px) {
@@ -165,11 +168,11 @@
 
 @media (max-width:620px) {
   .product-portfolio-section { padding-top:70px; padding-bottom:78px; }
-  .portfolio-category-grid { grid-template-columns:1fr; gap:23px; }
+  .portfolio-category-grid { grid-template-columns:1fr; grid-auto-rows:415px; gap:23px; }
   .portfolio-category-image img { min-height:176px; height:176px; }
   .portfolio-category-copy { min-height:0; padding:24px 22px 25px; }
   .portfolio-category-copy h3 { margin:22px 0 10px; font-size:clamp(29px,8.3vw,36px); }
-  .portfolio-category-copy>span { min-height:0; font-size:15px; }
+  .portfolio-category-copy>span { min-height:0; font-size:14px; }
   .portfolio-category-copy>b { margin-top:18px; }
   .portfolio-capability-section { padding-top:78px; padding-bottom:76px; }
   .portfolio-capabilities { grid-template-columns:1fr; gap:0; }
