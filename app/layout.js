@@ -8,6 +8,7 @@ import './rfq-workflow.css';
 import './client-ready.css';
 import './typography-refinement.css';
 import './products-portfolio.css';
+import './contact-project-desk.css';
 
 export const metadata = {
   metadataBase: new URL('https://ikinovac.com'),
