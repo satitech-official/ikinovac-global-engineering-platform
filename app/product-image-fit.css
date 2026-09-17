@@ -1,0 +1,115 @@
+/* Product artwork presentation.
+   The approved source files stay untouched; only their on-page fit is controlled here. */
+
+/* Products overview: use the representative approved product artwork without cropping it. */
+.portfolio-category-grid {
+  grid-auto-rows:minmax(276px,auto) !important;
+}
+
+.portfolio-category-card {
+  min-height:276px;
+}
+
+.portfolio-category-image {
+  display:grid;
+  place-items:center;
+  min-height:100%;
+  background:#061510 !important;
+}
+
+.portfolio-category-image img {
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:#061510;
+  transform:none;
+}
+
+.portfolio-category-copy {
+  gap:0;
+}
+
+.portfolio-category-copy>span {
+  margin-bottom:14px;
+}
+
+.portfolio-category-copy>b {
+  margin-top:auto !important;
+  padding-top:8px;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .portfolio-category-card:hover .portfolio-category-image img {
+    transform:none !important;
+    filter:brightness(1.04) saturate(1.02) !important;
+  }
+}
+
+/* Category product-family cards: the supplied portrait product artwork is shown in full.
+   No source image dimensions or files are changed. */
+.family-card-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(18px,2vw,28px) !important;
+  align-items:stretch;
+}
+
+.family-product-card,
+.family-product-card>a {
+  min-width:0;
+  height:100%;
+}
+
+.family-product-card>a {
+  display:flex;
+  flex-direction:column;
+}
+
+.family-product-image {
+  width:100%;
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:3 / 4;
+  flex:0 0 auto;
+  background-color:#061510 !important;
+  background-position:center,center !important;
+  background-size:cover,contain !important;
+  background-repeat:no-repeat,no-repeat !important;
+}
+
+.family-product-copy {
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  min-height:0;
+}
+
+.family-product-copy>b {
+  margin-top:auto;
+}
+
+/* Keep complete poster artwork visible in related product tiles as well. */
+.related-product-grid>a {
+  background-color:#061510 !important;
+  background-position:center,center !important;
+  background-size:cover,contain !important;
+  background-repeat:no-repeat,no-repeat !important;
+}
+
+@media (max-width:1120px) {
+  .portfolio-category-grid { grid-auto-rows:minmax(420px,auto) !important; }
+  .portfolio-category-image { min-height:205px; }
+  .portfolio-category-image img { height:205px !important; }
+  .family-card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width:700px) {
+  .portfolio-category-grid { grid-auto-rows:auto !important; }
+  .portfolio-category-card { min-height:0; }
+  .portfolio-category-image { min-height:240px; }
+  .portfolio-category-image img { height:240px !important; }
+  .family-card-grid { grid-template-columns:1fr; }
+  .family-product-image { aspect-ratio:3 / 4; }
+}
