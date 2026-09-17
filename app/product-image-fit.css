@@ -98,6 +98,68 @@
   background-repeat:no-repeat,no-repeat !important;
 }
 
+/* Product detail hero: keep the artwork comfortably clear of the floating menu.
+   The image itself is not resized or edited; only the containing viewport is reduced. */
+@media (min-width:851px) {
+  .product-detail-hero {
+    margin-top:clamp(28px,3vw,44px) !important;
+    grid-template-columns:minmax(0,.88fr) minmax(390px,1.12fr) !important;
+    gap:clamp(48px,6vw,92px) !important;
+    align-items:start !important;
+  }
+
+  .product-gallery {
+    width:min(100%,590px) !important;
+    max-width:590px !important;
+    justify-self:end !important;
+  }
+
+  .product-gallery>div {
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:4 / 3 !important;
+    background-color:#061510 !important;
+    background-position:center,center !important;
+    background-size:cover,contain !important;
+    background-repeat:no-repeat,no-repeat !important;
+  }
+}
+
+@media (min-width:851px) and (max-width:1180px) {
+  .product-detail-hero {
+    grid-template-columns:minmax(0,.95fr) minmax(330px,1.05fr) !important;
+    gap:36px !important;
+  }
+
+  .product-gallery {
+    max-width:520px !important;
+  }
+}
+
+@media (max-width:850px) {
+  .product-detail-hero {
+    margin-top:20px !important;
+  }
+
+  .product-gallery {
+    width:100% !important;
+    max-width:620px !important;
+    margin-inline:auto !important;
+  }
+
+  .product-gallery>div {
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:3 / 4 !important;
+    background-color:#061510 !important;
+    background-position:center,center !important;
+    background-size:cover,contain !important;
+    background-repeat:no-repeat,no-repeat !important;
+  }
+}
+
 @media (max-width:1120px) {
   .portfolio-category-grid { grid-auto-rows:minmax(420px,auto) !important; }
   .portfolio-category-image { min-height:205px; }
