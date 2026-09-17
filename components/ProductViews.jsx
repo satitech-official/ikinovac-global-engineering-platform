@@ -8,9 +8,11 @@ import { useRFQ } from './SiteShell';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const assetUrl = path => `${basePath}${path}`;
 const productVisualStyle = product => ({
-  backgroundImage: `linear-gradient(180deg, rgba(5,16,13,.04), rgba(5,16,13,.82)), url(${assetUrl(product.cardImage || product.images[0])})`,
+  backgroundColor: '#061510',
+  backgroundImage: `linear-gradient(180deg, rgba(5,16,13,.02), rgba(5,16,13,.14)), url(${assetUrl(product.cardImage || product.images[0])})`,
   backgroundPosition: `center, ${product.cardImagePosition || 'center'}`,
-  backgroundSize: `cover, ${product.cardImageSize || 'cover'}`
+  backgroundSize: 'cover, contain',
+  backgroundRepeat: 'no-repeat, no-repeat'
 });
 
 export function CategoryView({ category, products }) {
