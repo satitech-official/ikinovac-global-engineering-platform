@@ -14,6 +14,11 @@ const capabilities = [
   { number: '03', title: 'Project Support', copy: 'Connecting documentation, procurement coordination and delivery support.' }
 ];
 
+const getCategoryPortfolioImage = category => {
+  const representativeProduct = catalogueProducts.find(product => product.categorySlug === category.slug);
+  return representativeProduct?.cardImage || representativeProduct?.images?.[0] || category.image;
+};
+
 export default function CataloguePage() {
   // These controls stay in the approved hero; navigation below is deliberately category-led.
   const [query, setQuery] = useState('');
@@ -41,7 +46,7 @@ export default function CataloguePage() {
 
       <div className="portfolio-category-grid">
         {catalogueCategories.map((category, index) => <Link href={`/products/${category.slug}`} className={`portfolio-category-card ${index % 4 === 1 ? 'portfolio-category-card-dark' : ''}`} key={category.slug}>
-          <div className="portfolio-category-image"><img src={assetUrl(category.image)} alt={category.imageAlt} loading="lazy" /></div>
+          <div className="portfolio-category-image"><img src={assetUrl(getCategoryPortfolioImage(category))} alt={`${category.name} representative IKINOVAC product`} loading="lazy" /></div>
           <div className="portfolio-category-copy">
             <p>{category.number} / PRODUCT CATEGORY</p>
             <h3>{category.name}</h3>
