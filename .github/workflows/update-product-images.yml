@@ -1,0 +1,45 @@
+name: Update IKINOVAC product images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-product-images.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-images:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download approved product image pack
+        run: |
+          curl -L --fail --retry 3 \
+            'https://gcdn.picsart.com/editing-temp/ad43696d-b200-4650-ada8-3b6f8098a9f7.zip' \
+            -o /tmp/ikinovac-product-images.zip
+
+      - name: Replace product-family images
+        run: |
+          unzip -o /tmp/ikinovac-product-images.zip -d .
+          test -f public/images/catalog/valves/ball-valves/ball-valves.webp
+          test -f public/images/catalog/filtration/water-treatment-filters/water-treatment-filters.webp
+
+      - name: Commit image refresh
+        run: |
+          if git diff --quiet -- public/images/catalog; then
+            echo 'No image changes detected.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/images/catalog
+          git commit -m 'assets: update IKINOVAC product images 01-100'
+          git push origin HEAD:main
