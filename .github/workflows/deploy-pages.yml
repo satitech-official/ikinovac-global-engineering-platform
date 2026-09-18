@@ -20,19 +20,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+
       - name: Install dependencies
         run: npm ci
+
       - name: Build the static site
         run: npm run build
         env:
           GITHUB_ACTIONS: 'true'
-      - name: Prepare Pages output
-        run: touch out/.nojekyll
+
+      - name: Validate Pages output
+        run: |
+          test -f out/index.html
+          test -f out/products/index.html
+          touch out/.nojekyll
+          echo "GitHub Pages export validated."
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
