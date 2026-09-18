@@ -340,3 +340,29 @@
     border-radius:15px !important;
   }
 }
+
+
+/* Product detail artwork clarity
+   The approved product poster should be shown exactly as supplied. Do not
+   place the card/related-product dark gradient over the primary product image. */
+.product-gallery>div.product-detail-artwork {
+  background-color:#071912 !important;
+  background-position:center !important;
+  background-size:contain !important;
+  background-repeat:no-repeat !important;
+  filter:none !important;
+}
+
+.product-gallery>div.product-detail-artwork::before,
+.product-gallery>div.product-detail-artwork::after {
+  content:none !important;
+  display:none !important;
+}
+
+.product-gallery>div.product-detail-artwork>span {
+  background:rgba(5,18,14,.62) !important;
+  color:#f0d278 !important;
+  border-radius:999px !important;
+  padding:5px 8px !important;
+  backdrop-filter:blur(4px);
+}
