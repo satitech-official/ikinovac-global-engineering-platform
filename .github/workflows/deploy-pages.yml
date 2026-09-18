@@ -42,8 +42,9 @@ jobs:
         run: |
           test -f out/index.html
           test -f out/products/index.html
+          test ! -d out/catalogues
           touch out/.nojekyll
-          echo "GitHub Pages export validated."
+          echo "GitHub Pages export validated; legacy /catalogues output is absent."
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
