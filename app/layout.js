@@ -10,6 +10,7 @@ import './typography-refinement.css';
 import './products-portfolio.css';
 import './product-image-fit.css';
 import './contact-project-desk.css';
+import './mobile-homepage-fixes.css';
 
 export const metadata = {
   metadataBase: new URL('https://ikinovac.com'),
