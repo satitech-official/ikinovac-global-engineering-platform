@@ -1,0 +1,107 @@
+/* Mobile homepage polish
+   Fixes the global-network composition on narrow screens and improves
+   Knowledge Hub micro-label readability without changing desktop layouts. */
+
+@media (max-width:850px) {
+  /* The global-network section must stack completely on mobile. Earlier
+     desktop !important grid rules were forcing a narrow two-column layout. */
+  .global-network-section {
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    grid-template-rows:auto auto !important;
+    gap:32px !important;
+    min-height:0 !important;
+    padding:82px 20px 76px !important;
+    align-items:start !important;
+    overflow:hidden !important;
+  }
+
+  .global-network-section .network-copy {
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+  }
+
+  .global-network-section .network-copy > .eyebrow {
+    max-width:100% !important;
+    margin-bottom:14px !important;
+  }
+
+  .global-network-section .network-copy h2 {
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 0 22px !important;
+    font-size:clamp(36px,10.5vw,48px) !important;
+    line-height:.94 !important;
+    letter-spacing:-.06em !important;
+    word-break:normal !important;
+    overflow-wrap:normal !important;
+    hyphens:none !important;
+  }
+
+  .global-network-section .network-copy > p:not(.eyebrow) {
+    width:100% !important;
+    max-width:34ch !important;
+    margin:0 0 26px !important;
+    font-size:16px !important;
+    line-height:1.68 !important;
+    word-break:normal !important;
+    overflow-wrap:normal !important;
+    hyphens:none !important;
+  }
+
+  .global-network-section .network-copy .text-arrow {
+    display:inline-flex !important;
+    align-items:center !important;
+    gap:9px !important;
+    max-width:100% !important;
+    white-space:normal !important;
+  }
+
+  .global-network-section .network-orbit {
+    position:relative !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    aspect-ratio:1.16 !important;
+    margin:0 !important;
+    justify-self:stretch !important;
+    transform:none !important;
+  }
+
+  /* Knowledge Hub category labels: readable on phone-sized screens. */
+  .knowledge-insights article b {
+    display:inline-block !important;
+    margin:0 0 8px !important;
+    color:var(--accent-yellow) !important;
+    font:700 12.5px/1.2 var(--sans) !important;
+    letter-spacing:.12em !important;
+    text-transform:uppercase !important;
+  }
+
+  .knowledge-insights article h3 {
+    margin-top:6px !important;
+  }
+}
+
+@media (max-width:520px) {
+  .global-network-section {
+    gap:28px !important;
+    padding-inline:20px !important;
+  }
+
+  .global-network-section .network-copy h2 {
+    font-size:clamp(35px,10.8vw,44px) !important;
+  }
+
+  .global-network-section .network-copy > p:not(.eyebrow) {
+    max-width:31ch !important;
+  }
+
+  .knowledge-insights article b {
+    font-size:13px !important;
+    letter-spacing:.11em !important;
+  }
+}
