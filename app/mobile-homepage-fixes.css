@@ -2,6 +2,25 @@
    Fixes the global-network composition on narrow screens and improves
    Knowledge Hub micro-label readability without changing desktop layouts. */
 
+/* Keep the homepage footer logo exactly the same size as footer logos on
+   every other route. Homepage-specific Brand rules were shrinking it. */
+body:has(.home-hero) .site-footer-v2 .brand-mark {
+  min-width:180px !important;
+}
+body:has(.home-hero) .site-footer-v2 .brand-mark-image {
+  width:180px !important;
+  height:180px !important;
+  flex:0 0 180px !important;
+}
+body:has(.home-hero) .site-footer-v2 .brand-mark-image img {
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  transform:none !important;
+}
+
 @media (max-width:850px) {
   /* The global-network section must stack completely on mobile. Earlier
      desktop !important grid rules were forcing a narrow two-column layout. */
@@ -83,6 +102,17 @@
 
   .knowledge-insights article h3 {
     margin-top:6px !important;
+  }
+}
+
+@media (max-width:620px) {
+  body:has(.home-hero) .site-footer-v2 .brand-mark {
+    min-width:140px !important;
+  }
+  body:has(.home-hero) .site-footer-v2 .brand-mark-image {
+    width:140px !important;
+    height:140px !important;
+    flex-basis:140px !important;
   }
 }
 
