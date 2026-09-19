@@ -9,6 +9,8 @@ import { useRFQ } from '../SiteShell';
 const emptyForm = { name: '', company: '', email: '', phone: '', quantity: '', requirement: '' };
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const endpoint = process.env.NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT || '';
+const fallbackEmail = 'info@ikinovac.com';
+const fallbackEndpoint = `https://formsubmit.co/ajax/${fallbackEmail}`;
 
 const makeProduct = product => product ? {
   id: product.id || 'catalogue-product',
@@ -29,6 +31,38 @@ const toBase64 = async blob => {
   bytes.forEach(byte => { binary += String.fromCharCode(byte); }); return window.btoa(binary);
 };
 const download = (blob, filename) => { const url = URL.createObjectURL(blob); const anchor = document.createElement('a'); anchor.href = url; anchor.download = filename; anchor.click(); window.setTimeout(() => URL.revokeObjectURL(url), 1200); };
+
+const submitFallback = async (rfq, pdf, filename) => {
+  const data = new FormData();
+  data.append('_subject', `New RFQ | ${rfq.product.name} | ${rfq.customer.company} | ${rfq.reference}`);
+  data.append('_template', 'table');
+  data.append('_captcha', 'false');
+  data.append('_replyto', rfq.customer.email);
+  data.append('RFQ Reference', rfq.reference);
+  data.append('Customer Name', rfq.customer.name);
+  data.append('Company', rfq.customer.company);
+  data.append('Email', rfq.customer.email);
+  data.append('Phone / WhatsApp', rfq.customer.phone || 'Not specified');
+  data.append('Product', rfq.product.name);
+  data.append('Category', rfq.product.category);
+  data.append('Product Family', rfq.product.family);
+  data.append('Quantity', rfq.quantity || 'Not specified');
+  data.append('Requirement', rfq.requirement);
+  data.append('Product Page', rfq.product.url || window.location.href);
+  data.append('attachment', new File([pdf], filename, { type: 'application/pdf' }));
+
+  const response = await fetch(fallbackEndpoint, {
+    method: 'POST',
+    headers: { Accept: 'application/json' },
+    body: data
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload?.success === false) {
+    throw new Error(payload?.message || 'The RFQ email service could not accept this request.');
+  }
+  const note = String(payload?.message || '').toLowerCase();
+  return { activationRequired: note.includes('activate') || note.includes('confirm'), payload };
+};
 
 export default function SimpleRFQModal() {
   const { quoteOpen, quoteProduct, closeQuote } = useRFQ();
@@ -52,10 +86,19 @@ export default function SimpleRFQModal() {
     const rfq = { reference, createdAt, customer: { name: form.name.trim(), company: form.company.trim(), email: form.email.trim(), phone: form.phone.trim() }, product, quantity: form.quantity.trim() || null, requirement: form.requirement.trim() };
     try {
       const pdf = await createRFQPdf(rfq);
-      if (!endpoint) throw new Error('The secure RFQ email service is not configured yet. Your information is still available in this form.');
       const filename = `IKINOVAC-RFQ-${reference}.pdf`;
-      const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Idempotency-Key': reference }, body: JSON.stringify({ ...rfq, pdf: { filename, content: await toBase64(pdf) } }) });
-      if (!response.ok) throw new Error((await response.json().catch(() => ({}))).message || 'The secure RFQ service could not accept this request.');
+
+      if (endpoint) {
+        const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Idempotency-Key': reference }, body: JSON.stringify({ ...rfq, pdf: { filename, content: await toBase64(pdf) } }) });
+        if (!response.ok) throw new Error((await response.json().catch(() => ({}))).message || 'The secure RFQ service could not accept this request.');
+      } else {
+        const fallback = await submitFallback(rfq, pdf, filename);
+        if (fallback.activationRequired) {
+          download(pdf, filename);
+          throw new Error('RFQ email activation is required once. Please open info@ikinovac.com, confirm the FormSubmit activation email, then submit again. Your PDF has been downloaded safely.');
+        }
+      }
+
       download(pdf, filename); setSuccess({ reference, product: product.name, company: rfq.customer.company }); setStatus('success');
     } catch (error) { setMessage(error?.message || "We couldn't submit your RFQ yet. Your information has been preserved. Please try again."); setStatus('form'); }
   };
