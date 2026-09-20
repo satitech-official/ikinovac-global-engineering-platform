@@ -12,16 +12,159 @@ import './product-image-fit.css';
 import './contact-project-desk.css';
 import './mobile-homepage-fixes.css';
 
+const siteUrl = 'https://ikinovac.com';
+const socialProfiles = [
+  'https://www.linkedin.com/in/ikinovac-global/',
+  'https://www.instagram.com/ikinovacglobal/',
+  'https://www.facebook.com/ikinovacglobal'
+];
+
 export const metadata = {
-  metadataBase: new URL('https://ikinovac.com'),
-  title: { default: 'IKINOVAC GLOBAL | Engineering Solutions. Global Impact.', template: '%s | IKINOVAC GLOBAL' },
-  description: 'Global engineering, industrial supply and procurement solutions for critical industries.',
-  keywords: ['industrial engineering', 'global procurement', 'valves', 'piping', 'industrial supply', 'IKINOVAC Global'],
-  openGraph: { type: 'website', siteName: 'IKINOVAC GLOBAL', title: 'IKINOVAC GLOBAL | Engineering Solutions. Global Impact.', description: 'Engineering-led industrial products, global sourcing and project supply solutions.' },
-  twitter: { card: 'summary_large_image', title: 'IKINOVAC GLOBAL', description: 'Engineering solutions. Global impact.' }
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'IKINOVAC GLOBAL | Industrial Supply, Engineering Procurement & Global Sourcing',
+    template: '%s | IKINOVAC GLOBAL'
+  },
+  description: 'IKINOVAC GLOBAL supports industrial sourcing, engineering procurement and project supply for valves, automation, piping, instrumentation, rotating equipment, MRO and critical industry requirements worldwide.',
+  applicationName: 'IKINOVAC GLOBAL',
+  authors: [{ name: 'IKINOVAC GLOBAL' }],
+  creator: 'IKINOVAC GLOBAL',
+  publisher: 'IKINOVAC GLOBAL',
+  category: 'Industrial Engineering and Global Procurement',
+  keywords: [
+    'industrial engineering supplier',
+    'global industrial supplier',
+    'engineering procurement',
+    'global sourcing company',
+    'industrial procurement services',
+    'project supply company',
+    'valve supplier',
+    'industrial valves',
+    'actuation and automation',
+    'pipe fittings and flanges',
+    'industrial instrumentation',
+    'industrial equipment supplier',
+    'MRO supplier',
+    'oil and gas procurement',
+    'petrochemical procurement',
+    'power generation equipment sourcing',
+    'mining equipment sourcing',
+    'industrial supply Africa',
+    'industrial supply Middle East',
+    'industrial supply Europe',
+    'industrial supply USA',
+    'IKINOVAC Global'
+  ],
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en': '/',
+      'x-default': '/'
+    }
+  },
+  openGraph: {
+    type: 'website',
+    url: siteUrl,
+    siteName: 'IKINOVAC GLOBAL',
+    title: 'IKINOVAC GLOBAL | Industrial Supply, Engineering Procurement & Global Sourcing',
+    description: 'Engineering-led industrial sourcing, procurement and project supply support for global industrial requirements.'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IKINOVAC GLOBAL | Industrial Supply & Global Sourcing',
+    description: 'Industrial sourcing, engineering procurement and project supply for global industrial requirements.'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
+  }
 };
 
 export default function RootLayout({ children }) {
-  const organizationSchema = { '@context': 'https://schema.org', '@type': 'Organization', name: 'IKINOVAC GLOBAL', description: 'Engineering-led industrial product, procurement and project supply solutions.', email: 'info@ikinovac.com' };
-  return <html lang="en"><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} /></body></html>;
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: 'IKINOVAC GLOBAL',
+    url: siteUrl,
+    logo: `${siteUrl}/assets/ikinovac-logo-enhanced-v2.png`,
+    description: 'Engineering-led industrial sourcing, procurement and project supply solutions for global industrial requirements.',
+    email: 'info@ikinovac.com',
+    sameAs: socialProfiles,
+    areaServed: [
+      'Worldwide',
+      'United States',
+      'Canada',
+      'United Kingdom',
+      'Germany',
+      'Netherlands',
+      'France',
+      'Italy',
+      'Spain',
+      'United Arab Emirates',
+      'Saudi Arabia',
+      'Qatar',
+      'Oman',
+      'Bahrain',
+      'Kuwait',
+      'India',
+      'Singapore',
+      'Malaysia',
+      'Indonesia',
+      'South Africa',
+      'Nigeria',
+      'Kenya',
+      'Egypt',
+      'Ghana',
+      'Tanzania',
+      'Morocco',
+      'Angola',
+      'Mozambique'
+    ],
+    knowsAbout: [
+      'Industrial engineering',
+      'Global sourcing',
+      'Engineering procurement',
+      'Project supply',
+      'Industrial valves',
+      'Actuation and automation',
+      'Pipe fittings and flanges',
+      'Instrumentation',
+      'Rotating equipment',
+      'MRO supply',
+      'Oil and gas',
+      'Petrochemical',
+      'Power generation',
+      'Mining and minerals'
+    ],
+    contactPoint: [{
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: 'info@ikinovac.com',
+      availableLanguage: ['English'],
+      areaServed: 'Worldwide'
+    }]
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    url: siteUrl,
+    name: 'IKINOVAC GLOBAL',
+    publisher: { '@id': `${siteUrl}/#organization` },
+    inLanguage: 'en'
+  };
+
+  return <html lang="en"><body>{children}
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+  </body></html>;
 }
