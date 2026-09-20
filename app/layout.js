@@ -12,6 +12,7 @@ import './products-portfolio.css';
 import './product-image-fit.css';
 import './contact-project-desk.css';
 import './mobile-homepage-fixes.css';
+import './homepage-density-refinement.css';
 
 const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
 const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
