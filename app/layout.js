@@ -26,10 +26,10 @@ const socialProfiles = [
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'IKINOVAC GLOBAL | Industrial Supply, Engineering Procurement & Global Sourcing',
+    default: 'IKINOVAC GLOBAL | Industrial Supply & Engineering Procurement Africa',
     template: '%s | IKINOVAC GLOBAL'
   },
-  description: 'IKINOVAC GLOBAL supports industrial sourcing, engineering procurement and project supply for valves, automation, piping, instrumentation, rotating equipment, MRO and critical industry requirements worldwide.',
+  description: 'IKINOVAC GLOBAL supports African industrial buyers with engineering procurement, valves, automation, piping, instrumentation, rotating equipment, MRO and project supply, backed by global sourcing capability.',
   applicationName: 'IKINOVAC GLOBAL',
   authors: [{ name: 'IKINOVAC GLOBAL' }],
   creator: 'IKINOVAC GLOBAL',
@@ -59,6 +59,12 @@ export const metadata = {
     'power generation equipment sourcing',
     'mining equipment sourcing',
     'industrial supply Africa',
+    'engineering procurement Africa',
+    'industrial equipment supplier Africa',
+    'oil and gas supplier Africa',
+    'mining equipment supplier Africa',
+    'MRO supplier Africa',
+    'valves supplier Africa',
     'industrial supply Middle East',
     'industrial supply Europe',
     'industrial supply USA',
@@ -75,14 +81,14 @@ export const metadata = {
     type: 'website',
     url: siteUrl,
     siteName: 'IKINOVAC GLOBAL',
-    title: 'IKINOVAC GLOBAL | Industrial Supply, Engineering Procurement & Global Sourcing',
-    description: 'Engineering-led industrial sourcing, procurement and project supply across North America, Europe, the Middle East, Africa and Asia-Pacific.',
+    title: 'IKINOVAC GLOBAL | Industrial Supply & Engineering Procurement Africa',
+    description: 'Africa-focused industrial sourcing, engineering procurement and project supply across South Africa, Nigeria, Kenya, Egypt, Ghana, Tanzania, Morocco, Angola and Mozambique.',
     images: [{ url: '/og.png', width: 1200, height: 630, alt: 'IKINOVAC GLOBAL industrial engineering and procurement' }]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IKINOVAC GLOBAL | Industrial Supply & Global Sourcing',
-    description: 'Industrial sourcing, engineering procurement and project supply across Western, Eastern, Middle Eastern and African industrial markets.',
+    title: 'IKINOVAC GLOBAL | Industrial Supply & Procurement Africa',
+    description: 'Industrial sourcing, engineering procurement and project supply for African industrial markets, supported by a global sourcing network.',
     images: ['/og.png']
   },
   verification: {
@@ -111,7 +117,7 @@ export default function RootLayout({ children }) {
     url: siteUrl,
     logo: `${siteUrl}/assets/ikinovac-logo.jpeg`,
     image: `${siteUrl}/og.png`,
-    description: 'Engineering-led industrial sourcing, procurement and project supply solutions for North America, Europe, the Middle East, Africa and Asia-Pacific.',
+    description: 'Africa-focused industrial sourcing, engineering procurement and project supply solutions supported by global sourcing capability.',
     email: 'info@ikinovac.com',
     sameAs: socialProfiles,
     areaServed: [
