@@ -35,6 +35,11 @@ export const metadata = {
   creator: 'IKINOVAC GLOBAL',
   publisher: 'IKINOVAC GLOBAL',
   category: 'Industrial Engineering and Global Procurement',
+  icons: {
+    icon: '/assets/ikinovac-logo.jpeg',
+    shortcut: '/assets/ikinovac-logo.jpeg',
+    apple: '/assets/ikinovac-logo.jpeg'
+  },
   keywords: [
     'industrial engineering supplier',
     'global industrial supplier',
@@ -71,12 +76,14 @@ export const metadata = {
     url: siteUrl,
     siteName: 'IKINOVAC GLOBAL',
     title: 'IKINOVAC GLOBAL | Industrial Supply, Engineering Procurement & Global Sourcing',
-    description: 'Engineering-led industrial sourcing, procurement and project supply across North America, Europe, the Middle East, Africa and Asia-Pacific.'
+    description: 'Engineering-led industrial sourcing, procurement and project supply across North America, Europe, the Middle East, Africa and Asia-Pacific.',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'IKINOVAC GLOBAL industrial engineering and procurement' }]
   },
   twitter: {
     card: 'summary_large_image',
     title: 'IKINOVAC GLOBAL | Industrial Supply & Global Sourcing',
-    description: 'Industrial sourcing, engineering procurement and project supply across Western, Eastern, Middle Eastern and African industrial markets.'
+    description: 'Industrial sourcing, engineering procurement and project supply across Western, Eastern, Middle Eastern and African industrial markets.',
+    images: ['/og.png']
   },
   verification: {
     ...(googleVerification ? { google: googleVerification } : {}),
@@ -102,7 +109,8 @@ export default function RootLayout({ children }) {
     '@id': `${siteUrl}/#organization`,
     name: 'IKINOVAC GLOBAL',
     url: siteUrl,
-    logo: `${siteUrl}/assets/ikinovac-logo-enhanced-v2.png`,
+    logo: `${siteUrl}/assets/ikinovac-logo.jpeg`,
+    image: `${siteUrl}/og.png`,
     description: 'Engineering-led industrial sourcing, procurement and project supply solutions for North America, Europe, the Middle East, Africa and Asia-Pacific.',
     email: 'info@ikinovac.com',
     sameAs: socialProfiles,
