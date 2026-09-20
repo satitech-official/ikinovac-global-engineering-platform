@@ -1,5 +1,6 @@
 import PublicPage from '@/components/PublicPage';
 import { IndustriesPage } from '@/components/ContentPages';
+import { industries } from '@/lib/content';
 
 export const metadata = {
   title: 'Industrial Supply for Oil & Gas, Power, Mining & Manufacturing',
@@ -22,4 +23,34 @@ export const metadata = {
   }
 };
 
-export default function Page() { return <PublicPage><IndustriesPage /></PublicPage>; }
+export default function Page() {
+  const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Industries Served by IKINOVAC GLOBAL',
+    url: `${siteUrl}/industries`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: industries.map((industry, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: industry.name,
+        url: `${siteUrl}/industries#industry-${industry.id}`
+      }))
+    }
+  };
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries` }
+    ]
+  };
+  return <PublicPage>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <IndustriesPage />
+  </PublicPage>;
+}
