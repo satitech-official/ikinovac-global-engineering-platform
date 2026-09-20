@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import './globals.css';
 import './editorial-refresh.css';
 import './reference-motion.css';
@@ -13,6 +14,7 @@ import './contact-project-desk.css';
 import './mobile-homepage-fixes.css';
 
 const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
+const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
 const socialProfiles = [
   'https://www.linkedin.com/in/ikinovac-global/',
   'https://www.instagram.com/ikinovacglobal/',
@@ -166,5 +168,15 @@ export default function RootLayout({ children }) {
   return <html lang="en"><body>{children}
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+    {gaId && <>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
+      <Script id="ikinovac-ga4" strategy="afterInteractive">{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', '${gaId}', { anonymize_ip: true });
+      `}</Script>
+    </>}
   </body></html>;
 }
