@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+
 import { catalogueCategories, catalogueProducts, productHref } from '@/lib/catalogue';
 import { globalMarkets } from '@/lib/markets';
 
