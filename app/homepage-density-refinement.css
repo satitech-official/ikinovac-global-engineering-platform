@@ -224,3 +224,252 @@ body:has(.home-hero) .business-verticals .verticals-grid h3 {
     margin-top:22px !important;
   }
 }
+
+
+/* Final homepage-wide spacing pass requested from visual QA
+   1) reduce oversized empty top space
+   2) open up large heading letter/word spacing
+   3) enlarge eyebrow + supporting intro copy consistently across sections */
+body:has(.home-hero) :is(
+  .requirement-gateway,
+  .business-verticals,
+  .global-network-section,
+  .company-intro-section,
+  .directory-section,
+  .home-product-shelf,
+  .complete-system,
+  .process-section,
+  .industries-section,
+  .quality-section,
+  .knowledge-resources,
+  .knowledge-insights,
+  .home-contact-cta
+) {
+  padding-top:clamp(42px,4.6vw,68px) !important;
+  padding-bottom:clamp(58px,6vw,88px) !important;
+}
+
+/* Keep paired editorial heading columns near the top instead of visually
+   dropping the smaller copy toward the bottom of the oversized title. */
+body:has(.home-hero) :is(
+  .requirement-gateway-heading,
+  .verticals-heading,
+  .directory-heading,
+  .shelf-heading
+) {
+  align-items:start !important;
+  row-gap:24px !important;
+  margin-bottom:clamp(24px,2.5vw,34px) !important;
+}
+
+/* Large editorial headings: noticeably more air between letters and words. */
+body:has(.home-hero) :is(
+  .requirement-gateway-heading,
+  .verticals-heading,
+  .network-copy,
+  .company-intro-copy,
+  .directory-heading,
+  .shelf-heading,
+  .system-demo-heading,
+  .process-section > div,
+  .industries-section .section-title,
+  .quality-section,
+  .knowledge-resources,
+  .knowledge-insights,
+  .home-contact-cta
+) h2 {
+  letter-spacing:.018em !important;
+  word-spacing:.10em !important;
+  line-height:.96 !important;
+}
+
+body:has(.home-hero) :is(
+  .requirement-gateway-heading,
+  .verticals-heading,
+  .network-copy,
+  .company-intro-copy,
+  .directory-heading,
+  .shelf-heading,
+  .system-demo-heading,
+  .process-section > div,
+  .industries-section .section-title,
+  .quality-section,
+  .knowledge-resources,
+  .knowledge-insights,
+  .home-contact-cta
+) h2 em,
+body:has(.home-hero) :is(
+  .requirement-gateway-heading,
+  .verticals-heading,
+  .network-copy,
+  .company-intro-copy,
+  .directory-heading,
+  .shelf-heading,
+  .system-demo-heading,
+  .process-section > div,
+  .industries-section .section-title,
+  .quality-section,
+  .knowledge-resources,
+  .knowledge-insights,
+  .home-contact-cta
+) h2 span {
+  letter-spacing:.022em !important;
+  word-spacing:.10em !important;
+}
+
+/* Section micro labels such as "02 / CURATED BUSINESS VERTICALS". */
+body:has(.home-hero) :is(
+  .requirement-gateway,
+  .business-verticals,
+  .global-network-section,
+  .company-intro-section,
+  .directory-section,
+  .home-product-shelf,
+  .complete-system,
+  .process-section,
+  .industries-section,
+  .quality-section,
+  .knowledge-resources,
+  .knowledge-insights,
+  .home-contact-cta
+) .eyebrow {
+  font-size:14px !important;
+  line-height:1.35 !important;
+  letter-spacing:.14em !important;
+}
+
+/* Supporting copy on the left/right of every major homepage heading. */
+body:has(.home-hero) :is(
+  .requirement-gateway-heading,
+  .verticals-heading,
+  .network-copy,
+  .company-intro-copy,
+  .directory-heading,
+  .shelf-heading,
+  .system-demo-heading,
+  .process-section > div,
+  .industries-section .section-title,
+  .quality-section,
+  .knowledge-resources,
+  .knowledge-insights,
+  .home-contact-cta
+) > p:not(.eyebrow) {
+  max-width:560px !important;
+  font-size:19px !important;
+  line-height:1.62 !important;
+}
+
+/* The vertical section uses the same larger intro copy and a tighter title/card
+   relationship so the black background never reads as unused space. */
+body:has(.home-hero) .business-verticals .verticals-heading > p:not(.eyebrow) {
+  max-width:560px !important;
+  font-size:19px !important;
+  line-height:1.62 !important;
+}
+body:has(.home-hero) .business-verticals .verticals-grid {
+  margin-top:0 !important;
+}
+body:has(.home-hero) .business-verticals .verticals-grid h3 {
+  margin-top:22px !important;
+}
+
+@media (max-width:850px) {
+  body:has(.home-hero) :is(
+    .requirement-gateway,
+    .business-verticals,
+    .global-network-section,
+    .company-intro-section,
+    .directory-section,
+    .home-product-shelf,
+    .complete-system,
+    .process-section,
+    .industries-section,
+    .quality-section,
+    .knowledge-resources,
+    .knowledge-insights,
+    .home-contact-cta
+  ) {
+    padding-top:46px !important;
+    padding-bottom:58px !important;
+  }
+
+  body:has(.home-hero) :is(
+    .requirement-gateway-heading,
+    .verticals-heading,
+    .network-copy,
+    .company-intro-copy,
+    .directory-heading,
+    .shelf-heading,
+    .system-demo-heading,
+    .process-section > div,
+    .industries-section .section-title,
+    .quality-section,
+    .knowledge-resources,
+    .knowledge-insights,
+    .home-contact-cta
+  ) h2 {
+    letter-spacing:.012em !important;
+    word-spacing:.075em !important;
+    line-height:.97 !important;
+  }
+
+  body:has(.home-hero) :is(
+    .requirement-gateway,
+    .business-verticals,
+    .global-network-section,
+    .company-intro-section,
+    .directory-section,
+    .home-product-shelf,
+    .complete-system,
+    .process-section,
+    .industries-section,
+    .quality-section,
+    .knowledge-resources,
+    .knowledge-insights,
+    .home-contact-cta
+  ) .eyebrow {
+    font-size:12.5px !important;
+  }
+
+  body:has(.home-hero) :is(
+    .requirement-gateway-heading,
+    .verticals-heading,
+    .network-copy,
+    .company-intro-copy,
+    .directory-heading,
+    .shelf-heading,
+    .system-demo-heading,
+    .process-section > div,
+    .industries-section .section-title,
+    .quality-section,
+    .knowledge-resources,
+    .knowledge-insights,
+    .home-contact-cta
+  ) > p:not(.eyebrow),
+  body:has(.home-hero) .business-verticals .verticals-heading > p:not(.eyebrow) {
+    max-width:100% !important;
+    font-size:17px !important;
+    line-height:1.58 !important;
+  }
+}
+
+@media (max-width:520px) {
+  body:has(.home-hero) :is(
+    .requirement-gateway,
+    .business-verticals,
+    .global-network-section,
+    .company-intro-section,
+    .directory-section,
+    .home-product-shelf,
+    .complete-system,
+    .process-section,
+    .industries-section,
+    .quality-section,
+    .knowledge-resources,
+    .knowledge-insights,
+    .home-contact-cta
+  ) {
+    padding-top:40px !important;
+    padding-bottom:52px !important;
+  }
+}
