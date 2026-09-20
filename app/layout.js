@@ -15,7 +15,7 @@ import './mobile-homepage-fixes.css';
 
 const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
 const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
-const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '';
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'Ll23eOSzockpTSudW43vD072a5hGrlKU1leX8s1SZP8';
 const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '';
 const socialProfiles = [
   'https://www.linkedin.com/in/ikinovac-global/',
