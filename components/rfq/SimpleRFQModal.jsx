@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { assetUrl } from '@/lib/assets';
 import { createRFQReference } from '@/lib/rfq/reference';
 import { createRFQPdf } from '@/lib/rfq/pdf';
+import { trackEvent } from '@/lib/analytics';
 import { useRFQ } from '../SiteShell';
 
 const emptyForm = { name: '', company: '', email: '', phone: '', quantity: '', requirement: '' };
@@ -99,7 +100,7 @@ export default function SimpleRFQModal() {
         }
       }
 
-      download(pdf, filename); setSuccess({ reference, product: product.name, company: rfq.customer.company }); setStatus('success');
+      download(pdf, filename); trackEvent('generate_lead', { lead_type: 'rfq', product_name: product.name, product_category: product.category, rfq_reference: reference }); setSuccess({ reference, product: product.name, company: rfq.customer.company }); setStatus('success');
     } catch (error) { setMessage(error?.message || "We couldn't submit your RFQ yet. Your information has been preserved. Please try again."); setStatus('form'); }
   };
   const whatsapp = success ? `https://wa.me/?text=${encodeURIComponent(`Hello IKINOVAC Global,\n\nI have submitted RFQ ${success.reference} through your website for:\n\n${success.product}\n\nCompany:\n${success.company}\n\nI would like to discuss the requirement further.`)}` : '#';
