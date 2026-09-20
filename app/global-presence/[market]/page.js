@@ -42,8 +42,19 @@ export default function MarketPage({ params }) {
     url: `${siteUrl}${path}`
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Global Presence', item: `${siteUrl}/global-presence` },
+      { '@type': 'ListItem', position: 3, name: market.name, item: `${siteUrl}${path}` }
+    ]
+  };
+
   return <PublicPage>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <section className="presence-hero">
       <p className="eyebrow light">GLOBAL PRESENCE / {market.region.toUpperCase()}</p>
       <h1>INDUSTRIAL SUPPLY<br />FOR <em>{market.name.toUpperCase()}</em>.</h1>
@@ -54,8 +65,18 @@ export default function MarketPage({ params }) {
       <article><b>02</b><h2>Project procurement</h2><p>Commercial and technical coordination for international project requirements.</p></article>
       <article><b>03</b><h2>Global supply support</h2><p>Product, documentation and delivery context connected through one project desk.</p></article>
     </section>
+    <section className="company-page-story">
+      <div><p className="eyebrow">{market.name.toUpperCase()} / SOURCING CONTEXT</p><h2>Built around the<br /><em>actual project brief.</em></h2></div>
+      <div><p>{market.context}</p><p>{market.deliveryContext}</p><Link href="/contact" className="text-arrow">Send a {market.name} RFQ <span>→</span></Link></div>
+    </section>
+    <section className="company-principles" aria-label={`Priority industrial requirements in ${market.name}`}>
+      {market.buyerNeeds.map((need, index) => <article key={need}><b>{String(index + 1).padStart(2,'0')}</b><h3>{need}</h3><p>Submit the specification, quantity, documentation needs and delivery context for sourcing review.</p></article>)}
+    </section>
     <section className="company-principles" aria-label={`Priority industries in ${market.name}`}>
       {market.industries.map((industry, index) => <article key={industry}><b>{String(index + 1).padStart(2,'0')}</b><h3>{industry}</h3><p>Industrial sourcing and project-supply support for documented {industry.toLowerCase()} requirements.</p></article>)}
+    </section>
+    <section className="presence-statements" aria-label={`Frequently asked questions for ${market.name}`}>
+      {market.faqs.map(([question, answer], index) => <article key={question}><b>Q{index + 1}</b><h2>{question}</h2><p>{answer}</p></article>)}
     </section>
     <section className="presence-statements">
       <article><b>RFQ</b><h2>Have a requirement in {market.name}?</h2><p>Share the product, specification, quantity and delivery context with the IKINOVAC project desk.</p><Link href="/contact">Request a quote →</Link></article>
