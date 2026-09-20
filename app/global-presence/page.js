@@ -3,16 +3,11 @@ import { GlobalPresencePage } from '@/components/ContentPages';
 import { globalMarkets } from '@/lib/markets';
 
 export const metadata = {
-  title: 'Industrial Supply Africa & Global Engineering Procurement Network',
-  description: 'IKINOVAC GLOBAL prioritizes African industrial sourcing, engineering procurement and project supply across South Africa, Nigeria, Kenya, Egypt, Ghana, Tanzania, Morocco, Angola and Mozambique, with wider global sourcing support.',
+  title: 'Global Industrial Supply Network | Western, Eastern & African Markets',
+  description: 'IKINOVAC GLOBAL supports industrial sourcing, engineering procurement and project supply requirements across Western markets, Eastern and Middle East markets, and key African industrial economies.',
   alternates: { canonical: '/global-presence' },
   keywords: [
-    'industrial supplier Africa',
-    'engineering procurement Africa',
-    'industrial equipment supplier Africa',
-    'MRO supplier Africa',
-    'mining equipment supplier Africa',
-    'oil and gas supplier Africa',
+    'global industrial supply',
     'industrial sourcing USA',
     'engineering procurement Europe',
     'industrial supplier Middle East',
@@ -26,8 +21,8 @@ export const metadata = {
     'global project procurement'
   ],
   openGraph: {
-    title: 'IKINOVAC GLOBAL | Industrial Supply & Engineering Procurement Africa',
-    description: 'Africa-focused industrial sourcing, engineering procurement, MRO and project supply backed by a global sourcing network.',
+    title: 'IKINOVAC GLOBAL | Global Industrial Supply & Project Procurement',
+    description: 'Industrial sourcing, procurement and project supply support across Western, Eastern and African markets.',
     url: '/global-presence',
     images: ['/og.png']
   }
