@@ -28,6 +28,6 @@ export default function sitemap() {
     url: `${siteUrl}${path || '/'}`,
     lastModified,
     changeFrequency: index === 0 ? 'weekly' : 'monthly',
-    priority: index === 0 ? 1 : path === '/global-presence/africa' ? 0.95 : path === '/products' || path === '/global-presence' ? 0.9 : path.includes('/south-africa') || path.includes('/nigeria') || path.includes('/kenya') || path.includes('/egypt') || path.includes('/ghana') || path.includes('/tanzania') || path.includes('/morocco') || path.includes('/angola') || path.includes('/mozambique') ? 0.85 : path.startsWith('/products/') ? 0.8 : 0.7
+    priority: index === 0 ? 1 : path === '/products' || path === '/global-presence' ? 0.9 : path.startsWith('/products/') ? 0.8 : 0.7
   }));
 }
