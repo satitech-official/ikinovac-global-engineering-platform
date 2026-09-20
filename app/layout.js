@@ -15,6 +15,8 @@ import './mobile-homepage-fixes.css';
 
 const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
 const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '';
+const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '';
 const socialProfiles = [
   'https://www.linkedin.com/in/ikinovac-global/',
   'https://www.instagram.com/ikinovacglobal/',
@@ -75,6 +77,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'IKINOVAC GLOBAL | Industrial Supply & Global Sourcing',
     description: 'Industrial sourcing, engineering procurement and project supply across Western, Eastern, Middle Eastern and African industrial markets.'
+  },
+  verification: {
+    ...(googleVerification ? { google: googleVerification } : {}),
+    ...(bingVerification ? { other: { 'msvalidate.01': bingVerification } } : {})
   },
   robots: {
     index: true,
