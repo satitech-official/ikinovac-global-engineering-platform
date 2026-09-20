@@ -273,3 +273,9 @@ main .motion-section.is-in-view :is(.directory-card,.verticals-grid article,.fam
   *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
   main .motion-section { opacity:1; transform:none; }
 }
+
+
+/* SEO-linked knowledge cards retain the existing editorial styling. */
+.knowledge-article-link { color:inherit; text-decoration:none; display:block; }
+.knowledge-article-link article { height:100%; }
+.knowledge-article-link:hover h3 { text-decoration:underline; text-underline-offset:4px; }
