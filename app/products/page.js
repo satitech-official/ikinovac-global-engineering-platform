@@ -1,5 +1,6 @@
 import PublicPage from '@/components/PublicPage';
 import CataloguePage from '@/components/CataloguePage';
+import { catalogueCategories } from '@/lib/catalogue';
 
 export const metadata = {
   title: 'Industrial Products & Engineering Supply Directory',
@@ -22,4 +23,24 @@ export const metadata = {
   }
 };
 
-export default function ProductsPage() { return <PublicPage><CataloguePage /></PublicPage>; }
+export default function ProductsPage() {
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'IKINOVAC GLOBAL Industrial Product Directory',
+    url: 'https://satitech-official.github.io/ikinovac-global-engineering-platform/products',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: catalogueCategories.map((category, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: category.name,
+        url: `https://satitech-official.github.io/ikinovac-global-engineering-platform/products/${category.slug}`
+      }))
+    }
+  };
+  return <PublicPage>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+    <CataloguePage />
+  </PublicPage>;
+}
