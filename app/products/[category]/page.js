@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import PublicPage from '@/components/PublicPage';
 import { CategoryView } from '@/components/ProductViews';
-import { catalogueCategories, getCategory, getProductsForCategory, productHref } from '@/lib/catalogue';
+import { catalogueCategories, getCategory, getProductsForCategory } from '@/lib/catalogue';
 
 const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
 
@@ -43,7 +43,7 @@ export default function CategoryPage({ params }) {
         '@type': 'ListItem',
         position: index + 1,
         name: product.name,
-        url: `${siteUrl}${productHref(product)}`
+        url: `${siteUrl}${path}#product-${product.slug}`
       }))
     }
   };
