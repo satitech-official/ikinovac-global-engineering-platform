@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { catalogueCategories, catalogueProducts, productHref } from '@/lib/catalogue';
 import { assetUrl } from '@/lib/assets';
+import { trackEvent } from '@/lib/analytics';
 import SimpleRFQModal from './rfq/SimpleRFQModal';
 
 const RFQContext = createContext(null);
@@ -246,7 +247,7 @@ export default function SiteShell({ children }) {
   const value = useMemo(() => ({
     quoteOpen,
     quoteProduct,
-    openQuote(product = null) { setQuoteProduct(product || null); setQuoteOpen(true); },
+    openQuote(product = null) { trackEvent('rfq_open', { product_name: product?.name || 'general requirement', product_category: product?.category || 'general enquiry' }); setQuoteProduct(product || null); setQuoteOpen(true); },
     closeQuote() { setQuoteOpen(false); }
   }), [quoteOpen, quoteProduct]);
   return <RFQContext.Provider value={value}><Preloader /><Header /><main>{children}</main><Footer /><SimpleRFQModal /></RFQContext.Provider>;
