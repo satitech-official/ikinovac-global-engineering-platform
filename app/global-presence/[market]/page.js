@@ -1,0 +1,64 @@
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import PublicPage from '@/components/PublicPage';
+import { getGlobalMarket, globalMarkets } from '@/lib/markets';
+
+const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
+
+export function generateStaticParams() {
+  return globalMarkets.map(market => ({ market: market.slug }));
+}
+
+export function generateMetadata({ params }) {
+  const market = getGlobalMarket(params.market);
+  if (!market) return {};
+  const path = `/global-presence/${market.slug}`;
+  return {
+    title: market.title,
+    description: market.description,
+    keywords: market.keywords,
+    alternates: { canonical: path },
+    openGraph: {
+      title: market.title,
+      description: market.description,
+      url: path,
+      images: ['/og.png']
+    }
+  };
+}
+
+export default function MarketPage({ params }) {
+  const market = getGlobalMarket(params.market);
+  if (!market) notFound();
+  const path = `/global-presence/${market.slug}`;
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `Industrial sourcing and engineering procurement for ${market.name}`,
+    provider: { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'IKINOVAC GLOBAL' },
+    areaServed: { '@type': 'Country', name: market.name },
+    serviceType: ['Industrial sourcing','Engineering procurement','Project supply','MRO supply'],
+    url: `${siteUrl}${path}`
+  };
+
+  return <PublicPage>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+    <section className="presence-hero">
+      <p className="eyebrow light">GLOBAL PRESENCE / {market.region.toUpperCase()}</p>
+      <h1>INDUSTRIAL SUPPLY<br />FOR <em>{market.name.toUpperCase()}</em>.</h1>
+      <p>{market.description}</p>
+    </section>
+    <section className="presence-statements">
+      <article><b>01</b><h2>Engineering-led sourcing</h2><p>Requirement-first sourcing across IKINOVAC&apos;s industrial product directory.</p></article>
+      <article><b>02</b><h2>Project procurement</h2><p>Commercial and technical coordination for international project requirements.</p></article>
+      <article><b>03</b><h2>Global supply support</h2><p>Product, documentation and delivery context connected through one project desk.</p></article>
+    </section>
+    <section className="company-principles" aria-label={`Priority industries in ${market.name}`}>
+      {market.industries.map((industry, index) => <article key={industry}><b>{String(index + 1).padStart(2,'0')}</b><h3>{industry}</h3><p>Industrial sourcing and project-supply support for documented {industry.toLowerCase()} requirements.</p></article>)}
+    </section>
+    <section className="presence-statements">
+      <article><b>RFQ</b><h2>Have a requirement in {market.name}?</h2><p>Share the product, specification, quantity and delivery context with the IKINOVAC project desk.</p><Link href="/contact">Request a quote →</Link></article>
+    </section>
+  </PublicPage>;
+}
