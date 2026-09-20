@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { catalogueCategories, catalogueProducts, productHref } from '@/lib/catalogue';
+import { catalogueCategories, catalogueProducts } from '@/lib/catalogue';
 import { assetUrl } from '@/lib/assets';
 import { trackEvent } from '@/lib/analytics';
 import SimpleRFQModal from './rfq/SimpleRFQModal';
@@ -131,7 +131,7 @@ function ProductSearch({ close }) {
       <p className="eyebrow light">SEARCH / PRODUCT DIRECTORY</p>
       <label className="search-field"><span className="sr-only">Search products</span><input autoFocus value={query} onChange={event => setQuery(event.target.value)} placeholder="WHAT ARE YOU LOOKING FOR?" /></label>
       <div className="search-groups">
-        <section><p className="eyebrow light">PRODUCTS</p>{results.map(product => <Link href={productHref(product)} key={product.id} onClick={close}><span>{product.name}</span><small>{product.category}</small><b>↗</b></Link>)}</section>
+        <section><p className="eyebrow light">PRODUCTS</p>{results.map(product => <Link href={`/products/${product.categorySlug}#product-${product.slug}`} key={product.id} onClick={close}><span>{product.name}</span><small>{product.category}</small><b>↗</b></Link>)}</section>
         <section><p className="eyebrow light">BROWSE CATEGORIES</p>{categories.length ? categories.map(category => <Link href={`/products/${category.slug}`} key={category.slug} onClick={close}><span>{category.number} / {category.name}</span><b>↗</b></Link>) : <p className="no-results">Search product names, families or categories.</p>}<Link className="search-help-link" href="/contact" onClick={close}>Need technical guidance? Start an RFQ <b>→</b></Link></section>
       </div>
     </div>
@@ -151,7 +151,7 @@ function MegaMenu({ close, onPointerEnter, onPointerLeave }) {
   }, [query]);
   return <section className="mega-menu" aria-label="Product directory" onMouseEnter={onPointerEnter} onMouseLeave={onPointerLeave}>
     <div className="mega-menu-intro"><p className="eyebrow light">01 / PRODUCT DIRECTORY</p><h2>Engineered for every <em>critical connection.</em></h2><label className="mega-menu-search"><span>⌕</span><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search the directory" aria-label="Search the product directory" /></label><Link href="/products" onClick={close}>View complete catalogue <span>→</span></Link></div>
-    <div className="mega-menu-list">{search ? <div className="mega-menu-results"><section><p>PRODUCTS</p>{search.products.length ? search.products.map(product => <Link href={productHref(product)} onClick={close} key={product.id}><span>{product.name}<small>{product.category}</small></span><b>↗</b></Link>) : <small>Nothing matched that product term.</small>}</section><section><p>PRODUCT FAMILIES</p>{search.families.length ? search.families.map(product => <Link href={productHref(product)} onClick={close} key={`${product.id}-family`}><span>{product.family}<small>{product.name}</small></span><b>↗</b></Link>) : <small>Try a category or product family.</small>}</section><section><p>CATEGORIES</p>{search.categories.length ? search.categories.map(category => <Link href={`/products/${category.slug}`} onClick={close} key={category.slug}><span>{category.number} / {category.name}</span><b>↗</b></Link>) : <small>Try another search term.</small>}</section></div> : catalogueCategories.map(category => <Link href={`/products/${category.slug}`} onMouseEnter={() => setActive(category)} onFocus={() => setActive(category)} onClick={close} key={category.slug}><b>{category.number}</b><span>{category.name}</span><i>{category.items.length} <em>families</em></i><strong>→</strong></Link>)}</div>
+    <div className="mega-menu-list">{search ? <div className="mega-menu-results"><section><p>PRODUCTS</p>{search.products.length ? search.products.map(product => <Link href={`/products/${product.categorySlug}#product-${product.slug}`} onClick={close} key={product.id}><span>{product.name}<small>{product.category}</small></span><b>↗</b></Link>) : <small>Nothing matched that product term.</small>}</section><section><p>PRODUCT FAMILIES</p>{search.families.length ? search.families.map(product => <Link href={`/products/${product.categorySlug}#product-${product.slug}`} onClick={close} key={`${product.id}-family`}><span>{product.family}<small>{product.name}</small></span><b>↗</b></Link>) : <small>Try a category or product family.</small>}</section><section><p>CATEGORIES</p>{search.categories.length ? search.categories.map(category => <Link href={`/products/${category.slug}`} onClick={close} key={category.slug}><span>{category.number} / {category.name}</span><b>↗</b></Link>) : <small>Try another search term.</small>}</section></div> : catalogueCategories.map(category => <Link href={`/products/${category.slug}`} onMouseEnter={() => setActive(category)} onFocus={() => setActive(category)} onClick={close} key={category.slug}><b>{category.number}</b><span>{category.name}</span><i>{category.items.length} <em>families</em></i><strong>→</strong></Link>)}</div>
     <Link href={`/products/${active.slug}`} onClick={close} className="mega-menu-feature" style={{ backgroundImage: `linear-gradient(180deg, rgba(13,23,20,.08), rgba(13,23,20,.8)), url(${assetUrl(active.image)})` }}><p>{active.number} / FEATURED RANGE</p><h3>{active.name}</h3><span>{active.summary}</span><b>Explore range →</b></Link>
   </section>;
 }
@@ -169,7 +169,7 @@ function Header() {
   const [productsOpen, setProductsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { openQuote, closeQuote } = useRFQ();
+  const { openQuote, closeQuote, quoteCount } = useRFQ();
   const menuCloseTimer = useRef(null);
 
   useEffect(() => {
@@ -199,10 +199,10 @@ function Header() {
           <Link href="/solutions" onClick={closeNav}>Solutions</Link>
           <Link href="/global-presence" onClick={closeNav}>Global Presence</Link>
           <Link href="/contact" onClick={closeNav}>Contact</Link>
-          <div className="mobile-nav-actions"><button onClick={() => { setSearchOpen(true); setNavOpen(false); }}>Search products</button><button onClick={() => { openQuote(); closeNav(); }}>Request a quote →</button></div>
+          <div className="mobile-nav-actions"><button onClick={() => { setSearchOpen(true); setNavOpen(false); }}>Search products</button><button onClick={() => { openQuote(); closeNav(); }}>{quoteCount ? `RFQ list · ${quoteCount}` : 'Request a quote'} →</button></div>
         </nav>
       </div>
-      <div className="header-actions"><button className="search-button" onClick={() => setSearchOpen(true)} aria-label="Search products">⌕</button><button className="header-quote" onClick={() => openQuote()}>Request a quote <span>→</span></button><button className="menu-button" onClick={() => setNavOpen(!navOpen)} aria-label="Toggle navigation" aria-expanded={navOpen}><i /><i /></button></div>
+      <div className="header-actions"><button className="search-button" onClick={() => setSearchOpen(true)} aria-label="Search products">⌕</button><button className="header-quote" onClick={() => openQuote()}>{quoteCount ? `RFQ list · ${quoteCount}` : 'Request a quote'} <span>→</span></button><button className="menu-button" onClick={() => setNavOpen(!navOpen)} aria-label="Toggle navigation" aria-expanded={navOpen}><i /><i /></button></div>
       {productsOpen && !navOpen && <MegaMenu close={closeNav} onPointerEnter={openProducts} onPointerLeave={scheduleMenuClose} />}
     </header>
     {searchOpen && <ProductSearch close={() => setSearchOpen(false)} />}
@@ -219,7 +219,18 @@ function Footer() {
 
 export default function SiteShell({ children }) {
   const [quoteOpen, setQuoteOpen] = useState(false);
-  const [quoteProduct, setQuoteProduct] = useState(null);
+  const [quoteProducts, setQuoteProducts] = useState([]);
+
+  useEffect(() => {
+    try {
+      const ids = JSON.parse(window.localStorage.getItem('ikinovac-rfq-products-v1') || '[]');
+      if (Array.isArray(ids)) setQuoteProducts(ids.map(id => catalogueProducts.find(product => product.id === id)).filter(Boolean).slice(0, 20));
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    try { window.localStorage.setItem('ikinovac-rfq-products-v1', JSON.stringify(quoteProducts.map(product => product.id))); } catch {}
+  }, [quoteProducts]);
   useEffect(() => {
     const sections = [...document.querySelectorAll('main section')].filter(section => !section.classList.contains('home-hero'));
     const reveal = section => section.classList.add('is-in-view');
@@ -246,10 +257,24 @@ export default function SiteShell({ children }) {
   }, [children]);
   const value = useMemo(() => ({
     quoteOpen,
-    quoteProduct,
-    openQuote(product = null) { trackEvent('rfq_open', { product_name: product?.name || 'general requirement', product_category: product?.category || 'general enquiry' }); setQuoteProduct(product || null); setQuoteOpen(true); },
+    quoteProducts,
+    quoteProduct: quoteProducts[quoteProducts.length - 1] || null,
+    quoteCount: quoteProducts.length,
+    addQuoteProduct(product) {
+      if (!product) return;
+      setQuoteProducts(current => current.some(item => item.id === product.id) ? current : [...current, product].slice(0, 20));
+    },
+    removeQuoteProduct(productId) {
+      setQuoteProducts(current => current.filter(item => item.id !== productId));
+    },
+    clearQuoteProducts() { setQuoteProducts([]); },
+    openQuote(product = null) {
+      trackEvent('rfq_open', { product_name: product?.name || 'general requirement', product_category: product?.category || 'general enquiry' });
+      if (product) setQuoteProducts(current => current.some(item => item.id === product.id) ? current : [...current, product].slice(0, 20));
+      setQuoteOpen(true);
+    },
     closeQuote() { setQuoteOpen(false); }
-  }), [quoteOpen, quoteProduct]);
+  }), [quoteOpen, quoteProducts]);
   return <RFQContext.Provider value={value}><Preloader /><Header /><main>{children}</main><Footer /><SimpleRFQModal /></RFQContext.Provider>;
 }
 
