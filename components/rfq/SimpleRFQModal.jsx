@@ -103,7 +103,7 @@ export default function SimpleRFQModal() {
     const onKey = event => {
       if (event.key === 'Escape' && status !== 'submitting') closeQuote();
       if (event.key === 'Tab') {
-        const focusable = [...(modalRef.current?.querySelectorAll('button:not([disabled]),a[href],input,textarea,select') || [])];
+        const focusable = [...(modalRef.current?.querySelectorAll('button:not([disabled]),a[href],input,textarea,select,details>summary') || [])];
         if (!focusable.length) return;
         const first = focusable[0]; const last = focusable[focusable.length - 1];
         if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
@@ -247,9 +247,12 @@ export default function SimpleRFQModal() {
                   <input inputMode="decimal" value={meta.quantity} onChange={event => updateItem(rawProduct.id, 'quantity', event.target.value)} placeholder="Optional" aria-invalid={Boolean(errors[`quantity-${rawProduct.id}`])} />
                   {errors[`quantity-${rawProduct.id}`] && <small>{errors[`quantity-${rawProduct.id}`]}</small>}
                 </label>
-                <label className="simple-rfq-item-notes">Product notes / specification
-                  <textarea value={meta.notes} onChange={event => updateItem(rawProduct.id, 'notes', event.target.value)} maxLength="500" placeholder="Size, material, rating, standard or any product-specific requirement." />
-                </label>
+                <details className="simple-rfq-item-notes simple-rfq-item-notes-details">
+                  <summary><span>Add product notes / specifications</span><b>Optional</b></summary>
+                  <label>Product notes / specification
+                    <textarea value={meta.notes} onChange={event => updateItem(rawProduct.id, 'notes', event.target.value)} maxLength="500" placeholder="Size, material, rating, standard or any product-specific requirement." />
+                  </label>
+                </details>
               </article>;
             })}
             {!quoteProducts.length && <div className="simple-rfq-empty">No product selected yet. Add the products required for this RFQ below.</div>}
