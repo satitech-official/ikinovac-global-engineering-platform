@@ -1,6 +1,6 @@
 import { catalogueCategories, catalogueProducts, productHref } from '@/lib/catalogue';
 
-const siteUrl = 'https://ikinovac.com';
+const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
 const lastModified = new Date('2026-09-20');
 
 export default function sitemap() {
