@@ -19,8 +19,9 @@ export default function sitemap() {
   const categoryRoutes = catalogueCategories.map(category => `/products/${category.slug}`);
   const productRoutes = catalogueProducts.map(product => productHref(product));
   const marketRoutes = globalMarkets.map(market => `/global-presence/${market.slug}`);
+  const insightRoutes = ['/insights/valve-selection', '/insights/material-selection', '/insights/procurement'];
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...marketRoutes].map((path, index) => ({
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...marketRoutes, ...insightRoutes].map((path, index) => ({
     url: `${siteUrl}${path || '/'}`,
     lastModified,
     changeFrequency: index === 0 ? 'weekly' : 'monthly',
