@@ -12,7 +12,7 @@ import './product-image-fit.css';
 import './contact-project-desk.css';
 import './mobile-homepage-fixes.css';
 
-const siteUrl = 'https://ikinovac.com';
+const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
 const socialProfiles = [
   'https://www.linkedin.com/in/ikinovac-global/',
   'https://www.instagram.com/ikinovacglobal/',
@@ -67,12 +67,12 @@ export const metadata = {
     url: siteUrl,
     siteName: 'IKINOVAC GLOBAL',
     title: 'IKINOVAC GLOBAL | Industrial Supply, Engineering Procurement & Global Sourcing',
-    description: 'Engineering-led industrial sourcing, procurement and project supply support for global industrial requirements.'
+    description: 'Engineering-led industrial sourcing, procurement and project supply across North America, Europe, the Middle East, Africa and Asia-Pacific.'
   },
   twitter: {
     card: 'summary_large_image',
     title: 'IKINOVAC GLOBAL | Industrial Supply & Global Sourcing',
-    description: 'Industrial sourcing, engineering procurement and project supply for global industrial requirements.'
+    description: 'Industrial sourcing, engineering procurement and project supply across Western, Eastern, Middle Eastern and African industrial markets.'
   },
   robots: {
     index: true,
@@ -95,7 +95,7 @@ export default function RootLayout({ children }) {
     name: 'IKINOVAC GLOBAL',
     url: siteUrl,
     logo: `${siteUrl}/assets/ikinovac-logo-enhanced-v2.png`,
-    description: 'Engineering-led industrial sourcing, procurement and project supply solutions for global industrial requirements.',
+    description: 'Engineering-led industrial sourcing, procurement and project supply solutions for North America, Europe, the Middle East, Africa and Asia-Pacific.',
     email: 'info@ikinovac.com',
     sameAs: socialProfiles,
     areaServed: [
