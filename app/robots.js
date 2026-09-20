@@ -7,7 +7,7 @@ export default function robots() {
         disallow: ['/admin/', '/api/']
       }
     ],
-    sitemap: 'https://ikinovac.com/sitemap.xml',
-    host: 'https://ikinovac.com'
+    sitemap: 'https://satitech-official.github.io/ikinovac-global-engineering-platform/sitemap.xml',
+    host: 'https://satitech-official.github.io/ikinovac-global-engineering-platform'
   };
 }
