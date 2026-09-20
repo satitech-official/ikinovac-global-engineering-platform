@@ -21,4 +21,26 @@ export const metadata = {
   }
 };
 
-export default function Page() { return <PublicPage><CompanyPage /></PublicPage>; }
+export default function Page() {
+  const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About IKINOVAC GLOBAL',
+    url: `${siteUrl}/company`,
+    about: { '@id': `${siteUrl}/#organization` }
+  };
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Company', item: `${siteUrl}/company` }
+    ]
+  };
+  return <PublicPage>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <CompanyPage />
+  </PublicPage>;
+}
