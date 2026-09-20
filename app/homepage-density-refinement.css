@@ -190,3 +190,37 @@ body:has(.home-hero) .requirement-gateway-copy span {
     padding-block:54px !important;
   }
 }
+
+
+/* Business verticals readability requested from desktop review:
+   enlarge the intro + micro labels and remove the oversized gap above titles. */
+body:has(.home-hero) .business-verticals .verticals-heading > p:not(.eyebrow) {
+  max-width:460px !important;
+  font-size:17px !important;
+  line-height:1.62 !important;
+}
+
+body:has(.home-hero) .business-verticals .verticals-grid article > p {
+  font-size:14px !important;
+  line-height:1.25 !important;
+  letter-spacing:.12em !important;
+}
+
+body:has(.home-hero) .business-verticals .verticals-grid h3 {
+  margin-top:26px !important;
+}
+
+@media (max-width:850px) {
+  body:has(.home-hero) .business-verticals .verticals-heading > p:not(.eyebrow) {
+    font-size:16px !important;
+    line-height:1.6 !important;
+  }
+
+  body:has(.home-hero) .business-verticals .verticals-grid article > p {
+    font-size:13.5px !important;
+  }
+
+  body:has(.home-hero) .business-verticals .verticals-grid h3 {
+    margin-top:22px !important;
+  }
+}
