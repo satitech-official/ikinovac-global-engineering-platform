@@ -22,4 +22,28 @@ export const metadata = {
   }
 };
 
-export default function Page() { return <PublicPage><SolutionsPage /></PublicPage>; }
+export default function Page() {
+  const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Engineering Procurement, Global Sourcing and Project Supply',
+    serviceType: ['Engineering procurement','Global sourcing','Project supply','MRO procurement','Inspection coordination','Industrial logistics support'],
+    provider: { '@id': `${siteUrl}/#organization` },
+    areaServed: 'Worldwide',
+    url: `${siteUrl}/solutions`
+  };
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${siteUrl}/solutions` }
+    ]
+  };
+  return <PublicPage>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <SolutionsPage />
+  </PublicPage>;
+}
