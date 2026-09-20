@@ -1,0 +1,192 @@
+/* Homepage typography + density refinement
+   Adds breathing room inside large editorial headings while removing
+   unnecessary vertical whitespace between homepage sections. */
+
+/* Large section headings: keep the premium condensed look, but stop words
+   and letters from feeling visually glued together. */
+body:has(.home-hero) :is(
+  .requirement-gateway-heading,
+  .verticals-heading,
+  .network-copy,
+  .company-intro-copy,
+  .directory-heading,
+  .shelf-heading,
+  .system-demo-heading,
+  .process-section > div,
+  .industries-section .section-title,
+  .quality-section,
+  .knowledge-resources,
+  .knowledge-insights,
+  .home-contact-cta
+) h2 {
+  letter-spacing:-.026em !important;
+  word-spacing:.075em !important;
+  line-height:.91 !important;
+}
+
+body:has(.home-hero) :is(
+  .requirement-gateway-heading,
+  .verticals-heading,
+  .network-copy,
+  .company-intro-copy,
+  .directory-heading,
+  .shelf-heading,
+  .system-demo-heading,
+  .process-section > div,
+  .industries-section .section-title,
+  .quality-section,
+  .knowledge-resources,
+  .knowledge-insights,
+  .home-contact-cta
+) h2 em {
+  letter-spacing:-.02em !important;
+  word-spacing:.06em !important;
+}
+
+/* Reduce oversized section breathing room while preserving the existing
+   horizontal grid and image composition. */
+body:has(.home-hero) .requirement-gateway {
+  padding-block:clamp(66px,7.2vw,106px) !important;
+}
+body:has(.home-hero) .requirement-gateway-heading {
+  margin-bottom:clamp(30px,3.3vw,46px) !important;
+}
+
+body:has(.home-hero) .business-verticals,
+body:has(.home-hero) .global-network-section,
+body:has(.home-hero) .company-intro-section,
+body:has(.home-hero) .directory-section,
+body:has(.home-hero) .home-product-shelf,
+body:has(.home-hero) .complete-system,
+body:has(.home-hero) .process-section,
+body:has(.home-hero) .industries-section,
+body:has(.home-hero) .quality-section,
+body:has(.home-hero) .home-contact-cta {
+  padding-block:clamp(68px,7vw,108px) !important;
+}
+
+body:has(.home-hero) .global-network-section,
+body:has(.home-hero) .quality-section,
+body:has(.home-hero) .home-contact-cta {
+  min-height:0 !important;
+}
+
+body:has(.home-hero) .verticals-heading,
+body:has(.home-hero) .directory-heading,
+body:has(.home-hero) .shelf-heading,
+body:has(.home-hero) .section-title {
+  margin-bottom:clamp(30px,3vw,42px) !important;
+}
+
+body:has(.home-hero) .complete-system {
+  gap:clamp(34px,5vw,76px) !important;
+}
+
+body:has(.home-hero) .process-section {
+  gap:clamp(42px,6vw,82px) !important;
+}
+
+body:has(.home-hero) .company-intro-section {
+  gap:clamp(38px,6vw,88px) !important;
+}
+
+body:has(.home-hero) .knowledge-resources,
+body:has(.home-hero) .knowledge-insights {
+  min-height:0 !important;
+  padding-block:clamp(66px,7vw,104px) !important;
+}
+body:has(.home-hero) .knowledge-resources h2,
+body:has(.home-hero) .knowledge-insights h2 {
+  margin-bottom:clamp(28px,2.7vw,38px) !important;
+}
+
+/* Slightly tighten internal card whitespace too, without making the cards
+   feel cramped. */
+body:has(.home-hero) .verticals-grid article {
+  min-height:285px !important;
+}
+body:has(.home-hero) .verticals-grid h3 {
+  margin-top:48px !important;
+}
+body:has(.home-hero) .requirement-gateway-copy {
+  min-height:224px !important;
+}
+body:has(.home-hero) .requirement-gateway-copy h3 {
+  margin-top:24px !important;
+}
+body:has(.home-hero) .requirement-gateway-copy span {
+  margin-top:18px !important;
+}
+
+@media (max-width:850px) {
+  body:has(.home-hero) :is(
+    .requirement-gateway-heading,
+    .verticals-heading,
+    .network-copy,
+    .company-intro-copy,
+    .directory-heading,
+    .shelf-heading,
+    .system-demo-heading,
+    .process-section > div,
+    .industries-section .section-title,
+    .quality-section,
+    .knowledge-resources,
+    .knowledge-insights,
+    .home-contact-cta
+  ) h2 {
+    letter-spacing:-.018em !important;
+    word-spacing:.065em !important;
+    line-height:.94 !important;
+  }
+
+  body:has(.home-hero) .requirement-gateway,
+  body:has(.home-hero) .business-verticals,
+  body:has(.home-hero) .global-network-section,
+  body:has(.home-hero) .company-intro-section,
+  body:has(.home-hero) .directory-section,
+  body:has(.home-hero) .home-product-shelf,
+  body:has(.home-hero) .complete-system,
+  body:has(.home-hero) .process-section,
+  body:has(.home-hero) .industries-section,
+  body:has(.home-hero) .quality-section,
+  body:has(.home-hero) .home-contact-cta,
+  body:has(.home-hero) .knowledge-resources,
+  body:has(.home-hero) .knowledge-insights {
+    padding-block:60px !important;
+  }
+
+  body:has(.home-hero) .verticals-heading,
+  body:has(.home-hero) .directory-heading,
+  body:has(.home-hero) .shelf-heading,
+  body:has(.home-hero) .section-title {
+    margin-bottom:30px !important;
+  }
+
+  body:has(.home-hero) .verticals-grid article {
+    min-height:235px !important;
+  }
+  body:has(.home-hero) .verticals-grid h3 {
+    margin-top:32px !important;
+  }
+  body:has(.home-hero) .requirement-gateway-copy {
+    min-height:205px !important;
+  }
+}
+
+@media (max-width:520px) {
+  body:has(.home-hero) .requirement-gateway,
+  body:has(.home-hero) .business-verticals,
+  body:has(.home-hero) .global-network-section,
+  body:has(.home-hero) .company-intro-section,
+  body:has(.home-hero) .directory-section,
+  body:has(.home-hero) .home-product-shelf,
+  body:has(.home-hero) .complete-system,
+  body:has(.home-hero) .process-section,
+  body:has(.home-hero) .industries-section,
+  body:has(.home-hero) .quality-section,
+  body:has(.home-hero) .home-contact-cta,
+  body:has(.home-hero) .knowledge-resources,
+  body:has(.home-hero) .knowledge-insights {
+    padding-block:54px !important;
+  }
+}
