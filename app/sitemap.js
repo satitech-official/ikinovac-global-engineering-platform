@@ -21,7 +21,7 @@ export default function sitemap() {
   const categoryRoutes = catalogueCategories.map(category => `/products/${category.slug}`);
   const productRoutes = catalogueProducts.map(product => productHref(product));
   const marketRoutes = globalMarkets.map(market => `/global-presence/${market.slug}`);
-  const insightRoutes = ['/insights/valve-selection', '/insights/material-selection', '/insights/procurement'];
+  const insightRoutes = ['/insights/valve-selection', '/insights/material-selection', '/insights/procurement', '/insights/ball-valve-vs-gate-valve', '/insights/oil-gas-procurement-checklist', '/insights/piping-flange-rfq-guide'];
 
   return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...marketRoutes, ...insightRoutes].map((path, index) => ({
     url: `${siteUrl}${path || '/'}`,
