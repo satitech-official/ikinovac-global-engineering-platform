@@ -214,7 +214,7 @@ function Footer() {
     <div className="footer-v3-main">
       <section className="footer-v3-brand" aria-label="IKINOVAC Global footer">
         <Brand inverse />
-        <p className="footer-v3-summary">Industrial products & engineering solutions worldwide.</p>
+        
 
         <div className="footer-v3-socials" aria-label="Social media">
           <a href="https://www.linkedin.com/in/ikinovac-global/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
