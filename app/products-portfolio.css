@@ -186,3 +186,41 @@
 @media (prefers-reduced-motion:reduce) {
   .portfolio-category-card,.portfolio-category-image img,.portfolio-category-copy>b i { transition:none; }
 }
+
+
+/* Product directory search/filter empty state */
+.portfolio-empty-state {
+  grid-column:1 / -1;
+  display:grid;
+  place-items:center;
+  gap:10px;
+  min-height:260px;
+  padding:36px;
+  border:1px dashed rgba(14,43,35,.24);
+  background:#f6f1e8;
+  text-align:center;
+}
+.portfolio-empty-state b {
+  color:#0e2b23;
+  font:700 13px/1.2 var(--mono);
+  letter-spacing:.12em;
+}
+.portfolio-empty-state p {
+  max-width:520px;
+  margin:0;
+  color:#65706b;
+  font-size:15px;
+  line-height:1.6;
+}
+.portfolio-empty-state button {
+  margin-top:8px;
+  padding:10px 0 5px;
+  border:0;
+  border-bottom:1px solid #0e2b23;
+  background:transparent;
+  color:#0e2b23;
+  font:700 11px/1.2 var(--sans);
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
