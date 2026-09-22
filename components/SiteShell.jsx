@@ -213,7 +213,7 @@ function Footer() {
   return <footer className="site-footer-v3">
     <div className="footer-v3-main">
       <section className="footer-v3-brand" aria-label="IKINOVAC Global footer">
-        <Brand inverse />
+        <Link className="footer-v3-logo" href="/" aria-label="IKINOVAC Global home"><img src={assetUrl('/assets/ikinovac-logo-enhanced-v2.png')} alt="IKINOVAC Global" /></Link>
         
 
         <div className="footer-v3-socials" aria-label="Social media">

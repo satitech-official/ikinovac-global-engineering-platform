@@ -379,3 +379,59 @@ body:has(.home-hero) .home-contact-cta {
     margin-top:0 !important;
   }
 }
+
+/* Final footer logo/social/contact alignment fix */
+.footer-v3-brand {
+  position:relative !important;
+  z-index:2 !important;
+}
+.footer-v3-logo {
+  display:block !important;
+  width:185px !important;
+  height:auto !important;
+  margin:-8px 0 22px !important;
+  position:relative !important;
+  z-index:3 !important;
+}
+.footer-v3-logo img {
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  max-width:100% !important;
+  object-fit:contain !important;
+  transform:none !important;
+}
+.footer-v3-socials {
+  position:relative !important;
+  z-index:4 !important;
+  margin:0 0 22px !important;
+  min-height:44px !important;
+}
+.footer-v3-contact {
+  position:relative !important;
+  z-index:4 !important;
+  margin-top:14px !important;
+  padding-top:18px !important;
+}
+
+@media (min-width:1121px) {
+  .footer-v3-logo {
+    width:185px !important;
+    margin-top:-10px !important;
+    margin-bottom:24px !important;
+  }
+  .footer-v3-socials {
+    margin-top:0 !important;
+    margin-bottom:24px !important;
+  }
+  .footer-v3-contact {
+    margin-top:12px !important;
+  }
+}
+
+@media (max-width:760px) {
+  .footer-v3-logo {
+    width:175px !important;
+    margin:0 0 18px !important;
+  }
+}
