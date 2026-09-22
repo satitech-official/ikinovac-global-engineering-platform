@@ -365,13 +365,17 @@ body:has(.home-hero) .home-contact-cta {
 /* Desktop footer logo vertical alignment refinement */
 @media (min-width:1121px) {
   .site-footer-v3 .footer-v3-brand .brand-mark {
-    margin-top:-12px !important;
-    margin-bottom:10px !important;
+    margin-top:-22px !important;
+    margin-bottom:4px !important;
   }
   .site-footer-v3 .footer-v3-brand .brand-mark-image {
-    transform:translateY(-6px) !important;
+    overflow:visible !important;
+    transform:translateY(-14px) !important;
+  }
+  .site-footer-v3 .footer-v3-brand .brand-mark-image img {
+    transform:translateY(-4px) !important;
   }
   .site-footer-v3 .footer-v3-socials {
-    margin-top:6px !important;
+    margin-top:0 !important;
   }
 }
