@@ -334,28 +334,28 @@ body:has(.home-hero) .home-contact-cta {
 }
 
 
-/* Desktop footer logo scale — enlarged per visual review */
+/* Desktop footer logo scale — balanced after live review */
 @media (min-width:1121px) {
   .site-footer-v3 .footer-v3-brand .brand-mark {
-    width:390px !important;
+    width:320px !important;
     max-width:100% !important;
   }
   .site-footer-v3 .footer-v3-brand .brand-mark-image {
-    width:290px !important;
-    height:170px !important;
-    max-width:none !important;
+    width:225px !important;
+    height:138px !important;
+    max-width:100% !important;
     overflow:visible !important;
   }
   .site-footer-v3 .footer-v3-brand .brand-mark-image img {
     width:100% !important;
     height:100% !important;
-    max-width:none !important;
+    max-width:100% !important;
     object-fit:contain !important;
     object-position:left center !important;
-    transform:scale(1.22) !important;
+    transform:scale(1.05) !important;
     transform-origin:left center !important;
   }
   .site-footer-v3 .footer-v3-summary {
-    margin-top:14px !important;
+    margin-top:12px !important;
   }
 }
