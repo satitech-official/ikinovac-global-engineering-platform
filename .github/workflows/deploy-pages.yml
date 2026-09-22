@@ -38,6 +38,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_ACTIONS: 'true'
+          NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT: ${{ vars.NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT }}
 
       - name: Validate Pages output
         run: |
