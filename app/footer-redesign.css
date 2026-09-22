@@ -357,7 +357,7 @@ body:has(.home-hero) .home-contact-cta {
   .site-footer-v3 .footer-v3-summary {
     max-width:310px !important;
     margin:8px 0 18px !important;
-    font-size:12px !important;
-    line-height:1.55 !important;
+    font-size:14px !important;
+    line-height:1.7 !important;
   }
 }
