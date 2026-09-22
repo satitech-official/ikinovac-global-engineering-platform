@@ -361,3 +361,17 @@ body:has(.home-hero) .home-contact-cta {
     line-height:1.7 !important;
   }
 }
+
+/* Desktop footer logo vertical alignment refinement */
+@media (min-width:1121px) {
+  .site-footer-v3 .footer-v3-brand .brand-mark {
+    margin-top:-12px !important;
+    margin-bottom:10px !important;
+  }
+  .site-footer-v3 .footer-v3-brand .brand-mark-image {
+    transform:translateY(-6px) !important;
+  }
+  .site-footer-v3 .footer-v3-socials {
+    margin-top:6px !important;
+  }
+}
