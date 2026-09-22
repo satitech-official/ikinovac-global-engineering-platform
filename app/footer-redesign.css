@@ -332,3 +332,30 @@ body:has(.home-hero) .home-contact-cta {
     height:116px !important;
   }
 }
+
+
+/* Desktop footer logo scale — enlarged per visual review */
+@media (min-width:1121px) {
+  .site-footer-v3 .footer-v3-brand .brand-mark {
+    width:390px !important;
+    max-width:100% !important;
+  }
+  .site-footer-v3 .footer-v3-brand .brand-mark-image {
+    width:290px !important;
+    height:170px !important;
+    max-width:none !important;
+    overflow:visible !important;
+  }
+  .site-footer-v3 .footer-v3-brand .brand-mark-image img {
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    object-fit:contain !important;
+    object-position:left center !important;
+    transform:scale(1.22) !important;
+    transform-origin:left center !important;
+  }
+  .site-footer-v3 .footer-v3-summary {
+    margin-top:14px !important;
+  }
+}
