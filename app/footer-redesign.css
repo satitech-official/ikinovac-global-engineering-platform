@@ -288,3 +288,47 @@
     margin-top:22px;
   }
 }
+
+
+/* 2026-09-22 footer spacing/logo refinement */
+.footer-v3-brand .brand-mark {
+  width:min(360px,100%) !important;
+}
+.footer-v3-brand .brand-mark-image {
+  width:210px !important;
+  height:138px !important;
+  max-width:100% !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+}
+.footer-v3-brand .brand-mark-image img {
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:left center !important;
+  transform:none !important;
+}
+
+/* Tighten only the homepage final CTA-to-footer gap. */
+body:has(.home-hero) .home-contact-cta {
+  min-height:0 !important;
+  padding-bottom:28px !important;
+}
+
+@media (max-width:760px) {
+  .footer-v3-brand .brand-mark-image {
+    width:190px !important;
+    height:126px !important;
+  }
+  body:has(.home-hero) .home-contact-cta {
+    padding-bottom:24px !important;
+  }
+}
+
+@media (max-width:470px) {
+  .footer-v3-brand .brand-mark-image {
+    width:176px !important;
+    height:116px !important;
+  }
+}
