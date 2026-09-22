@@ -210,10 +210,78 @@ function Header() {
 }
 
 function Footer() {
-  return <footer className="site-footer-v2">
-    <div className="footer-word">IKINOVAC</div><div className="footer-top"><Brand inverse /><div className="footer-socials" aria-label="Social media"><a href="https://www.linkedin.com/in/ikinovac-global/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><b>in</b></a><a href="https://www.instagram.com/ikinovacglobal/" target="_blank" rel="noreferrer" aria-label="Instagram"><b>◎</b></a><a href="https://www.facebook.com/ikinovacglobal" target="_blank" rel="noreferrer" aria-label="Facebook"><b>f</b></a></div></div>
-    <div className="footer-grid"><section><p className="eyebrow light">PRODUCTS</p><Link href="/products">Product directory</Link><Link href="/products/valves">Valves</Link><Link href="/products/automation">Automation</Link><Link href="/products/pipe-fittings-flanges">Pipe &amp; fittings</Link></section><section><p className="eyebrow light">EXPLORE</p><Link href="/industries">Industries</Link><Link href="/solutions">Solutions</Link><Link href="/global-presence">Global presence</Link><Link href="/insights">Knowledge hub</Link></section><section><p className="eyebrow light">PRIORITY MARKETS</p><Link href="/global-presence/usa">United States</Link><Link href="/global-presence/uk">United Kingdom</Link><Link href="/global-presence/uae">UAE</Link><Link href="/global-presence/saudi-arabia">Saudi Arabia</Link><Link href="/global-presence/south-africa">South Africa</Link><Link href="/global-presence/nigeria">Nigeria</Link></section><section><p className="eyebrow light">CONTACT</p><a href="mailto:info@ikinovac.com">info@ikinovac.com</a><Link href="/contact">Start an enquiry</Link></section></div>
-    <div className="footer-bottom"><span>© {new Date().getFullYear()} IKINOVAC GLOBAL</span><span>ENGINEERING SOLUTIONS. GLOBAL IMPACT.</span><Link href="/">Back to top ↑</Link></div>
+  return <footer className="site-footer-v3">
+    <div className="footer-v3-main">
+      <section className="footer-v3-brand" aria-label="IKINOVAC Global footer">
+        <Brand inverse />
+        <p className="footer-v3-summary">Supplying industrial products and engineering solutions across global markets.</p>
+
+        <div className="footer-v3-socials" aria-label="Social media">
+          <a href="https://www.linkedin.com/in/ikinovac-global/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+          <a href="https://www.facebook.com/ikinovacglobal" target="_blank" rel="noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/ikinovacglobal/" target="_blank" rel="noreferrer" aria-label="Instagram">◎</a>
+        </div>
+
+        <div className="footer-v3-contact">
+          <p className="footer-v3-heading">CONTACT</p>
+          <a href="mailto:info@ikinovac.com"><span aria-hidden="true">✉</span> info@ikinovac.com</a>
+          <Link href="/contact"><span aria-hidden="true">↗</span> Start an enquiry</Link>
+        </div>
+      </section>
+
+      <nav className="footer-v3-links" aria-label="Footer products">
+        <p className="footer-v3-heading">PRODUCTS</p>
+        <Link href="/products/valves">Valves <span>→</span></Link>
+        <Link href="/products/equipment">Pumps <span>→</span></Link>
+        <Link href="/products/automation">Automation <span>→</span></Link>
+        <Link href="/products/pipe-fittings-flanges">Pipe &amp; Fittings <span>→</span></Link>
+      </nav>
+
+      <nav className="footer-v3-links" aria-label="Footer company links">
+        <p className="footer-v3-heading">COMPANY</p>
+        <Link href="/company">About Us <span>→</span></Link>
+        <Link href="/industries">Industries <span>→</span></Link>
+        <Link href="/global-presence">Global Presence <span>→</span></Link>
+        <Link href="/contact">Contact Us <span>→</span></Link>
+      </nav>
+
+      <section className="footer-v3-network" aria-label="Global supply network">
+        <svg className="footer-v3-map" viewBox="0 0 1000 470" role="img" aria-label="Illustrative global supply network map">
+          <g className="footer-v3-land">
+            <path d="M77 107l39-34 82-11 68 22 23 32-18 29-42 6-27 24-46-4-20 25-38-20-8-34z" />
+            <path d="M236 205l34 13 18 46-14 39 9 63-24 72-23-39 2-65-19-48 9-42z" />
+            <path d="M432 101l38-22 41 9 13 20-26 17-34 0-32 21-24-15z" />
+            <path d="M467 151l46 8 29 42-5 71-27 59-33-17-15-63-25-39 8-42z" />
+            <path d="M532 109l60-32 107 12 77 37 72 5 26 35-35 22-61-10-42 30-58-8-40 27-82-26-34-37z" />
+            <path d="M742 256l39 7 33 27-11 31-45-1-23-29z" />
+            <path d="M775 351l28-12 34 18-4 25-42 6-25-16z" />
+            <path d="M103 75l26-26 25 8-13 22-25 8z" />
+          </g>
+          <g className="footer-v3-routes">
+            <path d="M182 130C305 83 425 119 492 157S669 123 765 164" />
+            <path d="M257 285C341 245 413 235 490 226S662 279 776 274" />
+            <path d="M493 157C516 204 505 231 492 267" />
+          </g>
+          <g className="footer-v3-nodes">
+            <circle cx="182" cy="130" r="8" />
+            <circle cx="257" cy="285" r="8" />
+            <circle cx="492" cy="157" r="8" />
+            <circle cx="492" cy="267" r="8" />
+            <circle cx="765" cy="164" r="8" />
+            <circle cx="776" cy="274" r="8" />
+          </g>
+        </svg>
+        <p>SUPPLYING INDUSTRY<br />ACROSS BORDERS</p>
+        <i aria-hidden="true" />
+      </section>
+    </div>
+
+    <div className="footer-v3-bottom">
+      <span>© {new Date().getFullYear()} IKINOVAC Global. All Rights Reserved.</span>
+      <span className="footer-v3-motto">Engineering Solutions. Global Impact.</span>
+      <span className="footer-v3-credit">Designed &amp; Developed by <a href="https://satitechnologies.com/" target="_blank" rel="noreferrer">Sati Technologies</a> <b aria-hidden="true">↗</b></span>
+      <a className="footer-v3-top" href="#" aria-label="Back to top">↑</a>
+    </div>
   </footer>;
 }
 
