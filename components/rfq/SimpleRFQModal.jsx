@@ -38,7 +38,7 @@ const download = (blob, filename) => {
 };
 
 const productSummary = items => items.map((item, index) =>
-  `${String(index + 1).padStart(2, '0')}. ${item.product.name} | ${item.product.category} | Qty: ${item.quantity || 'Not specified'}${item.notes ? ` | Notes: ${item.notes}` : ''}`
+  `${String(index + 1).padStart(2, '0')}. ${item.product.name} | Qty: ${item.quantity || 'Not specified'}`
 ).join('\n');
 
 const submitFallback = async (rfq, pdf, filename) => {
@@ -56,12 +56,9 @@ const submitFallback = async (rfq, pdf, filename) => {
   rfq.items.forEach((item, index) => {
     const prefix = `Item ${String(index + 1).padStart(2, '0')}`;
     data.append(`${prefix} Product`, item.product.name);
-    data.append(`${prefix} Category`, item.product.category);
-    data.append(`${prefix} Family`, item.product.family);
     data.append(`${prefix} Quantity`, item.quantity || 'Not specified');
-    data.append(`${prefix} Notes`, item.notes || 'Not specified');
   });
-  data.append('Project Requirement', rfq.requirement);
+  data.append('Additional Notes', rfq.requirement || 'Not specified');
   data.append('attachment', new File([pdf], filename, { type: 'application/pdf' }));
 
   const response = await fetch(fallbackEndpoint, {
@@ -92,7 +89,7 @@ export default function SimpleRFQModal() {
   useEffect(() => {
     setItemMeta(current => Object.fromEntries(quoteProducts.map(product => [
       product.id,
-      current[product.id] || { quantity: '', notes: '' }
+      current[product.id] || { quantity: '' }
     ])));
   }, [quoteProducts]);
 
@@ -117,7 +114,7 @@ export default function SimpleRFQModal() {
   if (!quoteOpen) return null;
 
   const update = event => setForm(current => ({ ...current, [event.target.name]: event.target.value }));
-  const updateItem = (id, field, value) => setItemMeta(current => ({ ...current, [id]: { ...(current[id] || { quantity: '', notes: '' }), [field]: value } }));
+  const updateItem = (id, field, value) => setItemMeta(current => ({ ...current, [id]: { ...(current[id] || { quantity: '' }), [field]: value } }));
 
   const addSelected = () => {
     if (!addProductId || quoteProducts.length >= maxProducts) return;
@@ -132,7 +129,6 @@ export default function SimpleRFQModal() {
     if (!form.name.trim()) next.name = 'Please enter your name.';
     if (!form.company.trim()) next.company = 'Please enter your company.';
     if (!emailPattern.test(form.email.trim())) next.email = 'Please enter a valid email address.';
-    if (!form.requirement.trim()) next.requirement = 'Please describe the overall project requirement.';
     quoteProducts.forEach(product => {
       const quantity = (itemMeta[product.id]?.quantity || '').trim();
       if (quantity && (!/^\d+(?:\.\d+)?$/.test(quantity) || Number(quantity) <= 0)) next[`quantity-${product.id}`] = 'Quantity must be a positive number.';
@@ -151,7 +147,7 @@ export default function SimpleRFQModal() {
     const items = quoteProducts.map(product => ({
       product: makeProduct(product),
       quantity: (itemMeta[product.id]?.quantity || '').trim() || null,
-      notes: (itemMeta[product.id]?.notes || '').trim() || null
+      notes: null
     }));
 
     const rfq = {
@@ -222,37 +218,28 @@ export default function SimpleRFQModal() {
         <div><button className="button button-dark" type="button" onClick={closeQuote}>Close <span>→</span></button><a className="button button-ghost" href={whatsapp} target="_blank" rel="noreferrer">Continue on WhatsApp <span>→</span></a></div>
       </div> : <form onSubmit={submit} noValidate>
         <header className="simple-rfq-heading">
-          <p className="eyebrow">PROJECT DESK / MULTI-PRODUCT RFQ</p>
-          <h2 id="simple-rfq-title">BUILD ONE <em>REQUIREMENT.</em></h2>
-          <p>Add every product needed for the project, then submit the complete requirement once.</p>
+          <p className="eyebrow">PROJECT DESK / RFQ</p>
+          <h2 id="simple-rfq-title">REQUEST A <em>QUOTE.</em></h2>
+          <p>Select the products you need and share your contact details.</p>
         </header>
 
         <fieldset className="simple-rfq-products-fieldset">
-          <legend><b>01</b> PRODUCTS <span>{quoteProducts.length} / {maxProducts} selected</span></legend>
+          <legend><b>01</b> PRODUCTS</legend>
 
           <div className="simple-rfq-product-list">
             {quoteProducts.map((rawProduct, index) => {
               const product = makeProduct(rawProduct);
-              const meta = itemMeta[rawProduct.id] || { quantity: '', notes: '' };
+              const meta = itemMeta[rawProduct.id] || { quantity: '' };
               return <article className="simple-rfq-product-item" key={rawProduct.id}>
-                <div className="simple-rfq-item-number">{String(index + 1).padStart(2, '0')}</div>
                 {product.image ? <img src={product.image} alt={product.imageAlt} /> : <div className="simple-rfq-image-placeholder">IG</div>}
                 <div className="simple-rfq-item-copy">
-                  <p>{product.category}</p>
                   <h3>{product.name}</h3>
-                  <span>{product.family}</span>
                 </div>
                 <button type="button" className="simple-rfq-remove" onClick={() => removeQuoteProduct(rawProduct.id)} disabled={status === 'submitting'} aria-label={`Remove ${product.name}`}>Remove</button>
-                <label className="simple-rfq-item-qty">Quantity
-                  <input inputMode="decimal" value={meta.quantity} onChange={event => updateItem(rawProduct.id, 'quantity', event.target.value)} placeholder="Optional" aria-invalid={Boolean(errors[`quantity-${rawProduct.id}`])} />
+                <label className="simple-rfq-item-qty">Quantity <span>(Optional)</span>
+                  <input inputMode="decimal" value={meta.quantity} onChange={event => updateItem(rawProduct.id, 'quantity', event.target.value)} placeholder="Enter quantity" aria-invalid={Boolean(errors[`quantity-${rawProduct.id}`])} />
                   {errors[`quantity-${rawProduct.id}`] && <small>{errors[`quantity-${rawProduct.id}`]}</small>}
                 </label>
-                <details className="simple-rfq-item-notes simple-rfq-item-notes-details">
-                  <summary><span>Add product notes / specifications</span><b>Optional</b></summary>
-                  <label>Product notes / specification
-                    <textarea value={meta.notes} onChange={event => updateItem(rawProduct.id, 'notes', event.target.value)} maxLength="500" placeholder="Size, material, rating, standard or any product-specific requirement." />
-                  </label>
-                </details>
               </article>;
             })}
             {!quoteProducts.length && <div className="simple-rfq-empty">No product selected yet. Add the products required for this RFQ below.</div>}
@@ -281,12 +268,12 @@ export default function SimpleRFQModal() {
         </fieldset>
 
         <fieldset className="simple-rfq-fields simple-rfq-project-requirement">
-          <legend><b>03</b> PROJECT REQUIREMENT</legend>
-          <label>Overall requirement / notes *<textarea name="requirement" value={form.requirement} onChange={update} maxLength="2500" placeholder="Project context, destination, delivery expectations, standards, documentation or any requirement that applies to the complete RFQ." aria-invalid={Boolean(errors.requirement)} />{errors.requirement && <small>{errors.requirement}</small>}</label>
+          <legend><b>03</b> ADDITIONAL NOTES</legend>
+          <label>Any additional requirement <span>(Optional)</span><textarea name="requirement" value={form.requirement} onChange={update} maxLength="1200" placeholder="Add delivery, standard or project notes if needed." /></label>
         </fieldset>
 
         {message && <p className="simple-rfq-error" role="alert">{message}</p>}
-        <button className="button button-gold simple-rfq-submit" disabled={status === 'submitting'} type="submit">{status === 'submitting' ? 'SUBMITTING RFQ…' : `SUBMIT ${quoteProducts.length || ''} PRODUCT${quoteProducts.length === 1 ? '' : 'S'} & DOWNLOAD PDF`} <span>→</span></button>
+        <button className="button button-gold simple-rfq-submit" disabled={status === 'submitting'} type="submit">{status === 'submitting' ? 'SUBMITTING RFQ…' : 'SUBMIT RFQ & DOWNLOAD PDF'} <span>→</span></button>
         <p className="simple-rfq-disclaimer">Pricing, availability, specifications and delivery terms are subject to IKINOVAC Global review and confirmation.</p>
       </form>}
     </section>
