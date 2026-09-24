@@ -1,0 +1,50 @@
+name: Refresh All IKINOVAC Product Images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/refresh-all-product-images.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Rebuild full product image archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(find .ikinovac-full-import -maxdepth 1 -name 'part-*.txt' | wc -l)" -eq 20
+          cat .ikinovac-full-import/part-*.txt | base64 --decode > /tmp/ikinovac-full-images.zip
+          unzip -t /tmp/ikinovac-full-images.zip
+          test "$(unzip -Z1 /tmp/ikinovac-full-images.zip | grep -E '^images/catalog/.+\.webp$' | wc -l)" -eq 102
+
+      - name: Replace catalogue images in public assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          unzip -o /tmp/ikinovac-full-images.zip 'images/catalog/*' -d public
+          rm -rf .ikinovac-full-import
+          rm -f .github/workflows/refresh-all-product-images.yml
+
+      - name: Commit refreshed catalogue artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No image changes detected."
+            exit 0
+          fi
+          git commit -m "Refresh all IKINOVAC catalogue product images"
+          git push origin HEAD:main
