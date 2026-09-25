@@ -4,7 +4,7 @@ import { catalogueCategories } from '@/lib/catalogue';
 import { globalMarkets } from '@/lib/markets';
 
 const siteUrl = 'https://www.ikinovac.com';
-const lastModified = new Date('2026-09-25');
+const lastModified = new Date('2026-09-25T00:00:00.000Z');
 
 export default function sitemap() {
   const staticRoutes = [
@@ -21,12 +21,34 @@ export default function sitemap() {
 
   const categoryRoutes = catalogueCategories.map(category => `/products/${category.slug}`);
   const marketRoutes = globalMarkets.map(market => `/global-presence/${market.slug}`);
-  const insightRoutes = ['/insights/valve-selection', '/insights/material-selection', '/insights/procurement', '/insights/ball-valve-vs-gate-valve', '/insights/oil-gas-procurement-checklist', '/insights/piping-flange-rfq-guide'];
+  const insightRoutes = [
+    '/insights/valve-selection',
+    '/insights/material-selection',
+    '/insights/procurement',
+    '/insights/ball-valve-vs-gate-valve',
+    '/insights/oil-gas-procurement-checklist',
+    '/insights/piping-flange-rfq-guide'
+  ];
 
-  return [...staticRoutes, ...categoryRoutes, ...marketRoutes, ...insightRoutes].map((path, index) => ({
-    url: `${siteUrl}${path || '/'}`,
-    lastModified,
-    changeFrequency: index === 0 ? 'weekly' : 'monthly',
-    priority: index === 0 ? 1 : path === '/products' || path === '/global-presence' ? 0.9 : path.startsWith('/products/') ? 0.8 : 0.7
-  }));
+  return [...staticRoutes, ...categoryRoutes, ...marketRoutes, ...insightRoutes].map((path, index) => {
+    const url = `${siteUrl}${path || '/'}`;
+    return {
+      url,
+      lastModified,
+      changeFrequency: index === 0 ? 'weekly' : 'monthly',
+      priority: index === 0
+        ? 1
+        : path === '/products' || path === '/global-presence'
+          ? 0.9
+          : path.startsWith('/products/') || path.startsWith('/global-presence/')
+            ? 0.8
+            : 0.7,
+      alternates: {
+        languages: {
+          en: url,
+          'x-default': url
+        }
+      }
+    };
+  });
 }
