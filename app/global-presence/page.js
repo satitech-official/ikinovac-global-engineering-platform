@@ -5,7 +5,7 @@ import { globalMarkets } from '@/lib/markets';
 export const metadata = {
   title: 'Global Industrial Supply Network',
   description: 'Global industrial sourcing, engineering procurement and project supply across North America, Europe, the Middle East and Africa.',
-  alternates: { canonical: '/global-presence/' },
+  alternates: { canonical: '/global-presence/', languages: { en: '/global-presence/', 'x-default': '/global-presence/' } },
   keywords: [
     'global industrial supply',
     'industrial sourcing USA',
