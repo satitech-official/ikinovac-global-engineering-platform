@@ -4,7 +4,7 @@ import PublicPage from '@/components/PublicPage';
 export const metadata = {
   title: 'Material Specification Checklist for Industrial Sourcing',
   description: 'A practical checklist for communicating industrial material requirements clearly during global sourcing and engineering procurement without substituting supplier assumptions for project specifications.',
-  alternates: { canonical: '/insights/material-selection/' },
+  alternates: { canonical: '/insights/material-selection/', languages: { en: '/insights/material-selection/', 'x-default': '/insights/material-selection/' } },
   keywords: ['industrial material specification checklist','engineering material sourcing','material procurement guide','industrial procurement documentation','global engineering sourcing'],
   openGraph: {
     title: 'Industrial Material Specification Checklist | IKINOVAC GLOBAL',
