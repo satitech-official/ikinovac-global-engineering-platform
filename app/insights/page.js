@@ -23,7 +23,7 @@ export const metadata = {
 };
 
 export default function Page() {
-  const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
+  const siteUrl = 'https://www.ikinovac.com';
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
