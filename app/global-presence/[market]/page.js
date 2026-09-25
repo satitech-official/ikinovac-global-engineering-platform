@@ -38,7 +38,7 @@ export function generateMetadata({ params }) {
 export default function MarketPage({ params }) {
   const market = getGlobalMarket(params.market);
   if (!market) notFound();
-  const path = `/global-presence/${market.slug}`;
+  const path = `/global-presence/${market.slug}/`;
 
   const serviceSchema = {
     '@context': 'https://schema.org',
