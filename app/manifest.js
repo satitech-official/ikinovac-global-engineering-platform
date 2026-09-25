@@ -9,7 +9,7 @@ export default function manifest() {
     theme_color: '#0C79D8',
     icons: [
       {
-        src: '/assets/ikinovac-ig-emblem-header-v3.png',
+        src: '/favicon.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any'
