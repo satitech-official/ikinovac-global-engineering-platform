@@ -3,8 +3,8 @@ import CataloguePage from '@/components/CataloguePage';
 import { catalogueCategories } from '@/lib/catalogue';
 
 export const metadata = {
-  title: 'Industrial Products & Engineering Supply Directory',
-  description: 'Explore IKINOVAC GLOBAL industrial products for valves, automation, piping, instrumentation, process equipment, rotating equipment, MRO and project requirements worldwide.',
+  title: 'Industrial Products & Supply Directory',
+  description: 'Explore valves, automation, piping, instrumentation, rotating equipment, process equipment and MRO products for global industrial procurement.',
   alternates: { canonical: '/products/' },
   keywords: [
     'industrial products supplier',
