@@ -2,8 +2,8 @@ import PublicPage from '@/components/PublicPage';
 import { CompanyPage } from '@/components/ContentPages';
 
 export const metadata = {
-  title: 'Global Industrial Sourcing & Engineering Procurement Company',
-  description: 'Learn how IKINOVAC GLOBAL supports international industrial buyers with engineering-led sourcing, global procurement, project supply, MRO and technical coordination.',
+  title: 'Industrial Sourcing & Procurement Company',
+  description: 'IKINOVAC GLOBAL supports international industrial buyers with engineering-led sourcing, procurement, project supply, MRO and technical coordination.',
   alternates: { canonical: '/company/' },
   keywords: [
     'global industrial sourcing company',
