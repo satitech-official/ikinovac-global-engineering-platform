@@ -3,8 +3,8 @@ import { IndustriesPage } from '@/components/ContentPages';
 import { industries } from '@/lib/content';
 
 export const metadata = {
-  title: 'Industrial Supply for Oil & Gas, Power, Mining & Manufacturing',
-  description: 'IKINOVAC GLOBAL supports oil & gas, petrochemical, refining, power, LNG, marine, mining and manufacturing requirements with industrial sourcing and project procurement.',
+  title: 'Industrial Supply by Industry',
+  description: 'Industrial sourcing and project procurement for oil & gas, petrochemical, power, LNG, marine, mining, manufacturing and infrastructure projects.',
   alternates: { canonical: '/industries/' },
   keywords: [
     'oil and gas equipment supplier',
