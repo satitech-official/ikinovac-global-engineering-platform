@@ -5,7 +5,7 @@ import { insights } from '@/lib/content';
 export const metadata = {
   title: 'Industrial Procurement Knowledge Hub',
   description: 'Technical guides on valves, engineering procurement, global sourcing, materials and project supply for international industrial buyers.',
-  alternates: { canonical: '/insights/' },
+  alternates: { canonical: '/insights/', languages: { en: '/insights/', 'x-default': '/insights/' } },
   keywords: [
     'industrial engineering knowledge',
     'engineering procurement guide',
