@@ -47,9 +47,26 @@ export const metadata = {
     telephone: false
   },
   icons: {
-    icon: '/assets/ikinovac-logo.jpeg',
-    shortcut: '/assets/ikinovac-logo.jpeg',
-    apple: '/assets/ikinovac-logo.jpeg'
+    icon: [
+      {
+        url: '/assets/ikinovac-ig-emblem-header-v3.png',
+        type: 'image/png',
+        sizes: '512x512'
+      }
+    ],
+    shortcut: [
+      {
+        url: '/assets/ikinovac-ig-emblem-header-v3.png',
+        type: 'image/png'
+      }
+    ],
+    apple: [
+      {
+        url: '/assets/ikinovac-ig-emblem-header-v3.png',
+        type: 'image/png',
+        sizes: '180x180'
+      }
+    ]
   },
   keywords: [
     'global industrial supplier',
@@ -134,7 +151,7 @@ export default function RootLayout({ children }) {
     name: 'IKINOVAC GLOBAL',
     alternateName: 'IKINOVAC',
     url: siteUrl,
-    logo: `${siteUrl}/assets/ikinovac-logo.jpeg`,
+    logo: `${siteUrl}/assets/ikinovac-logo-enhanced-v2.png`,
     image: `${siteUrl}/og.png`,
     description: defaultDescription,
     email: 'info@ikinovac.com',
