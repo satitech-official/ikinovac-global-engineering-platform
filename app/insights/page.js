@@ -5,7 +5,7 @@ import { insights } from '@/lib/content';
 export const metadata = {
   title: 'Industrial Engineering & Procurement Knowledge Hub',
   description: 'Technical resources from IKINOVAC GLOBAL covering industrial valves, engineering procurement, global sourcing, material requirements and project supply for international buyers.',
-  alternates: { canonical: '/insights' },
+  alternates: { canonical: '/insights/' },
   keywords: [
     'industrial engineering knowledge',
     'engineering procurement guide',
@@ -17,7 +17,7 @@ export const metadata = {
   openGraph: {
     title: 'Industrial Engineering Knowledge Hub | IKINOVAC GLOBAL',
     description: 'Engineering, sourcing and procurement resources for international industrial buyers and project teams.',
-    url: '/insights',
+    url: '/insights/',
     images: ['/og.png']
   }
 };
