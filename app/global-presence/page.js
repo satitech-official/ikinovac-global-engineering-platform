@@ -5,7 +5,7 @@ import { globalMarkets } from '@/lib/markets';
 export const metadata = {
   title: 'Global Industrial Supply Network | Western, Eastern & African Markets',
   description: 'IKINOVAC GLOBAL supports industrial sourcing, engineering procurement and project supply requirements across Western markets, Eastern and Middle East markets, and key African industrial economies.',
-  alternates: { canonical: '/global-presence' },
+  alternates: { canonical: '/global-presence/' },
   keywords: [
     'global industrial supply',
     'industrial sourcing USA',
@@ -23,7 +23,7 @@ export const metadata = {
   openGraph: {
     title: 'IKINOVAC GLOBAL | Global Industrial Supply & Project Procurement',
     description: 'Industrial sourcing, procurement and project supply support across Western, Eastern and African markets.',
-    url: '/global-presence',
+    url: '/global-presence/',
     images: ['/og.png']
   }
 };
