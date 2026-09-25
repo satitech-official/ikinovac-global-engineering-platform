@@ -15,7 +15,7 @@ import './mobile-homepage-fixes.css';
 import './homepage-density-refinement.css';
 import './footer-redesign.css';
 
-const siteUrl = 'https://www.ikinovacglobal.com';
+const siteUrl = 'https://www.ikinovac.com';
 const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'Ll23eOSzockpTSudW43vD072a5hGrlKU1leX8s1SZP8';
 const bingVerification = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '';
@@ -114,7 +114,7 @@ export default function RootLayout({ children }) {
     logo: `${siteUrl}/assets/ikinovac-logo.jpeg`,
     image: `${siteUrl}/og.png`,
     description: 'Engineering-led industrial sourcing, procurement and project supply solutions for North America, Europe, the Middle East, Africa and Asia-Pacific.',
-    email: 'info@ikinovacglobal.com',
+    email: 'info@ikinovac.com',
     sameAs: socialProfiles,
     areaServed: [
       'Worldwide',
@@ -165,7 +165,7 @@ export default function RootLayout({ children }) {
     contactPoint: [{
       '@type': 'ContactPoint',
       contactType: 'sales',
-      email: 'info@ikinovacglobal.com',
+      email: 'info@ikinovac.com',
       availableLanguage: ['English'],
       areaServed: 'Worldwide'
     }]
