@@ -15,11 +15,11 @@ export function generateMetadata({ params }) {
   return {
     title: `${category.name} | Global Industrial Supply & Procurement`,
     description: `Source ${category.name.toLowerCase()} for industrial projects through IKINOVAC GLOBAL. Explore product families and submit an RFQ for global sourcing, procurement and project supply support.`,
-    alternates: { canonical: `/products/${category.slug}`, languages: { en: `/products/${category.slug}`, 'x-default': `/products/${category.slug}` } },
+    alternates: { canonical: `/products/${category.slug}/`, languages: { en: `/products/${category.slug}/`, 'x-default': `/products/${category.slug}/` } },
     openGraph: {
       title: `${category.name} | IKINOVAC GLOBAL`,
       description: `${category.summary} Global sourcing and project procurement support available on request.`,
-      url: `/products/${category.slug}`,
+      url: `/products/${category.slug}/`,
       locale: 'en_US',
       images: ['/og.png']
     },
@@ -37,7 +37,7 @@ export default function CategoryPage({ params }) {
   const category = getCategory(params.category);
   if (!category) notFound();
   const products = getProductsForCategory(category.slug);
-  const path = `/products/${category.slug}`;
+  const path = `/products/${category.slug}/`;
 
   const collectionSchema = {
     '@context': 'https://schema.org',
@@ -61,7 +61,7 @@ export default function CategoryPage({ params }) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: 'Products', item: `${siteUrl}/products` },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: `${siteUrl}/products/` },
       { '@type': 'ListItem', position: 3, name: category.name, item: `${siteUrl}${path}` }
     ]
   };
