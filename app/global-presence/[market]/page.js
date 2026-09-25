@@ -5,6 +5,22 @@ import { getGlobalMarket, globalMarkets } from '@/lib/markets';
 
 const siteUrl = 'https://www.ikinovac.com';
 
+const seoMarketNames = {
+  usa: 'USA',
+  uk: 'UK',
+  uae: 'UAE',
+  'saudi-arabia': 'Saudi Arabia',
+  'south-africa': 'South Africa',
+  nigeria: 'Nigeria',
+  kenya: 'Kenya',
+  egypt: 'Egypt',
+  ghana: 'Ghana',
+  tanzania: 'Tanzania',
+  morocco: 'Morocco',
+  angola: 'Angola',
+  mozambique: 'Mozambique'
+};
+
 export function generateStaticParams() {
   return globalMarkets.map(market => ({ market: market.slug }));
 }
@@ -13,13 +29,14 @@ export function generateMetadata({ params }) {
   const market = getGlobalMarket(params.market);
   if (!market) return {};
   const path = `/global-presence/${market.slug}/`;
+  const seoName = seoMarketNames[market.slug] || market.name;
   return {
-    title: `Industrial Supplier & Procurement in ${market.name}`,
+    title: `${seoName} Industrial Supply & Procurement`,
     description: `Industrial sourcing, valves, automation, piping, instrumentation and MRO procurement for ${market.name} projects. Send an RFQ to IKINOVAC GLOBAL.`,
     keywords: market.keywords,
     alternates: { canonical: path, languages: { en: path, 'x-default': path } },
     openGraph: {
-      title: `Industrial Supplier & Procurement in ${market.name}`,
+      title: `${seoName} Industrial Supply & Procurement`,
       description: `Industrial sourcing and engineering procurement for ${market.name} projects through IKINOVAC GLOBAL.`,
       url: path,
       locale: 'en_US',
