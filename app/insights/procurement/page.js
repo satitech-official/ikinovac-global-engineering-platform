@@ -21,7 +21,7 @@ export default function Page() {
     headline: 'Global Engineering Procurement RFQ Checklist',
     datePublished: '2026-09-20',
     dateModified: '2026-09-20',
-    author: { '@type': 'Organization', name: 'IKINOVAC GLOBAL' },
+    author: { '@type': 'Organization', name: 'IKINOVAC GLOBAL', url: 'https://www.ikinovac.com/', logo: { '@type': 'ImageObject', url: 'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png' } },
     publisher: { '@type': 'Organization', name: 'IKINOVAC GLOBAL', logo: { '@type': 'ImageObject', url: 'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png' } },
     image: 'https://www.ikinovac.com/og.png',
     mainEntityOfPage: 'https://www.ikinovac.com/insights/procurement/'
