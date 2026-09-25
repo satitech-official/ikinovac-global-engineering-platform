@@ -14,7 +14,7 @@ export default function Page() {
   return <PublicPage><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
     <section className="insights-hero"><p className="eyebrow light">ENGINEERING KNOWLEDGE / OIL &amp; GAS</p><h1>PROCUREMENT<br /><em>WITHOUT GAPS.</em></h1><p>A structured checklist for international oil and gas sourcing and project supply enquiries.</p></section>
     <section className="insights-grid">
-      <article><b>01 / SCOPE</b><h2>Lock the technical scope</h2><p>Use issued specifications, datasheets, line lists, drawings and tag references so the sourcing process starts from controlled project information.</p></article>
+      <article><b>01 / SCOPE</b><h2>Lock the technical scope</h2><p>Use issued specifications, datasheets, line lists, drawings and tag references so the sourcing process starts from controlled project information. Record revision status and project references where they are available.</p></article>
       <article><b>02 / AVL</b><h2>State approved-vendor constraints</h2><p>If the project limits manufacturers, countries of origin or certifications, include those restrictions before commercial sourcing begins.</p></article>
       <article><b>03 / QUALITY</b><h2>Define inspection requirements</h2><p>Identify inspection plans, witness points, third-party inspection and required testing early so they are reflected in the supply route.</p></article>
       <article><b>04 / DOCUMENTS</b><h2>List the documentation package</h2><p>Material certificates, test reports, drawings, manuals, data books and traceability expectations should be part of the RFQ rather than an afterthought.</p></article>

@@ -14,7 +14,7 @@ export default function Page() {
   return <PublicPage><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
     <section className="insights-hero"><p className="eyebrow light">ENGINEERING KNOWLEDGE / PIPING</p><h1>A CLEARER<br /><em>PIPING RFQ.</em></h1><p>The data points industrial buyers should align before requesting pipe, fitting and flange quotations.</p></section>
     <section className="insights-grid">
-      <article><b>01 / SIZE</b><h2>Specify size and quantity</h2><p>List nominal sizes, lengths or piece quantities by line item. Mixed-size packages should remain separated enough to avoid ambiguity.</p></article>
+      <article><b>01 / SIZE</b><h2>Specify size and quantity</h2><p>List nominal sizes, lengths or piece quantities by line item. Mixed-size packages should remain separated enough to avoid ambiguity and make commercial comparison easier.</p></article>
       <article><b>02 / WALL</b><h2>Include schedule or thickness</h2><p>Pipe wall schedule or specified thickness is a core requirement. Fittings should be tied to the applicable dimensional and wall-thickness requirement.</p></article>
       <article><b>03 / MATERIAL</b><h2>Use exact material standards</h2><p>Provide the project material grade and standard for pipe, fittings and flanges rather than relying on broad material descriptions.</p></article>
       <article><b>04 / RATING</b><h2>Define flange class and facing</h2><p>Where flanges are involved, include pressure class, type, facing, bore and any required dimensional standard or project-specific requirement.</p></article>

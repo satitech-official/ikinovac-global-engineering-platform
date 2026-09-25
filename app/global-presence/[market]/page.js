@@ -31,7 +31,7 @@ export function generateMetadata({ params }) {
   const path = `/global-presence/${market.slug}/`;
   const seoName = seoMarketNames[market.slug] || market.name;
   return {
-    title: `${seoName} Industrial Supply & Procurement`,
+    title: `${seoName} Industrial Supply`,
     description: `Industrial sourcing, valves, automation, piping, instrumentation and MRO procurement for ${market.name} projects. Send an RFQ to IKINOVAC GLOBAL.`,
     keywords: market.keywords,
     alternates: { canonical: path, languages: { en: path, 'x-default': path } },
