@@ -2,8 +2,8 @@ import Link from 'next/link';
 import PublicPage from '@/components/PublicPage';
 
 export const metadata = {
-  title: 'Industrial Valve Selection Guide for Project Buyers',
-  description: 'A practical IKINOVAC GLOBAL guide to preparing an industrial valve enquiry: service, pressure, temperature, material, actuation, standards, quantity and documentation requirements.',
+  title: 'Industrial Valve Selection Guide',
+  description: 'Prepare an industrial valve RFQ with service, pressure, temperature, materials, actuation, standards, quantity, documentation and delivery requirements.',
   alternates: { canonical: '/insights/valve-selection/', languages: { en: '/insights/valve-selection/', 'x-default': '/insights/valve-selection/' } },
   keywords: ['industrial valve selection guide','valve procurement checklist','valve RFQ guide','industrial valves sourcing','ball valve gate valve butterfly valve procurement'],
   openGraph: {
@@ -20,7 +20,7 @@ export default function Page() {
     '@type': 'Article',
     headline: 'Industrial Valve Selection Guide for Project Buyers',
     datePublished: '2026-09-20',
-    dateModified: '2026-09-20',
+    dateModified: '2026-09-25',
     author: { '@type': 'Organization', name: 'IKINOVAC GLOBAL', url: 'https://www.ikinovac.com/', logo: { '@type': 'ImageObject', url: 'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png' } },
     publisher: { '@type': 'Organization', name: 'IKINOVAC GLOBAL', logo: { '@type': 'ImageObject', url: 'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png' } },
     image: 'https://www.ikinovac.com/og.png',

@@ -2,8 +2,8 @@ import Link from 'next/link';
 import PublicPage from '@/components/PublicPage';
 
 export const metadata = {
-  title: 'Global Engineering Procurement RFQ Checklist',
-  description: 'A practical RFQ checklist for international industrial buyers covering technical scope, quantities, documentation, commercial terms, logistics and delivery context.',
+  title: 'Engineering Procurement RFQ Checklist',
+  description: 'A practical RFQ checklist for industrial buyers covering technical scope, quantities, documentation, commercial terms, logistics and delivery context.',
   alternates: { canonical: '/insights/procurement/', languages: { en: '/insights/procurement/', 'x-default': '/insights/procurement/' } },
   keywords: ['engineering procurement RFQ checklist','global industrial procurement','industrial sourcing RFQ','project procurement guide','international industrial supplier enquiry'],
   openGraph: {
@@ -20,7 +20,7 @@ export default function Page() {
     '@type': 'Article',
     headline: 'Global Engineering Procurement RFQ Checklist',
     datePublished: '2026-09-20',
-    dateModified: '2026-09-20',
+    dateModified: '2026-09-25',
     author: { '@type': 'Organization', name: 'IKINOVAC GLOBAL', url: 'https://www.ikinovac.com/', logo: { '@type': 'ImageObject', url: 'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png' } },
     publisher: { '@type': 'Organization', name: 'IKINOVAC GLOBAL', logo: { '@type': 'ImageObject', url: 'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png' } },
     image: 'https://www.ikinovac.com/og.png',
