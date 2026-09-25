@@ -4,7 +4,7 @@ import { SolutionsPage } from '@/components/ContentPages';
 export const metadata = {
   title: 'Engineering Procurement & Global Sourcing',
   description: 'Engineering support, global sourcing, project procurement, inspection coordination and logistics for international industrial requirements.',
-  alternates: { canonical: '/solutions/' },
+  alternates: { canonical: '/solutions/', languages: { en: '/solutions/', 'x-default': '/solutions/' } },
   keywords: [
     'engineering procurement services',
     'global industrial sourcing',
