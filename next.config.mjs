@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const isGitHubPagesBuild = process.env.GITHUB_ACTIONS === 'true';
+const hasCustomDomain = process.env.IKINOVAC_CUSTOM_DOMAIN === 'true';
 const repositoryName = process.env.GITHUB_REPOSITORY?.split('/').pop() || 'ikinovac-global-engineering-platform';
-const publicBasePath = isGitHubPagesBuild ? `/${repositoryName}` : '';
+const publicBasePath = isGitHubPagesBuild && !hasCustomDomain ? `/${repositoryName}` : '';
 
 const nextConfig = {
   output: isGitHubPagesBuild ? 'export' : undefined,
