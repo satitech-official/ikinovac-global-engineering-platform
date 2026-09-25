@@ -4,7 +4,7 @@ import PublicPage from '@/components/PublicPage';
 export const metadata = {
   title: 'Oil & Gas Procurement Checklist for International Projects',
   description: 'A practical industrial procurement checklist for oil and gas projects covering specifications, approved vendors, inspection, documentation, logistics and delivery requirements.',
-  alternates: { canonical: '/insights/oil-gas-procurement-checklist/' },
+  alternates: { canonical: '/insights/oil-gas-procurement-checklist/', languages: { en: '/insights/oil-gas-procurement-checklist/', 'x-default': '/insights/oil-gas-procurement-checklist/' } },
   keywords: ['oil and gas procurement checklist','oil gas equipment sourcing','project procurement oil and gas','industrial RFQ oil gas','global oil gas supplier'],
   openGraph: { title: 'Oil & Gas Procurement Checklist | IKINOVAC GLOBAL', description: 'Structure oil and gas sourcing requirements around technical, quality, documentation and delivery context.', url: '/insights/oil-gas-procurement-checklist/', images: ['/og.png'] }
 };
