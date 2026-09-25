@@ -2,15 +2,15 @@ import Link from 'next/link';
 import PublicPage from '@/components/PublicPage';
 
 export const metadata = {
-  title: 'Ball Valve vs Gate Valve: Industrial Selection Guide',
-  description: 'Compare ball valves and gate valves by operating function, shut-off behavior, pressure loss, actuation, maintenance and RFQ requirements for industrial projects.',
+  title: 'Ball Valve vs Gate Valve Guide',
+  description: 'Compare ball and gate valves by operation, flow, service conditions, actuation, maintenance and RFQ requirements for industrial projects.',
   alternates: { canonical: '/insights/ball-valve-vs-gate-valve/', languages: { en: '/insights/ball-valve-vs-gate-valve/', 'x-default': '/insights/ball-valve-vs-gate-valve/' } },
   keywords: ['ball valve vs gate valve','industrial valve comparison','ball valve selection','gate valve selection','valve procurement guide'],
   openGraph: { title: 'Ball Valve vs Gate Valve | IKINOVAC GLOBAL', description: 'A practical industrial buyer guide to comparing ball and gate valve requirements before RFQ.', url: '/insights/ball-valve-vs-gate-valve/', images: ['/og.png'] }
 };
 
 export default function Page() {
-  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Ball Valve vs Gate Valve: Industrial Selection Guide', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://www.ikinovac.com/insights/ball-valve-vs-gate-valve' };
+  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Ball Valve vs Gate Valve: Industrial Selection Guide', datePublished:'2026-09-20', dateModified:'2026-09-25', image:'https://www.ikinovac.com/og.png', author:{'@type':'Organization',name:'IKINOVAC GLOBAL',url:'https://www.ikinovac.com/',logo:{'@type':'ImageObject',url:'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png'}}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL',url:'https://www.ikinovac.com/',logo:{'@type':'ImageObject',url:'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png'}}, mainEntityOfPage:'https://www.ikinovac.com/insights/ball-valve-vs-gate-valve/' };
   return <PublicPage><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
     <section className="insights-hero"><p className="eyebrow light">ENGINEERING KNOWLEDGE / VALVES</p><h1>BALL VALVE<br />VS <em>GATE VALVE.</em></h1><p>A practical comparison for industrial buyers preparing a valve requirement.</p></section>
     <section className="insights-grid">

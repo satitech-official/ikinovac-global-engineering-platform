@@ -2,15 +2,15 @@ import Link from 'next/link';
 import PublicPage from '@/components/PublicPage';
 
 export const metadata = {
-  title: 'Pipe, Fittings & Flange RFQ Guide for Industrial Buyers',
-  description: 'Prepare a clearer piping RFQ with size, schedule, material, pressure class, end connections, standards, quantities, documentation and delivery requirements.',
+  title: 'Piping & Flange RFQ Guide',
+  description: 'Prepare piping RFQs with size, schedule, material, pressure class, fittings, flange details, standards, documentation and delivery requirements.',
   alternates: { canonical: '/insights/piping-flange-rfq-guide/', languages: { en: '/insights/piping-flange-rfq-guide/', 'x-default': '/insights/piping-flange-rfq-guide/' } },
   keywords: ['pipe fittings flange RFQ','industrial piping procurement','flange sourcing guide','pipe fittings supplier RFQ','piping material requisition'],
   openGraph: { title: 'Pipe, Fittings & Flange RFQ Guide | IKINOVAC GLOBAL', description: 'A practical checklist for industrial piping, fittings and flange sourcing enquiries.', url: '/insights/piping-flange-rfq-guide/', images: ['/og.png'] }
 };
 
 export default function Page() {
-  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Pipe, Fittings & Flange RFQ Guide for Industrial Buyers', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://www.ikinovac.com/insights/piping-flange-rfq-guide' };
+  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Pipe, Fittings & Flange RFQ Guide for Industrial Buyers', datePublished:'2026-09-20', dateModified:'2026-09-25', image:'https://www.ikinovac.com/og.png', author:{'@type':'Organization',name:'IKINOVAC GLOBAL',url:'https://www.ikinovac.com/',logo:{'@type':'ImageObject',url:'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png'}}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL',url:'https://www.ikinovac.com/',logo:{'@type':'ImageObject',url:'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png'}}, mainEntityOfPage:'https://www.ikinovac.com/insights/piping-flange-rfq-guide/' };
   return <PublicPage><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
     <section className="insights-hero"><p className="eyebrow light">ENGINEERING KNOWLEDGE / PIPING</p><h1>A CLEARER<br /><em>PIPING RFQ.</em></h1><p>The data points industrial buyers should align before requesting pipe, fitting and flange quotations.</p></section>
     <section className="insights-grid">

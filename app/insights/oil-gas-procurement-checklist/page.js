@@ -2,15 +2,15 @@ import Link from 'next/link';
 import PublicPage from '@/components/PublicPage';
 
 export const metadata = {
-  title: 'Oil & Gas Procurement Checklist for International Projects',
-  description: 'A practical industrial procurement checklist for oil and gas projects covering specifications, approved vendors, inspection, documentation, logistics and delivery requirements.',
+  title: 'Oil & Gas Procurement Checklist',
+  description: 'A practical oil and gas sourcing checklist covering specifications, approved vendors, inspection, documentation, logistics and delivery requirements.',
   alternates: { canonical: '/insights/oil-gas-procurement-checklist/', languages: { en: '/insights/oil-gas-procurement-checklist/', 'x-default': '/insights/oil-gas-procurement-checklist/' } },
   keywords: ['oil and gas procurement checklist','oil gas equipment sourcing','project procurement oil and gas','industrial RFQ oil gas','global oil gas supplier'],
   openGraph: { title: 'Oil & Gas Procurement Checklist | IKINOVAC GLOBAL', description: 'Structure oil and gas sourcing requirements around technical, quality, documentation and delivery context.', url: '/insights/oil-gas-procurement-checklist/', images: ['/og.png'] }
 };
 
 export default function Page() {
-  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Oil & Gas Procurement Checklist for International Projects', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://www.ikinovac.com/insights/oil-gas-procurement-checklist' };
+  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Oil & Gas Procurement Checklist for International Projects', datePublished:'2026-09-20', dateModified:'2026-09-25', image:'https://www.ikinovac.com/og.png', author:{'@type':'Organization',name:'IKINOVAC GLOBAL',url:'https://www.ikinovac.com/',logo:{'@type':'ImageObject',url:'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png'}}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL',url:'https://www.ikinovac.com/',logo:{'@type':'ImageObject',url:'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png'}}, mainEntityOfPage:'https://www.ikinovac.com/insights/oil-gas-procurement-checklist/' };
   return <PublicPage><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
     <section className="insights-hero"><p className="eyebrow light">ENGINEERING KNOWLEDGE / OIL &amp; GAS</p><h1>PROCUREMENT<br /><em>WITHOUT GAPS.</em></h1><p>A structured checklist for international oil and gas sourcing and project supply enquiries.</p></section>
     <section className="insights-grid">
