@@ -5,7 +5,7 @@ import { catalogueCategories } from '@/lib/catalogue';
 export const metadata = {
   title: 'Industrial Products & Supply Directory',
   description: 'Explore valves, automation, piping, instrumentation, rotating equipment, process equipment and MRO products for global industrial procurement.',
-  alternates: { canonical: '/products/' },
+  alternates: { canonical: '/products/', languages: { en: '/products/', 'x-default': '/products/' } },
   keywords: [
     'industrial products supplier',
     'global industrial equipment supplier',
