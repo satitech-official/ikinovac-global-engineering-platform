@@ -49,20 +49,20 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: '/assets/ikinovac-ig-emblem-header-v3.png',
+        url: '/favicon.png',
         type: 'image/png',
         sizes: '512x512'
       }
     ],
     shortcut: [
       {
-        url: '/assets/ikinovac-ig-emblem-header-v3.png',
+        url: '/favicon.png',
         type: 'image/png'
       }
     ],
     apple: [
       {
-        url: '/assets/ikinovac-ig-emblem-header-v3.png',
+        url: '/favicon.png',
         type: 'image/png',
         sizes: '180x180'
       }
