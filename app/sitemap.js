@@ -9,25 +9,25 @@ const lastModified = new Date('2026-09-25T00:00:00.000Z');
 export default function sitemap() {
   const staticRoutes = [
     '',
-    '/company',
-    '/products',
-    '/industries',
-    '/solutions',
-    '/global-presence',
-    '/global-presence/africa',
-    '/insights',
-    '/contact'
+    '/company/',
+    '/products/',
+    '/industries/',
+    '/solutions/',
+    '/global-presence/',
+    '/global-presence/africa/',
+    '/insights/',
+    '/contact/'
   ];
 
-  const categoryRoutes = catalogueCategories.map(category => `/products/${category.slug}`);
-  const marketRoutes = globalMarkets.map(market => `/global-presence/${market.slug}`);
+  const categoryRoutes = catalogueCategories.map(category => `/products/${category.slug}/`);
+  const marketRoutes = globalMarkets.map(market => `/global-presence/${market.slug}/`);
   const insightRoutes = [
-    '/insights/valve-selection',
-    '/insights/material-selection',
-    '/insights/procurement',
-    '/insights/ball-valve-vs-gate-valve',
-    '/insights/oil-gas-procurement-checklist',
-    '/insights/piping-flange-rfq-guide'
+    '/insights/valve-selection/',
+    '/insights/material-selection/',
+    '/insights/procurement/',
+    '/insights/ball-valve-vs-gate-valve/',
+    '/insights/oil-gas-procurement-checklist/',
+    '/insights/piping-flange-rfq-guide/'
   ];
 
   return [...staticRoutes, ...categoryRoutes, ...marketRoutes, ...insightRoutes].map((path, index) => {
@@ -38,7 +38,7 @@ export default function sitemap() {
       changeFrequency: index === 0 ? 'weekly' : 'monthly',
       priority: index === 0
         ? 1
-        : path === '/products' || path === '/global-presence'
+        : path === '/products/' || path === '/global-presence/'
           ? 0.9
           : path.startsWith('/products/') || path.startsWith('/global-presence/')
             ? 0.8
