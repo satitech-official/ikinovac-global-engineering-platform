@@ -2,12 +2,12 @@ import Link from 'next/link';
 import PublicPage from '@/components/PublicPage';
 import { globalMarkets } from '@/lib/markets';
 
-const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
+const siteUrl = 'https://www.ikinovac.com';
 
 export const metadata = {
   title: 'Industrial Supply Africa | Engineering Procurement & Project Supply',
   description: 'IKINOVAC GLOBAL supports African industrial buyers with valves, pumps, piping, automation, instrumentation, MRO and project procurement across South Africa, Nigeria, Kenya, Egypt, Ghana, Tanzania, Morocco, Angola and Mozambique.',
-  alternates: { canonical: '/global-presence/africa' },
+  alternates: { canonical: '/global-presence/africa/', languages: { en: '/global-presence/africa/', 'x-default': '/global-presence/africa/' } },
   keywords: [
     'industrial supplier Africa',
     'engineering procurement Africa',
@@ -21,7 +21,7 @@ export const metadata = {
   openGraph: {
     title: 'Industrial Supply & Engineering Procurement Across Africa | IKINOVAC GLOBAL',
     description: 'Requirement-led industrial sourcing and project supply support for major African industrial markets.',
-    url: '/global-presence/africa',
+    url: '/global-presence/africa/',
     images: ['/og.png']
   }
 };
@@ -36,7 +36,7 @@ export default function AfricaPage() {
     provider: { '@id': `${siteUrl}/#organization` },
     areaServed: africaMarkets.map(market => ({ '@type': 'Country', name: market.name })),
     serviceType: ['Industrial sourcing','Engineering procurement','Project supply','MRO supply'],
-    url: `${siteUrl}/global-presence/africa`
+    url: `${siteUrl}/global-presence/africa/`
   };
 
   const breadcrumbSchema = {
@@ -44,8 +44,8 @@ export default function AfricaPage() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: 'Global Presence', item: `${siteUrl}/global-presence` },
-      { '@type': 'ListItem', position: 3, name: 'Africa', item: `${siteUrl}/global-presence/africa` }
+      { '@type': 'ListItem', position: 2, name: 'Global Presence', item: `${siteUrl}/global-presence/` },
+      { '@type': 'ListItem', position: 3, name: 'Africa', item: `${siteUrl}/global-presence/africa/` }
     ]
   };
 
@@ -65,7 +65,7 @@ export default function AfricaPage() {
     </section>
 
     <section className="industry-page-grid" aria-label="African industrial markets">
-      {africaMarkets.map(market => <Link href={`/global-presence/${market.slug}`} key={market.slug} style={{ backgroundImage: 'linear-gradient(180deg,rgba(13,23,20,.18),rgba(13,23,20,.92)),url(/ikinovac-global-engineering-platform/assets/industry/procurement.jpg)' }}>
+      {africaMarkets.map(market => <Link href={`/global-presence/${market.slug}/`} key={market.slug} style={{ backgroundImage: 'linear-gradient(180deg,rgba(13,23,20,.18),rgba(13,23,20,.92)),url(/assets/industry/procurement.jpg)' }}>
         <b>{market.region}</b>
         <h2>{market.name}</h2>
         <p>{market.description}</p>
@@ -75,7 +75,7 @@ export default function AfricaPage() {
 
     <section className="company-page-story">
       <div><p className="eyebrow">AFRICA / RFQ READINESS</p><h2>Clear specifications.<br /><em>Better sourcing.</em></h2></div>
-      <div><p>For African project and MRO requirements, share the product specification, quantity, required documentation, final destination, delivery schedule and any approved-manufacturer or inspection constraints.</p><Link href="/contact" className="text-arrow">Start an Africa RFQ <span>→</span></Link></div>
+      <div><p>For African project and MRO requirements, share the product specification, quantity, required documentation, final destination, delivery schedule and any approved-manufacturer or inspection constraints.</p><Link href="/contact/" className="text-arrow">Start an Africa RFQ <span>→</span></Link></div>
     </section>
   </PublicPage>;
 }
