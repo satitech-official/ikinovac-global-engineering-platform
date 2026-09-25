@@ -2,8 +2,8 @@ import PublicPage from '@/components/PublicPage';
 import { ContactPage } from '@/components/ContentPages';
 
 export const metadata = {
-  title: 'Industrial RFQ & Global Procurement Enquiry',
-  description: 'Send IKINOVAC GLOBAL your industrial product, sourcing, MRO or project procurement requirement. Include specifications, quantity, destination and delivery context for review.',
+  title: 'Industrial RFQ & Procurement Enquiry',
+  description: 'Send IKINOVAC GLOBAL your industrial sourcing, MRO or project procurement RFQ with specifications, quantity, destination and delivery requirements.',
   alternates: { canonical: '/contact/' },
   keywords: [
     'industrial RFQ',
