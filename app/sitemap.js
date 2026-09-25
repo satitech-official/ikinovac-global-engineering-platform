@@ -3,7 +3,7 @@ export const dynamic = 'force-static';
 import { catalogueCategories } from '@/lib/catalogue';
 import { globalMarkets } from '@/lib/markets';
 
-const siteUrl = 'https://www.ikinovacglobal.com';
+const siteUrl = 'https://www.ikinovac.com';
 const lastModified = new Date('2026-09-25');
 
 export default function sitemap() {
