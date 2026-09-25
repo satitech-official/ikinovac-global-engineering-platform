@@ -3,8 +3,8 @@ import { GlobalPresencePage } from '@/components/ContentPages';
 import { globalMarkets } from '@/lib/markets';
 
 export const metadata = {
-  title: 'Global Industrial Supply Network | Western, Eastern & African Markets',
-  description: 'IKINOVAC GLOBAL supports industrial sourcing, engineering procurement and project supply requirements across Western markets, Eastern and Middle East markets, and key African industrial economies.',
+  title: 'Global Industrial Supply Network',
+  description: 'Global industrial sourcing, engineering procurement and project supply across North America, Europe, the Middle East and Africa.',
   alternates: { canonical: '/global-presence/' },
   keywords: [
     'global industrial supply',
