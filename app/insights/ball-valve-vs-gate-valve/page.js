@@ -4,7 +4,7 @@ import PublicPage from '@/components/PublicPage';
 export const metadata = {
   title: 'Ball Valve vs Gate Valve: Industrial Selection Guide',
   description: 'Compare ball valves and gate valves by operating function, shut-off behavior, pressure loss, actuation, maintenance and RFQ requirements for industrial projects.',
-  alternates: { canonical: '/insights/ball-valve-vs-gate-valve/' },
+  alternates: { canonical: '/insights/ball-valve-vs-gate-valve/', languages: { en: '/insights/ball-valve-vs-gate-valve/', 'x-default': '/insights/ball-valve-vs-gate-valve/' } },
   keywords: ['ball valve vs gate valve','industrial valve comparison','ball valve selection','gate valve selection','valve procurement guide'],
   openGraph: { title: 'Ball Valve vs Gate Valve | IKINOVAC GLOBAL', description: 'A practical industrial buyer guide to comparing ball and gate valve requirements before RFQ.', url: '/insights/ball-valve-vs-gate-valve/', images: ['/og.png'] }
 };
