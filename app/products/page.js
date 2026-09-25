@@ -28,14 +28,14 @@ export default function ProductsPage() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'IKINOVAC GLOBAL Industrial Product Directory',
-    url: 'https://satitech-official.github.io/ikinovac-global-engineering-platform/products',
+    url: 'https://www.ikinovac.com/products/',
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: catalogueCategories.map((category, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         name: category.name,
-        url: `https://satitech-official.github.io/ikinovac-global-engineering-platform/products/${category.slug}`
+        url: `https://www.ikinovac.com/products/${category.slug}`
       }))
     }
   };
