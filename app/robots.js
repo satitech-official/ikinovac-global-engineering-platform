@@ -1,5 +1,7 @@
 export const dynamic = 'force-static';
 
+const siteUrl = 'https://www.ikinovac.com';
+
 export default function robots() {
   return {
     rules: [
@@ -9,7 +11,7 @@ export default function robots() {
         disallow: ['/admin/', '/api/']
       }
     ],
-    sitemap: 'https://www.ikinovac.com/sitemap.xml',
-    host: 'https://www.ikinovac.com'
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl
   };
 }
