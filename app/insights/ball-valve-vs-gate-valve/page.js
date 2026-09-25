@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default function Page() {
-  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Ball Valve vs Gate Valve: Industrial Selection Guide', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://satitech-official.github.io/ikinovac-global-engineering-platform/insights/ball-valve-vs-gate-valve' };
+  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Ball Valve vs Gate Valve: Industrial Selection Guide', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://www.ikinovac.com/insights/ball-valve-vs-gate-valve' };
   return <PublicPage><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
     <section className="insights-hero"><p className="eyebrow light">ENGINEERING KNOWLEDGE / VALVES</p><h1>BALL VALVE<br />VS <em>GATE VALVE.</em></h1><p>A practical comparison for industrial buyers preparing a valve requirement.</p></section>
     <section className="insights-grid">
