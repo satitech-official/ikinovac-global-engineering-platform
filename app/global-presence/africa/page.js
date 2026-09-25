@@ -5,8 +5,8 @@ import { globalMarkets } from '@/lib/markets';
 const siteUrl = 'https://www.ikinovac.com';
 
 export const metadata = {
-  title: 'Industrial Supply Africa | Engineering Procurement & Project Supply',
-  description: 'IKINOVAC GLOBAL supports African industrial buyers with valves, pumps, piping, automation, instrumentation, MRO and project procurement across South Africa, Nigeria, Kenya, Egypt, Ghana, Tanzania, Morocco, Angola and Mozambique.',
+  title: 'Industrial Supply & Procurement in Africa',
+  description: 'Industrial sourcing, valves, pumps, piping, automation, instrumentation, MRO and project procurement across major African markets.',
   alternates: { canonical: '/global-presence/africa/', languages: { en: '/global-presence/africa/', 'x-default': '/global-presence/africa/' } },
   keywords: [
     'industrial supplier Africa',
