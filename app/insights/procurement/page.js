@@ -4,7 +4,7 @@ import PublicPage from '@/components/PublicPage';
 export const metadata = {
   title: 'Global Engineering Procurement RFQ Checklist',
   description: 'A practical RFQ checklist for international industrial buyers covering technical scope, quantities, documentation, commercial terms, logistics and delivery context.',
-  alternates: { canonical: '/insights/procurement/' },
+  alternates: { canonical: '/insights/procurement/', languages: { en: '/insights/procurement/', 'x-default': '/insights/procurement/' } },
   keywords: ['engineering procurement RFQ checklist','global industrial procurement','industrial sourcing RFQ','project procurement guide','international industrial supplier enquiry'],
   openGraph: {
     title: 'Global Engineering Procurement RFQ Checklist | IKINOVAC GLOBAL',
