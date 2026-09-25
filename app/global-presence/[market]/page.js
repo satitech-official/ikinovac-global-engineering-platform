@@ -14,21 +14,21 @@ export function generateMetadata({ params }) {
   if (!market) return {};
   const path = `/global-presence/${market.slug}/`;
   return {
-    title: market.title,
-    description: market.description,
+    title: `Industrial Supplier & Procurement in ${market.name}`,
+    description: `Industrial sourcing, valves, automation, piping, instrumentation and MRO procurement for ${market.name} projects. Send an RFQ to IKINOVAC GLOBAL.`,
     keywords: market.keywords,
     alternates: { canonical: path, languages: { en: path, 'x-default': path } },
     openGraph: {
-      title: market.title,
-      description: market.description,
+      title: `Industrial Supplier & Procurement in ${market.name}`,
+      description: `Industrial sourcing and engineering procurement for ${market.name} projects through IKINOVAC GLOBAL.`,
       url: path,
       locale: 'en_US',
       images: ['/og.png']
     },
     twitter: {
       card: 'summary_large_image',
-      title: market.title,
-      description: market.description,
+      title: `Industrial Supplier & Procurement in ${market.name}`,
+      description: `Industrial sourcing and engineering procurement for ${market.name} projects through IKINOVAC GLOBAL.`,
       images: ['/og.png']
     },
     robots: { index: true, follow: true }
@@ -44,7 +44,7 @@ export default function MarketPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `Industrial sourcing and engineering procurement for ${market.name}`,
-    provider: { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'IKINOVAC GLOBAL' },
+    provider: { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'IKINOVAC GLOBAL', logo: `${siteUrl}/assets/ikinovac-logo-enhanced-v2.png` },
     areaServed: { '@type': 'Country', name: market.name },
     serviceType: ['Industrial sourcing','Engineering procurement','Project supply','MRO supply'],
     url: `${siteUrl}${path}`
