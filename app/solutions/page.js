@@ -4,7 +4,7 @@ import { SolutionsPage } from '@/components/ContentPages';
 export const metadata = {
   title: 'Engineering Procurement, Global Sourcing & Project Supply Solutions',
   description: 'IKINOVAC GLOBAL provides engineering support, global sourcing, project procurement, inspection coordination, logistics and industrial supply support for international projects.',
-  alternates: { canonical: '/solutions' },
+  alternates: { canonical: '/solutions/' },
   keywords: [
     'engineering procurement services',
     'global industrial sourcing',
@@ -17,7 +17,7 @@ export const metadata = {
   openGraph: {
     title: 'Engineering Procurement & Global Sourcing Solutions | IKINOVAC GLOBAL',
     description: 'A connected route from technical review through global sourcing, procurement, inspection and delivery coordination.',
-    url: '/solutions',
+    url: '/solutions/',
     images: ['/og.png']
   }
 };
