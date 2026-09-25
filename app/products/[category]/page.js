@@ -13,8 +13,8 @@ export function generateMetadata({ params }) {
   const category = getCategory(params.category);
   if (!category) return {};
   return {
-    title: `${category.name} | Global Industrial Supply & Procurement`,
-    description: `Source ${category.name.toLowerCase()} for industrial projects through IKINOVAC GLOBAL. Explore product families and submit an RFQ for global sourcing, procurement and project supply support.`,
+    title: `${category.name} Supplier | Industrial Procurement`,
+    description: `Source ${category.name.toLowerCase()} worldwide for industrial projects, MRO and procurement. Explore product families and submit an RFQ to IKINOVAC GLOBAL.`,
     alternates: { canonical: `/products/${category.slug}/`, languages: { en: `/products/${category.slug}/`, 'x-default': `/products/${category.slug}/` } },
     openGraph: {
       title: `${category.name} | IKINOVAC GLOBAL`,
