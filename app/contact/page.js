@@ -26,8 +26,8 @@ export default function Page() {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
     name: 'IKINOVAC GLOBAL Industrial RFQ & Procurement Enquiry',
-    url: 'https://satitech-official.github.io/ikinovac-global-engineering-platform/contact',
-    about: { '@id': 'https://satitech-official.github.io/ikinovac-global-engineering-platform/#organization' }
+    url: 'https://www.ikinovac.com/contact/',
+    about: { '@id': 'https://www.ikinovac.com/#organization' }
   };
   return <PublicPage>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
