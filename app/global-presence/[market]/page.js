@@ -3,7 +3,7 @@ import Link from 'next/link';
 import PublicPage from '@/components/PublicPage';
 import { getGlobalMarket, globalMarkets } from '@/lib/markets';
 
-const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
+const siteUrl = 'https://www.ikinovac.com';
 
 export function generateStaticParams() {
   return globalMarkets.map(market => ({ market: market.slug }));
@@ -17,13 +17,21 @@ export function generateMetadata({ params }) {
     title: market.title,
     description: market.description,
     keywords: market.keywords,
-    alternates: { canonical: path },
+    alternates: { canonical: path, languages: { en: path, 'x-default': path } },
     openGraph: {
       title: market.title,
       description: market.description,
       url: path,
+      locale: 'en_US',
       images: ['/og.png']
-    }
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: market.title,
+      description: market.description,
+      images: ['/og.png']
+    },
+    robots: { index: true, follow: true }
   };
 }
 
