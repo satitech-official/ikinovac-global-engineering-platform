@@ -5,7 +5,7 @@ import { catalogueCategories } from '@/lib/catalogue';
 export const metadata = {
   title: 'Industrial Products & Engineering Supply Directory',
   description: 'Explore IKINOVAC GLOBAL industrial products for valves, automation, piping, instrumentation, process equipment, rotating equipment, MRO and project requirements worldwide.',
-  alternates: { canonical: '/products' },
+  alternates: { canonical: '/products/' },
   keywords: [
     'industrial products supplier',
     'global industrial equipment supplier',
@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     title: 'Industrial Products & Global Engineering Supply | IKINOVAC GLOBAL',
     description: 'Explore industrial product families and start an RFQ for international sourcing, procurement and project supply.',
-    url: '/products',
+    url: '/products/',
     images: ['/og.png']
   }
 };
