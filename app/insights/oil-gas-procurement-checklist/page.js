@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default function Page() {
-  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Oil & Gas Procurement Checklist for International Projects', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://satitech-official.github.io/ikinovac-global-engineering-platform/insights/oil-gas-procurement-checklist' };
+  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Oil & Gas Procurement Checklist for International Projects', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://www.ikinovac.com/insights/oil-gas-procurement-checklist' };
   return <PublicPage><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
     <section className="insights-hero"><p className="eyebrow light">ENGINEERING KNOWLEDGE / OIL &amp; GAS</p><h1>PROCUREMENT<br /><em>WITHOUT GAPS.</em></h1><p>A structured checklist for international oil and gas sourcing and project supply enquiries.</p></section>
     <section className="insights-grid">
