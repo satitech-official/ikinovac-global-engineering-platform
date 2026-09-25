@@ -4,9 +4,9 @@ import PublicPage from '@/components/PublicPage';
 export const metadata = {
   title: 'Pipe, Fittings & Flange RFQ Guide for Industrial Buyers',
   description: 'Prepare a clearer piping RFQ with size, schedule, material, pressure class, end connections, standards, quantities, documentation and delivery requirements.',
-  alternates: { canonical: '/insights/piping-flange-rfq-guide' },
+  alternates: { canonical: '/insights/piping-flange-rfq-guide/' },
   keywords: ['pipe fittings flange RFQ','industrial piping procurement','flange sourcing guide','pipe fittings supplier RFQ','piping material requisition'],
-  openGraph: { title: 'Pipe, Fittings & Flange RFQ Guide | IKINOVAC GLOBAL', description: 'A practical checklist for industrial piping, fittings and flange sourcing enquiries.', url: '/insights/piping-flange-rfq-guide', images: ['/og.png'] }
+  openGraph: { title: 'Pipe, Fittings & Flange RFQ Guide | IKINOVAC GLOBAL', description: 'A practical checklist for industrial piping, fittings and flange sourcing enquiries.', url: '/insights/piping-flange-rfq-guide/', images: ['/og.png'] }
 };
 
 export default function Page() {
