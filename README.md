@@ -4,21 +4,21 @@
 
 ### Engineering Solutions. Global Impact.
 
-A premium industrial engineering and procurement platform for product discovery, global sourcing, technical coordination, and RFQ-led project supply.
+A global industrial sourcing, engineering procurement and project supply platform for valves, automation, piping, instrumentation, rotating equipment, MRO and international RFQ-led requirements.
 
 <br />
 
-[![OPEN LIVE PROJECT](https://img.shields.io/badge/OPEN%20LIVE%20PROJECT-E7B43A?style=for-the-badge&logo=googlechrome&logoColor=061224)](https://satitech-official.github.io/ikinovac-global-engineering-platform/)
+[![OPEN LIVE PROJECT](https://img.shields.io/badge/OPEN%20LIVE%20PROJECT-E7B43A?style=for-the-badge&logo=googlechrome&logoColor=061224)](https://www.ikinovac.com/)
 
 [![VIEW SOURCE](https://img.shields.io/badge/VIEW%20SOURCE-081B33?style=for-the-badge&logo=github&logoColor=white)](https://github.com/satitech-official/ikinovac-global-engineering-platform)
 
 <br /><br />
 
-<a href="https://satitech-official.github.io/ikinovac-global-engineering-platform/">
+<a href="https://www.ikinovac.com/">
   <img src="https://raw.githubusercontent.com/satitech-official/ikinovac-global-engineering-platform/main/public/og.png" alt="IKINOVAC Global industrial engineering platform preview" width="100%" />
 </a>
 
-### [▶ Click here to run the live project](https://satitech-official.github.io/ikinovac-global-engineering-platform/)
+### [▶ Click here to run the live project](https://www.ikinovac.com/)
 
 </div>
 
@@ -46,7 +46,7 @@ A premium industrial engineering and procurement platform for product discovery,
 
 The project is published from the `main` branch through GitHub Actions.
 
-**Live URL:** [satitech-official.github.io/ikinovac-global-engineering-platform](https://satitech-official.github.io/ikinovac-global-engineering-platform/)
+**Live URL:** [www.ikinovac.com](https://www.ikinovac.com/)
 
 ## Secure RFQ email delivery
 
