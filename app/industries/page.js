@@ -5,7 +5,7 @@ import { industries } from '@/lib/content';
 export const metadata = {
   title: 'Industrial Supply by Industry',
   description: 'Industrial sourcing and project procurement for oil & gas, petrochemical, power, LNG, marine, mining, manufacturing and infrastructure projects.',
-  alternates: { canonical: '/industries/' },
+  alternates: { canonical: '/industries/', languages: { en: '/industries/', 'x-default': '/industries/' } },
   keywords: [
     'oil and gas equipment supplier',
     'petrochemical procurement',
