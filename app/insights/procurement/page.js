@@ -4,12 +4,12 @@ import PublicPage from '@/components/PublicPage';
 export const metadata = {
   title: 'Global Engineering Procurement RFQ Checklist',
   description: 'A practical RFQ checklist for international industrial buyers covering technical scope, quantities, documentation, commercial terms, logistics and delivery context.',
-  alternates: { canonical: '/insights/procurement' },
+  alternates: { canonical: '/insights/procurement/' },
   keywords: ['engineering procurement RFQ checklist','global industrial procurement','industrial sourcing RFQ','project procurement guide','international industrial supplier enquiry'],
   openGraph: {
     title: 'Global Engineering Procurement RFQ Checklist | IKINOVAC GLOBAL',
     description: 'Build a clearer industrial RFQ by connecting technical, commercial, documentation and logistics requirements.',
-    url: '/insights/procurement',
+    url: '/insights/procurement/',
     images: ['/og.png']
   }
 };
@@ -22,8 +22,9 @@ export default function Page() {
     datePublished: '2026-09-20',
     dateModified: '2026-09-20',
     author: { '@type': 'Organization', name: 'IKINOVAC GLOBAL' },
-    publisher: { '@type': 'Organization', name: 'IKINOVAC GLOBAL' },
-    mainEntityOfPage: 'https://www.ikinovac.com/insights/procurement'
+    publisher: { '@type': 'Organization', name: 'IKINOVAC GLOBAL', logo: { '@type': 'ImageObject', url: 'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png' } },
+    image: 'https://www.ikinovac.com/og.png',
+    mainEntityOfPage: 'https://www.ikinovac.com/insights/procurement/'
   };
   return <PublicPage>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
