@@ -3,8 +3,8 @@ import InsightsPage from '@/components/InsightsPage';
 import { insights } from '@/lib/content';
 
 export const metadata = {
-  title: 'Industrial Engineering & Procurement Knowledge Hub',
-  description: 'Technical resources from IKINOVAC GLOBAL covering industrial valves, engineering procurement, global sourcing, material requirements and project supply for international buyers.',
+  title: 'Industrial Procurement Knowledge Hub',
+  description: 'Technical guides on valves, engineering procurement, global sourcing, materials and project supply for international industrial buyers.',
   alternates: { canonical: '/insights/' },
   keywords: [
     'industrial engineering knowledge',
