@@ -38,15 +38,17 @@ jobs:
         run: npm run build
         env:
           GITHUB_ACTIONS: 'true'
+          IKINOVAC_CUSTOM_DOMAIN: 'true'
           NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT: ${{ vars.NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT }}
 
       - name: Validate Pages output
         run: |
           test -f out/index.html
           test -f out/products/index.html
+          test -f out/CNAME
           test ! -d out/catalogues
           touch out/.nojekyll
-          echo "GitHub Pages export validated; legacy /catalogues output is absent."
+          echo "GitHub Pages export validated for www.ikinovacglobal.com."
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
