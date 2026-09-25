@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default function Page() {
-  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Pipe, Fittings & Flange RFQ Guide for Industrial Buyers', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://satitech-official.github.io/ikinovac-global-engineering-platform/insights/piping-flange-rfq-guide' };
+  const schema = { '@context':'https://schema.org','@type':'Article', headline:'Pipe, Fittings & Flange RFQ Guide for Industrial Buyers', datePublished:'2026-09-20', dateModified:'2026-09-20', author:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, publisher:{'@type':'Organization',name:'IKINOVAC GLOBAL'}, mainEntityOfPage:'https://www.ikinovac.com/insights/piping-flange-rfq-guide' };
   return <PublicPage><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}} />
     <section className="insights-hero"><p className="eyebrow light">ENGINEERING KNOWLEDGE / PIPING</p><h1>A CLEARER<br /><em>PIPING RFQ.</em></h1><p>The data points industrial buyers should align before requesting pipe, fitting and flange quotations.</p></section>
     <section className="insights-grid">
