@@ -9,7 +9,7 @@ export default function robots() {
         disallow: ['/admin/', '/api/']
       }
     ],
-    sitemap: 'https://www.ikinovacglobal.com/sitemap.xml',
-    host: 'https://www.ikinovacglobal.com'
+    sitemap: 'https://www.ikinovac.com/sitemap.xml',
+    host: 'https://www.ikinovac.com'
   };
 }
