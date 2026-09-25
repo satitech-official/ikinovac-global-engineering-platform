@@ -3,8 +3,8 @@ export const dynamic = 'force-static';
 import { catalogueCategories } from '@/lib/catalogue';
 import { globalMarkets } from '@/lib/markets';
 
-const siteUrl = 'https://satitech-official.github.io/ikinovac-global-engineering-platform';
-const lastModified = new Date('2026-09-20');
+const siteUrl = 'https://www.ikinovacglobal.com';
+const lastModified = new Date('2026-09-25');
 
 export default function sitemap() {
   const staticRoutes = [
