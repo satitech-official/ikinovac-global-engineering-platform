@@ -48,7 +48,7 @@ jobs:
           test -f out/CNAME
           test ! -d out/catalogues
           touch out/.nojekyll
-          echo "GitHub Pages export validated for www.ikinovacglobal.com."
+          echo "GitHub Pages export validated for www.ikinovac.com."
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
