@@ -4,7 +4,7 @@ import { ContactPage } from '@/components/ContentPages';
 export const metadata = {
   title: 'Industrial RFQ & Global Procurement Enquiry',
   description: 'Send IKINOVAC GLOBAL your industrial product, sourcing, MRO or project procurement requirement. Include specifications, quantity, destination and delivery context for review.',
-  alternates: { canonical: '/contact' },
+  alternates: { canonical: '/contact/' },
   keywords: [
     'industrial RFQ',
     'engineering procurement enquiry',
@@ -16,7 +16,7 @@ export const metadata = {
   openGraph: {
     title: 'Industrial RFQ & Procurement Enquiry | IKINOVAC GLOBAL',
     description: 'Submit an industrial sourcing, engineering procurement or project supply requirement to the IKINOVAC project desk.',
-    url: '/contact',
+    url: '/contact/',
     images: ['/og.png']
   }
 };
