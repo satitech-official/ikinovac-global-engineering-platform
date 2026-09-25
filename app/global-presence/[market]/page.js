@@ -12,7 +12,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const market = getGlobalMarket(params.market);
   if (!market) return {};
-  const path = `/global-presence/${market.slug}`;
+  const path = `/global-presence/${market.slug}/`;
   return {
     title: market.title,
     description: market.description,
@@ -55,14 +55,28 @@ export default function MarketPage({ params }) {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: 'Global Presence', item: `${siteUrl}/global-presence` },
+      { '@type': 'ListItem', position: 2, name: 'Global Presence', item: `${siteUrl}/global-presence/` },
       { '@type': 'ListItem', position: 3, name: market.name, item: `${siteUrl}${path}` }
     ]
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: market.faqs.map(([question, answer]) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: answer
+      }
+    }))
   };
 
   return <PublicPage>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
     <section className="presence-hero">
       <p className="eyebrow light">GLOBAL PRESENCE / {market.region.toUpperCase()}</p>
       <h1>INDUSTRIAL SUPPLY<br />FOR <em>{market.name.toUpperCase()}</em>.</h1>
@@ -82,6 +96,16 @@ export default function MarketPage({ params }) {
     </section>
     <section className="company-principles" aria-label={`Priority industries in ${market.name}`}>
       {market.industries.map((industry, index) => <article key={industry}><b>{String(index + 1).padStart(2,'0')}</b><h3>{industry}</h3><p>Industrial sourcing and project-supply support for documented {industry.toLowerCase()} requirements.</p></article>)}
+    </section>
+    <section className="related-systems" aria-label={`Industrial supply categories for ${market.name}`}>
+      <p className="eyebrow light">GLOBAL SOURCING / PRODUCT CATEGORIES</p>
+      <h2>Explore core <em>industrial supply.</em></h2>
+      <div>
+        <Link href="/products/valves/"><b>01</b><h3>Industrial Valves</h3><p>Flow-control product families for project and maintenance requirements.</p><span>Explore valves →</span></Link>
+        <Link href="/products/automation/"><b>02</b><h3>Actuation & Automation</h3><p>Actuation and control components for specified industrial systems.</p><span>Explore automation →</span></Link>
+        <Link href="/products/pipe-fittings-flanges/"><b>03</b><h3>Pipe, Fittings & Flanges</h3><p>Industrial piping and connection product families for project supply.</p><span>Explore piping →</span></Link>
+        <Link href="/products/instrumentation/"><b>04</b><h3>Instrumentation</h3><p>Measurement and analytical product families for process applications.</p><span>Explore instrumentation →</span></Link>
+      </div>
     </section>
     <section className="presence-statements" aria-label={`Frequently asked questions for ${market.name}`}>
       {market.faqs.map(([question, answer], index) => <article key={question}><b>Q{index + 1}</b><h2>{question}</h2><p>{answer}</p></article>)}
