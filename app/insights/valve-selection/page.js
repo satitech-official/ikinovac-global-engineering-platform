@@ -4,7 +4,7 @@ import PublicPage from '@/components/PublicPage';
 export const metadata = {
   title: 'Industrial Valve Selection Guide for Project Buyers',
   description: 'A practical IKINOVAC GLOBAL guide to preparing an industrial valve enquiry: service, pressure, temperature, material, actuation, standards, quantity and documentation requirements.',
-  alternates: { canonical: '/insights/valve-selection/' },
+  alternates: { canonical: '/insights/valve-selection/', languages: { en: '/insights/valve-selection/', 'x-default': '/insights/valve-selection/' } },
   keywords: ['industrial valve selection guide','valve procurement checklist','valve RFQ guide','industrial valves sourcing','ball valve gate valve butterfly valve procurement'],
   openGraph: {
     title: 'Industrial Valve Selection Guide | IKINOVAC GLOBAL',
