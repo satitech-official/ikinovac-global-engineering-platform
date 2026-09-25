@@ -4,12 +4,12 @@ import PublicPage from '@/components/PublicPage';
 export const metadata = {
   title: 'Material Specification Checklist for Industrial Sourcing',
   description: 'A practical checklist for communicating industrial material requirements clearly during global sourcing and engineering procurement without substituting supplier assumptions for project specifications.',
-  alternates: { canonical: '/insights/material-selection' },
+  alternates: { canonical: '/insights/material-selection/' },
   keywords: ['industrial material specification checklist','engineering material sourcing','material procurement guide','industrial procurement documentation','global engineering sourcing'],
   openGraph: {
     title: 'Industrial Material Specification Checklist | IKINOVAC GLOBAL',
     description: 'Structure material-related industrial sourcing enquiries around documented project requirements.',
-    url: '/insights/material-selection',
+    url: '/insights/material-selection/',
     images: ['/og.png']
   }
 };
@@ -22,8 +22,9 @@ export default function Page() {
     datePublished: '2026-09-20',
     dateModified: '2026-09-20',
     author: { '@type': 'Organization', name: 'IKINOVAC GLOBAL' },
-    publisher: { '@type': 'Organization', name: 'IKINOVAC GLOBAL' },
-    mainEntityOfPage: 'https://www.ikinovac.com/insights/material-selection'
+    publisher: { '@type': 'Organization', name: 'IKINOVAC GLOBAL', logo: { '@type': 'ImageObject', url: 'https://www.ikinovac.com/assets/ikinovac-logo-enhanced-v2.png' } },
+    image: 'https://www.ikinovac.com/og.png',
+    mainEntityOfPage: 'https://www.ikinovac.com/insights/material-selection/'
   };
   return <PublicPage>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
