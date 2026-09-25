@@ -26,7 +26,7 @@ const socialProfiles = [
 ];
 
 const defaultTitle = 'IKINOVAC GLOBAL | Industrial Supply & Global Procurement';
-const defaultDescription = 'Global industrial sourcing, engineering procurement and project supply for valves, automation, piping, instrumentation, rotating equipment and MRO requirements worldwide.';
+const defaultDescription = 'Global industrial sourcing and engineering procurement for valves, automation, piping, instrumentation, rotating equipment, MRO and project supply.';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
