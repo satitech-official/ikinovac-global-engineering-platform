@@ -23,7 +23,7 @@ export default function Page() {
     dateModified: '2026-09-20',
     author: { '@type': 'Organization', name: 'IKINOVAC GLOBAL' },
     publisher: { '@type': 'Organization', name: 'IKINOVAC GLOBAL' },
-    mainEntityOfPage: 'https://satitech-official.github.io/ikinovac-global-engineering-platform/insights/valve-selection'
+    mainEntityOfPage: 'https://www.ikinovac.com/insights/valve-selection'
   };
   return <PublicPage>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
