@@ -4,7 +4,6 @@ import { catalogueCategories } from '@/lib/catalogue';
 import { globalMarkets } from '@/lib/markets';
 
 const siteUrl = 'https://www.ikinovac.com';
-const lastModified = new Date('2026-09-25T00:00:00.000Z');
 
 export default function sitemap() {
   const staticRoutes = [
@@ -34,7 +33,6 @@ export default function sitemap() {
     const url = `${siteUrl}${path || '/'}`;
     return {
       url,
-      lastModified,
       changeFrequency: index === 0 ? 'weekly' : 'monthly',
       priority: index === 0
         ? 1
