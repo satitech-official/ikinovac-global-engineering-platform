@@ -47,26 +47,9 @@ export const metadata = {
     telephone: false
   },
   icons: {
-    icon: [
-      {
-        url: '/favicon.png',
-        type: 'image/png',
-        sizes: '512x512'
-      }
-    ],
-    shortcut: [
-      {
-        url: '/favicon.png',
-        type: 'image/png'
-      }
-    ],
-    apple: [
-      {
-        url: '/favicon.png',
-        type: 'image/png',
-        sizes: '180x180'
-      }
-    ]
+    icon: [{ url: '/favicon.png', type: 'image/png', sizes: '512x512' }],
+    shortcut: [{ url: '/favicon.png', type: 'image/png' }],
+    apple: [{ url: '/favicon.png', type: 'image/png', sizes: '180x180' }]
   },
   keywords: [
     'global industrial supplier',
@@ -96,7 +79,7 @@ export const metadata = {
   alternates: {
     canonical: '/',
     languages: {
-      'en': '/',
+      en: '/',
       'x-default': '/'
     }
   },
@@ -138,8 +121,7 @@ export const metadata = {
     }
   },
   other: {
-    'content-language': 'en',
-    'google': 'notranslate'
+    'content-language': 'en'
   }
 };
 
@@ -173,6 +155,25 @@ export default function RootLayout({ children }) {
       'Power generation',
       'Mining and minerals'
     ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Industrial sourcing and engineering procurement capabilities',
+      itemListElement: [
+        'Industrial product supply',
+        'Global sourcing',
+        'Engineering procurement',
+        'Project procurement',
+        'MRO supply',
+        'Inspection coordination',
+        'Logistics and delivery support'
+      ].map(name => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name
+        }
+      }))
+    },
     contactPoint: [{
       '@type': 'ContactPoint',
       contactType: 'sales',
@@ -194,18 +195,6 @@ export default function RootLayout({ children }) {
     inLanguage: 'en'
   };
 
-  const homePageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': `${siteUrl}/#webpage`,
-    url: `${siteUrl}/`,
-    name: defaultTitle,
-    description: defaultDescription,
-    isPartOf: { '@id': `${siteUrl}/#website` },
-    about: { '@id': `${siteUrl}/#organization` },
-    inLanguage: 'en'
-  };
-
   return <html lang="en" dir="ltr"><body>
     <Script id="clean-index-html-url" strategy="beforeInteractive">{`
       (function () {
@@ -221,7 +210,6 @@ export default function RootLayout({ children }) {
     {children}
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema) }} />
     {gaId && <>
       <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
       <Script id="ikinovac-ga4" strategy="afterInteractive">{`
