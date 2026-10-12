@@ -202,9 +202,17 @@ export default function RootLayout({ children }) {
           var path = window.location.pathname;
           var host = window.location.hostname.toLowerCase();
           var legacyProject = '/ikinovac-global-engineering-platform';
-          if (host === 'satitech-official.github.io' &&
-              (path === legacyProject || path.indexOf(legacyProject + '/') === 0)) {
-            var officialPath = path.slice(legacyProject.length) || '/';
+          if (host === 'satitech-official.github.io') {
+            // Keep every legacy GitHub-hosted copy out of Google's index.
+            // This script is not applied on www.ikinovac.com.
+            var noIndex = document.createElement('meta');
+            noIndex.name = 'robots';
+            noIndex.content = 'noindex, follow';
+            document.head.appendChild(noIndex);
+            var officialPath = (path === legacyProject ||
+              path.indexOf(legacyProject + '/') === 0)
+              ? path.slice(legacyProject.length) || '/'
+              : path;
             officialPath = officialPath.replace(/\\/index\\.html$/i, '/');
             window.location.replace('https://www.ikinovac.com' + officialPath +
               window.location.search + window.location.hash);
