@@ -9,8 +9,8 @@ export default function Page() {
     '@type': 'WebPage',
     '@id': `${siteUrl}/#webpage`,
     url: `${siteUrl}/`,
-    name: 'IKINOVAC GLOBAL | Industrial Supply & Global Procurement',
-    description: 'Global industrial sourcing and engineering procurement for valves, automation, piping, instrumentation, rotating equipment, MRO and project supply.',
+    name: 'IKINOVAC GLOBAL | Official Industrial Sourcing Website',
+    description: 'Official website of IKINOVAC GLOBAL (IG), providing industrial equipment sourcing, engineering procurement, valves, automation, piping, instrumentation, MRO and worldwide project supply.',
     isPartOf: { '@id': `${siteUrl}/#website` },
     about: { '@id': `${siteUrl}/#organization` },
     inLanguage: 'en'
