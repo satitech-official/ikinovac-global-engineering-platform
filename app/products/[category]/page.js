@@ -5,6 +5,22 @@ import { catalogueCategories, getCategory, getProductsForCategory } from '@/lib/
 
 const siteUrl = 'https://www.ikinovac.com';
 
+// Search-intent descriptions of real catalogue categories (no unverified claims).
+const categorySearchTitles = {
+  valves: 'Industrial Valves & Flow Control Sourcing',
+  automation: 'Valve Actuators & Industrial Automation Supply',
+  'pipe-fittings-flanges': 'Industrial Pipes, Fittings & Flanges Supply',
+  instrumentation: 'Industrial Instrumentation & Process Instruments',
+  equipment: 'Industrial Pumps & Process Equipment Sourcing',
+  'sealing-items': 'Industrial Gaskets, Seals & Fasteners Supply',
+  'mining-machinery': 'Mining Machinery Parts & Industrial Bearings',
+  motors: 'Industrial Motors, Gearboxes & Compressors',
+  welding: 'Welding Consumables & Fabrication Equipment',
+  safety: 'Industrial Safety Equipment & PPE Procurement',
+  'process-utility': 'Industrial Process & Utility Equipment Supply',
+  filtration: 'Industrial Filtration & Separation Equipment'
+};
+
 export function generateStaticParams() {
   return catalogueCategories.map(category => ({ category: category.slug }));
 }
@@ -13,8 +29,8 @@ export function generateMetadata({ params }) {
   const category = getCategory(params.category);
   if (!category) return {};
   return {
-    title: `${category.name} Supplier`,
-    description: `Source ${category.name.toLowerCase()} worldwide for industrial projects, MRO and procurement. Explore product families and submit an RFQ to IKINOVAC GLOBAL.`,
+    title: categorySearchTitles[category.slug] || `${category.name} Industrial Sourcing`,
+    description: `${category.summary} Review ${category.items.length} industrial product families, project documentation needs and global sourcing options with IKINOVAC GLOBAL.`,
     alternates: { canonical: `/products/${category.slug}/`, languages: { en: `/products/${category.slug}/`, 'x-default': `/products/${category.slug}/` } },
     openGraph: {
       title: `${category.name} | IKINOVAC GLOBAL`,
