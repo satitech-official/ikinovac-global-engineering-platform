@@ -25,8 +25,8 @@ const socialProfiles = [
   'https://www.facebook.com/ikinovacglobal'
 ];
 
-const defaultTitle = 'IKINOVAC GLOBAL | Industrial Equipment & Global Procurement';
-const defaultDescription = 'IKINOVAC GLOBAL provides industrial equipment sourcing, valves, piping, automation, instrumentation, MRO and engineering procurement for global projects.';
+const defaultTitle = 'IKINOVAC GLOBAL (IG) | Industrial Supply & Procurement';
+const defaultDescription = 'IKINOVAC GLOBAL (IG), also known as IKINOVAC, provides worldwide industrial equipment sourcing, valves, piping, automation, instrumentation, MRO and engineering procurement.';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -74,7 +74,10 @@ export const metadata = {
     'industrial supply Europe',
     'industrial supply North America',
     'industrial supply Asia Pacific',
-    'IKINOVAC GLOBAL'
+    'IKINOVAC GLOBAL',
+    'IKINOVAC',
+    'IG IKINOVAC',
+    'IG industrial sourcing'
   ],
   alternates: {
     canonical: '/',
@@ -131,7 +134,7 @@ export default function RootLayout({ children }) {
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
     name: 'IKINOVAC GLOBAL',
-    alternateName: 'IKINOVAC',
+    alternateName: ['IKINOVAC', 'IG', 'IKINOVAC Global Engineering'],
     url: siteUrl,
     logo: `${siteUrl}/assets/ikinovac-logo-enhanced-v2.png`,
     image: `${siteUrl}/og.png`,
@@ -189,7 +192,7 @@ export default function RootLayout({ children }) {
     '@id': `${siteUrl}/#website`,
     url: `${siteUrl}/`,
     name: 'IKINOVAC GLOBAL',
-    alternateName: 'IKINOVAC',
+    alternateName: ['IKINOVAC', 'IG'],
     description: defaultDescription,
     publisher: { '@id': `${siteUrl}/#organization` },
     inLanguage: 'en'
