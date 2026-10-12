@@ -21,6 +21,24 @@ const seoMarketNames = {
   mozambique: 'Mozambique'
 };
 
+// Distinct, truthful market-intent titles. The root metadata adds the
+// "| IKINOVAC GLOBAL" suffix and publishes the official-domain canonical.
+const marketSearchTitles = {
+  usa: 'Industrial Equipment Sourcing for USA Projects',
+  uk: 'Industrial Supply & Procurement for UK Projects',
+  uae: 'Industrial Valves & Procurement for UAE Projects',
+  'saudi-arabia': 'Industrial Supply for Saudi Arabia Projects',
+  'south-africa': 'Mining & Industrial Supply for South Africa',
+  nigeria: 'Oil & Gas Industrial Supply for Nigeria',
+  kenya: 'Industrial Equipment & Procurement for Kenya',
+  egypt: 'Industrial Equipment Sourcing for Egypt',
+  ghana: 'Mining & Industrial Procurement for Ghana',
+  tanzania: 'Industrial Supply & Equipment for Tanzania',
+  morocco: 'Industrial Equipment Sourcing for Morocco',
+  angola: 'Oil & Gas Industrial Procurement for Angola',
+  mozambique: 'Industrial Supply for Mozambique LNG Projects'
+};
+
 export function generateStaticParams() {
   return globalMarkets.map(market => ({ market: market.slug }));
 }
@@ -31,8 +49,8 @@ export function generateMetadata({ params }) {
   const path = `/global-presence/${market.slug}/`;
   const seoName = seoMarketNames[market.slug] || market.name;
   return {
-    title: `${seoName} Industrial Supply`,
-    description: `Industrial sourcing, valves, automation, piping, instrumentation and MRO procurement for ${market.name} projects. Send an RFQ to IKINOVAC GLOBAL.`,
+    title: marketSearchTitles[market.slug] || `${seoName} Industrial Supply & Procurement`,
+    description: `Industrial sourcing, valves, automation, piping and instrumentation for ${market.name} projects. Explore IKINOVAC GLOBAL supply capabilities and send an RFQ.`,
     keywords: market.keywords,
     alternates: { canonical: path, languages: { en: path, 'x-default': path } },
     openGraph: {
