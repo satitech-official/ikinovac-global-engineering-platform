@@ -47,6 +47,7 @@ jobs:
           test -f out/products/index.html
           test -f out/CNAME
           test ! -d out/catalogues
+          node scripts/validate-seo-export.mjs
           touch out/.nojekyll
           echo "GitHub Pages export validated for www.ikinovac.com."
 
