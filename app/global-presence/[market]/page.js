@@ -74,6 +74,13 @@ export default function MarketPage({ params }) {
   const market = getGlobalMarket(params.market);
   if (!market) notFound();
   const path = `/global-presence/${market.slug}/`;
+  // Crawlable contextual links between relevant country sourcing pages.
+  // The global-presence index links all markets; these link complementary markets.
+  const relatedMarkets = [
+    ...globalMarkets.filter(item => item.slug !== market.slug && item.region === market.region),
+    ...globalMarkets.filter(item => item.slug !== market.slug &&
+      ['uae', 'saudi-arabia', 'kenya', 'usa', 'uk'].includes(item.slug))
+  ].filter((item, index, list) => list.findIndex(other => other.slug === item.slug) === index).slice(0, 3);
 
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -147,6 +154,13 @@ export default function MarketPage({ params }) {
     </section>
     <section className="presence-statements">
       <article><b>RFQ</b><h2>Have a requirement in {market.name}?</h2><p>Share the product, specification, quantity and delivery context with the IKINOVAC project desk.</p><Link href="/contact">Request a quote →</Link></article>
+      <article><b>GLOBAL SOURCING</b><h2>Explore related industrial markets</h2><p>Review sourcing and procurement information for other project destinations.</p>
+        <nav aria-label="Related country sourcing pages">
+          {relatedMarkets.map(related => <p key={related.slug}><Link href={`/global-presence/${related.slug}/`}>{related.name} industrial supply →</Link></p>)}
+          <p><Link href="/global-presence/">All global industrial markets →</Link></p>
+          <p><Link href="/insights/procurement/">Engineering procurement RFQ guide →</Link></p>
+        </nav>
+      </article>
     </section>
   </PublicPage>;
 }
