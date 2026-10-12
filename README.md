@@ -48,6 +48,40 @@ The project is published from the `main` branch through GitHub Actions.
 
 **Live URL:** [www.ikinovac.com](https://www.ikinovac.com/)
 
+## Google Analytics 4 (GA4) — free visitor analytics
+
+The Next.js root layout already loads Google's `gtag.js` only when a valid
+`NEXT_PUBLIC_GA_ID` (web measurement ID, beginning `G-`) is provided to the
+production build. RFQ opening and successful lead submissions also emit
+`rfq_open` and `generate_lead` events when tracking is active.
+
+To enable tracking on **www.ikinovac.com** without modifying the design:
+
+1. In [Google Analytics](https://analytics.google.com/), choose the IKINOVAC GA4
+   property. Under **Admin → Data streams → Web**, select the stream whose
+   website URL is `https://www.ikinovac.com/`. Copy its **Measurement ID**
+   (`G-XXXXXXXXXX`), not the numeric GA4 property ID.
+2. In this repository open **Settings → Secrets and variables → Actions →
+   Variables → New repository variable** and create:
+   `NEXT_PUBLIC_GA_ID` = the GA4 web Measurement ID.
+3. Re-run **Deploy to GitHub Pages** or push an approved change to `main`.
+   The workflow sends the public Measurement ID to the static production build
+   and checks that it follows the `G-...` format.
+4. Visit `https://www.ikinovac.com/?utm_source=ga4_test&utm_medium=manual&utm_campaign=tracking_check`
+   from a normal browser with analytics blocking disabled. Check **GA4 →
+   Reports → Realtime** or **Admin → DebugView** (with debug mode enabled).
+   Realtime reporting can take a few minutes and depends on consent/blockers.
+5. Confirm `page_view` and, by actually initiating an enquiry, `rfq_open`.
+   Do **not** submit a test customer RFQ solely to inflate real business leads.
+   Check that the traffic source is `ga4_test / manual`.
+
+**Important:** Connecting Google Search Console is not the same as installing
+GA4; Search Console clicks and GA4 site visits are different metrics.
+The Measurement ID is a public client-side identifier, not a service-account key.
+No GA4 API key or authentication token belongs in this repository.
+For international traffic, provide an appropriate privacy notice and obtain
+any consent required by applicable law before collecting analytics data.
+
 ## Secure RFQ email delivery
 
 The website creates a branded PDF only after its secure RFQ email endpoint confirms receipt. GitHub Pages is static, so the endpoint is deliberately deployed separately and keeps all mail credentials server-side. See [rfq-service/README.md](rfq-service/README.md) for the Cloudflare Worker and Resend configuration. Set only the public endpoint URL as `NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT` in the GitHub Pages build environment; never commit a mail key.
