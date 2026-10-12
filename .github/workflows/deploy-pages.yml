@@ -39,15 +39,27 @@ jobs:
         env:
           GITHUB_ACTIONS: 'true'
           IKINOVAC_CUSTOM_DOMAIN: 'true'
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
           NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT: ${{ vars.NEXT_PUBLIC_IKINOVAC_RFQ_ENDPOINT }}
 
       - name: Validate Pages output
+        env:
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
         run: |
           test -f out/index.html
           test -f out/products/index.html
           test -f out/CNAME
           test ! -d out/catalogues
           node scripts/validate-seo-export.mjs
+          if [[ -n "${NEXT_PUBLIC_GA_ID:-}" ]]; then
+            if [[ ! "${NEXT_PUBLIC_GA_ID}" =~ ^G-[A-Z0-9]+$ ]]; then
+              echo "::error::NEXT_PUBLIC_GA_ID must be a valid GA4 web measurement ID (G-...)."
+              exit 1
+            fi
+            echo "GA4 measurement ID provided for build: integration is eligible for live testing."
+          else
+            echo "::warning::GA4 tracking inactive: set repository Actions variable NEXT_PUBLIC_GA_ID (G-...) and redeploy."
+          fi
           touch out/.nojekyll
           echo "GitHub Pages export validated for www.ikinovac.com."
 
