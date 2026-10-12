@@ -196,10 +196,20 @@ export default function RootLayout({ children }) {
   };
 
   return <html lang="en" dir="ltr"><body>
-    <Script id="clean-index-html-url" strategy="beforeInteractive">{`
+    <Script id="canonical-host-and-clean-url" strategy="beforeInteractive">{`
       (function () {
         try {
           var path = window.location.pathname;
+          var host = window.location.hostname.toLowerCase();
+          var legacyProject = '/ikinovac-global-engineering-platform';
+          if (host === 'satitech-official.github.io' &&
+              (path === legacyProject || path.indexOf(legacyProject + '/') === 0)) {
+            var officialPath = path.slice(legacyProject.length) || '/';
+            officialPath = officialPath.replace(/\\/index\\.html$/i, '/');
+            window.location.replace('https://www.ikinovac.com' + officialPath +
+              window.location.search + window.location.hash);
+            return;
+          }
           if (/\\/index\\.html$/i.test(path)) {
             var cleanPath = path.replace(/index\\.html$/i, '');
             window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
