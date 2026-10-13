@@ -133,7 +133,7 @@ export const metadata = {
   }
 };
 
-const legacyGithubPagesRedirect = String.raw\`
+const legacyGithubPagesRedirect = String.raw`
   (function () {
     try {
       // Only handle this repository's old github.io preview URL.
@@ -148,7 +148,7 @@ const legacyGithubPagesRedirect = String.raw\`
         window.location.search + window.location.hash);
     } catch (e) {}
   })();
-\`;
+`;
 
 export default function RootLayout({ children }) {
   const organizationSchema = {
@@ -225,7 +225,7 @@ export default function RootLayout({ children }) {
       <script id="legacy-ikinovac-pages-redirect" dangerouslySetInnerHTML={{ __html: legacyGithubPagesRedirect }} />
     </head>
     <body>
-      <Script id="clean-index-html-url" strategy="beforeInteractive">{String.raw\`
+      <Script id="clean-index-html-url" strategy="beforeInteractive">{String.raw`
         (function () {
           try {
             if (window.location.hostname.toLowerCase() !== 'www.ikinovac.com') return;
@@ -235,7 +235,7 @@ export default function RootLayout({ children }) {
             }
           } catch (e) {}
         })();
-      \`}</Script>
+      `}</Script>
     {children}
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
