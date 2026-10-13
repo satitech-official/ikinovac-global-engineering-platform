@@ -133,6 +133,23 @@ export const metadata = {
   }
 };
 
+const legacyGithubPagesRedirect = String.raw\`
+  (function () {
+    try {
+      // Only handle this repository's old github.io preview URL.
+      // Never redirect or deindex the official custom domain.
+      if (window.location.hostname.toLowerCase() !== 'satitech-official.github.io') return;
+      var base = '/ikinovac-global-engineering-platform';
+      var path = window.location.pathname;
+      if (path !== base && path.indexOf(base + '/') !== 0) return;
+      var officialPath = path.slice(base.length) || '/';
+      officialPath = officialPath.replace(/\/index\.html$/i, '/');
+      window.location.replace('https://www.ikinovac.com' + officialPath +
+        window.location.search + window.location.hash);
+    } catch (e) {}
+  })();
+\`;
+
 export default function RootLayout({ children }) {
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -203,36 +220,22 @@ export default function RootLayout({ children }) {
     inLanguage: 'en'
   };
 
-  return <html lang="en" dir="ltr"><body>
-    <Script id="canonical-host-and-clean-url" strategy="beforeInteractive">{`
-      (function () {
-        try {
-          var path = window.location.pathname;
-          var host = window.location.hostname.toLowerCase();
-          var legacyProject = '/ikinovac-global-engineering-platform';
-          if (host === 'satitech-official.github.io') {
-            // Keep every legacy GitHub-hosted copy out of Google's index.
-            // This script is not applied on www.ikinovac.com.
-            var noIndex = document.createElement('meta');
-            noIndex.name = 'robots';
-            noIndex.content = 'noindex, follow';
-            document.head.appendChild(noIndex);
-            var officialPath = (path === legacyProject ||
-              path.indexOf(legacyProject + '/') === 0)
-              ? path.slice(legacyProject.length) || '/'
-              : path;
-            officialPath = officialPath.replace(/\\/index\\.html$/i, '/');
-            window.location.replace('https://www.ikinovac.com' + officialPath +
-              window.location.search + window.location.hash);
-            return;
-          }
-          if (/\\/index\\.html$/i.test(path)) {
-            var cleanPath = path.replace(/index\\.html$/i, '');
-            window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
-          }
-        } catch (e) {}
-      })();
-    `}</Script>
+  return <html lang="en" dir="ltr">
+    <head>
+      <script id="legacy-ikinovac-pages-redirect" dangerouslySetInnerHTML={{ __html: legacyGithubPagesRedirect }} />
+    </head>
+    <body>
+      <Script id="clean-index-html-url" strategy="beforeInteractive">{String.raw\`
+        (function () {
+          try {
+            if (window.location.hostname.toLowerCase() !== 'www.ikinovac.com') return;
+            if (/\/index\.html$/i.test(window.location.pathname)) {
+              var clean = window.location.pathname.replace(/index\.html$/i, '');
+              window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+            }
+          } catch (e) {}
+        })();
+      \`}</Script>
     {children}
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
