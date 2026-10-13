@@ -47,4 +47,16 @@ for (const path of requiredPaths) {
   assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="noindex/i.test(html),
     `Official domain was accidentally made noindex at ${path}`);
 }
+const brandedIcons = ['favicon.ico', 'favicon-48.png', 'favicon-96.png', 'favicon-192.png', 'favicon-512.png', 'apple-touch-icon.png'];
+for (const icon of brandedIcons) {
+  const filename = join(output, icon);
+  assert.ok(existsSync(filename), 'Required branded favicon missing from build: ' + icon);
+}
+const ico = readFileSync(join(output, 'favicon.ico'));
+assert.equal(ico.readUInt16LE(0), 0, 'Favicon ICO header is invalid');
+assert.equal(ico.readUInt16LE(2), 1, 'Favicon must be an ICO image');
+assert.equal(ico.readUInt16LE(4), 4, 'Favicon must contain four sizes');
+assert.ok(homepage.includes('/favicon.ico'), 'Homepage must advertise favicon.ico');
+assert.ok(homepage.includes('/favicon-48.png'), 'Homepage must advertise the 48px branded icon');
+console.log('Branded favicon ICO/PNG variants and homepage icon links validated.');
 console.log(`SEO export verified: ${urlCount} official-domain sitemap URLs, valid canonicals and robots.`);
