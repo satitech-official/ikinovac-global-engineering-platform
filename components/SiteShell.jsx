@@ -217,9 +217,9 @@ function Footer() {
         
 
         <div className="footer-v3-socials" aria-label="Social media">
-          <a href="https://www.linkedin.com/in/ikinovac-global/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
-          <a href="https://www.facebook.com/ikinovacglobal" target="_blank" rel="noreferrer" aria-label="Facebook">f</a>
-          <a href="https://www.instagram.com/ikinovacglobal/" target="_blank" rel="noreferrer" aria-label="Instagram">◎</a>
+          <a href="https://www.linkedin.com/in/ikinovac-global/" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn">in</a>
+          <a href="https://www.facebook.com/ikinovacglobal" target="_blank" rel="me noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/ikinovacglobal/" target="_blank" rel="me noopener noreferrer" aria-label="Instagram">◎</a>
         </div>
 
         <div className="footer-v3-contact">
@@ -279,7 +279,7 @@ function Footer() {
     <div className="footer-v3-bottom">
       <span>© {new Date().getFullYear()} IKINOVAC Global. All Rights Reserved.</span>
       <span className="footer-v3-motto">Engineering Solutions. Global Impact.</span>
-      <span className="footer-v3-credit">Designed &amp; Developed by <a href="https://satitechnologies.com/" target="_blank" rel="noreferrer">Sati Technologies</a> <b aria-hidden="true">↗</b></span>
+      <span className="footer-v3-credit">Designed &amp; Developed by <a href="https://satitechnologies.com/" target="_blank" rel="nofollow noopener noreferrer external">Sati Technologies</a> <b aria-hidden="true">↗</b></span>
       <a className="footer-v3-top" href="#" aria-label="Back to top">↑</a>
     </div>
   </footer>;

@@ -25,8 +25,8 @@ const socialProfiles = [
   'https://www.facebook.com/ikinovacglobal'
 ];
 
-const defaultTitle = 'IKINOVAC GLOBAL | Official Industrial Sourcing Website';
-const defaultDescription = 'Official website of IKINOVAC GLOBAL (IG). Explore industrial equipment sourcing, engineering procurement, valves, piping, automation, instrumentation and global project supply.';
+const defaultTitle = 'IKINOVAC GLOBAL | Official Website';
+const defaultDescription = 'IKINOVAC GLOBAL official website. Industrial sourcing, engineering procurement, valves, piping, automation, instrumentation, MRO and global project supply.';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -81,6 +81,9 @@ export const metadata = {
     'industrial supply Asia Pacific',
     'IKINOVAC GLOBAL',
     'IKINOVAC',
+    'IKINOVAC official website',
+    'IKINOVAC GLOBAL official website',
+    'ikinovac.com',
     'IG IKINOVAC',
     'IG industrial sourcing'
   ],
@@ -136,16 +139,33 @@ export const metadata = {
 const legacyGithubPagesRedirect = String.raw`
   (function () {
     try {
-      // Only handle this repository's old github.io preview URL.
-      // Never redirect or deindex the official custom domain.
+      // The github.io project URL is a legacy duplicate of the official domain.
+      // Mark it noindex, point canonical to the official URL, then redirect.
       if (window.location.hostname.toLowerCase() !== 'satitech-official.github.io') return;
       var base = '/ikinovac-global-engineering-platform';
       var path = window.location.pathname;
       if (path !== base && path.indexOf(base + '/') !== 0) return;
       var officialPath = path.slice(base.length) || '/';
       officialPath = officialPath.replace(/\/index\.html$/i, '/');
-      window.location.replace('https://www.ikinovac.com' + officialPath +
-        window.location.search + window.location.hash);
+      var officialUrl = 'https://www.ikinovac.com' + officialPath;
+
+      var robots = document.querySelector('meta[name="robots"]');
+      if (!robots) {
+        robots = document.createElement('meta');
+        robots.setAttribute('name', 'robots');
+        document.head.appendChild(robots);
+      }
+      robots.setAttribute('content', 'noindex,follow');
+
+      var canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', officialUrl);
+
+      window.location.replace(officialUrl + window.location.search + window.location.hash);
     } catch (e) {}
   })();
 `;
@@ -157,6 +177,10 @@ export default function RootLayout({ children }) {
     '@id': `${siteUrl}/#organization`,
     name: 'IKINOVAC GLOBAL',
     alternateName: ['IKINOVAC', 'IG', 'IKINOVAC Global Engineering'],
+    identifier: 'IKINOVAC GLOBAL',
+    slogan: 'Engineering Solutions. Global Impact.',
+    brand: { '@type': 'Brand', name: 'IKINOVAC GLOBAL', alternateName: 'IKINOVAC' },
+    mainEntityOfPage: `${siteUrl}/`,
     url: siteUrl,
     logo: `${siteUrl}/assets/ikinovac-logo-enhanced-v2.png`,
     image: `${siteUrl}/og.png`,
