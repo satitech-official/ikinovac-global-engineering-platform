@@ -4,7 +4,7 @@ import { catalogueCategories } from '@/lib/catalogue';
 
 export const metadata = {
   title: 'Industrial Products & Supply Directory',
-  description: 'Explore valves, automation, piping, instrumentation, rotating equipment, process equipment and MRO products for global industrial procurement.',
+  description: 'Explore 12 industrial product categories including valves, actuators, piping, flanges, instruments, pumps and MRO products. Request global sourcing support from IKINOVAC.',
   alternates: { canonical: '/products/', languages: { en: '/products/', 'x-default': '/products/' } },
   keywords: [
     'industrial products supplier',
@@ -35,7 +35,7 @@ export default function ProductsPage() {
         '@type': 'ListItem',
         position: index + 1,
         name: category.name,
-        url: `https://www.ikinovac.com/products/${category.slug}`
+        url: `https://www.ikinovac.com/products/${category.slug}/`
       }))
     }
   };
