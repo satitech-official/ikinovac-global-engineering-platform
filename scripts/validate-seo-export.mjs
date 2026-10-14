@@ -47,6 +47,22 @@ for (const path of requiredPaths) {
   assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="noindex/i.test(html),
     `Official domain was accidentally made noindex at ${path}`);
 }
+// Guard every indexed market and product-category page against reverting to
+// a GitHub Pages project URL or a wrong official-domain canonical.
+const marketSlugs = ['usa', 'uk', 'uae', 'saudi-arabia', 'south-africa', 'nigeria', 'kenya', 'egypt', 'ghana', 'tanzania', 'morocco', 'angola', 'mozambique'];
+const categorySlugs = ['valves', 'automation', 'pipe-fittings-flanges', 'instrumentation', 'equipment', 'sealing-items', 'mining-machinery', 'motors', 'welding', 'safety', 'process-utility', 'filtration'];
+for (const path of [...marketSlugs.map(slug => `/global-presence/${slug}/`), ...categorySlugs.map(slug => `/products/${slug}/`)]) {
+  const html = read(path.slice(1) + 'index.html');
+  const canonical = origin + path;
+  assert.ok(sitemap.includes('<loc>' + canonical + '</loc>'), `Official sitemap missing ${canonical}`);
+  const tags = html.match(/<link\\b[^>]*\\brel="canonical"[^>]*>/gi) || [];
+  assert.equal(tags.length, 1, `Expected exactly one canonical at ${path}`);
+  assert.ok(tags[0].includes('href="' + canonical + '"'), `Non-official canonical at ${path}: ${tags[0]}`);
+  assert.ok(!/<meta\\b[^>]*name="robots"[^>]*content="noindex/i.test(html), `Official page must remain indexable at ${path}`);
+}
+assert.ok(homepage.includes('legacy-ikinovac-pages-redirect'), 'Legacy GitHub Pages URL redirect safety script missing');
+console.log('Official-domain canonical / sitemap safeguards validated for 13 markets and 12 product categories.');
+
 const brandedIcons = ['favicon.ico', 'favicon-48.png', 'favicon-96.png', 'favicon-192.png', 'favicon-512.png', 'apple-touch-icon.png'];
 for (const icon of brandedIcons) {
   const filename = join(output, icon);
