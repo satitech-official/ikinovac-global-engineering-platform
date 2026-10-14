@@ -25,8 +25,8 @@ const socialProfiles = [
   'https://www.facebook.com/ikinovacglobal'
 ];
 
-const defaultTitle = 'IKINOVAC GLOBAL | Official Website';
-const defaultDescription = 'IKINOVAC GLOBAL official website. Industrial sourcing, engineering procurement, valves, piping, automation, instrumentation, MRO and global project supply.';
+const defaultTitle = 'IKINOVAC GLOBAL | Industrial Sourcing & Engineering Procurement';
+const defaultDescription = 'Global industrial sourcing and engineering procurement for valves, piping, automation, instrumentation, MRO and project supply. Send IKINOVAC GLOBAL your RFQ.';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
