@@ -55,10 +55,10 @@ for (const path of [...marketSlugs.map(slug => `/global-presence/${slug}/`), ...
   const html = read(path.slice(1) + 'index.html');
   const canonical = origin + path;
   assert.ok(sitemap.includes('<loc>' + canonical + '</loc>'), `Official sitemap missing ${canonical}`);
-  const tags = html.match(/<link\\b[^>]*\\brel="canonical"[^>]*>/gi) || [];
+  const tags = html.match(/<link\b[^>]*\brel="canonical"[^>]*>/gi) || [];
   assert.equal(tags.length, 1, `Expected exactly one canonical at ${path}`);
   assert.ok(tags[0].includes('href="' + canonical + '"'), `Non-official canonical at ${path}: ${tags[0]}`);
-  assert.ok(!/<meta\\b[^>]*name="robots"[^>]*content="noindex/i.test(html), `Official page must remain indexable at ${path}`);
+  assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="noindex/i.test(html), `Official page must remain indexable at ${path}`);
 }
 assert.ok(homepage.includes('legacy-ikinovac-pages-redirect'), 'Legacy GitHub Pages URL redirect safety script missing');
 console.log('Official-domain canonical / sitemap safeguards validated for 13 markets and 12 product categories.');
