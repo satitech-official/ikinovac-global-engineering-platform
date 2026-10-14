@@ -4,7 +4,7 @@ import { globalMarkets } from '@/lib/markets';
 
 export const metadata = {
   title: 'Global Industrial Supply Network',
-  description: 'Global industrial sourcing, engineering procurement and project supply across North America, Europe, the Middle East and Africa.',
+  description: 'Explore IKINOVAC GLOBAL industrial sourcing, engineering procurement and project supply for the USA, UK, UAE, Saudi Arabia and key African markets. Request an RFQ.',
   alternates: { canonical: '/global-presence/', languages: { en: '/global-presence/', 'x-default': '/global-presence/' } },
   keywords: [
     'global industrial supply',
@@ -34,14 +34,14 @@ export default function Page() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'IKINOVAC GLOBAL International Industrial Markets',
-    url: `${siteUrl}/global-presence`,
+    url: `${siteUrl}/global-presence/`,
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: globalMarkets.map((market, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         name: market.name,
-        url: `${siteUrl}/global-presence/${market.slug}`
+        url: `${siteUrl}/global-presence/${market.slug}/`
       }))
     }
   };
@@ -50,7 +50,7 @@ export default function Page() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: 'Global Presence', item: `${siteUrl}/global-presence` }
+      { '@type': 'ListItem', position: 2, name: 'Global Presence', item: `${siteUrl}/global-presence/` }
     ]
   };
   return <PublicPage>
