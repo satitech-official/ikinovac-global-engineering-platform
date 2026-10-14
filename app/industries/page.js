@@ -29,7 +29,7 @@ export default function Page() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Industries Served by IKINOVAC GLOBAL',
-    url: `${siteUrl}/industries`,
+    url: `${siteUrl}/industries/`,
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: industries.map((industry, index) => ({
@@ -45,7 +45,7 @@ export default function Page() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-      { '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries` }
+      { '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries/` }
     ]
   };
   return <PublicPage>
